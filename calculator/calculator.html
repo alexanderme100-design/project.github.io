@@ -1,0 +1,130 @@
+```html name=calculator.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            background: #f2f2f2;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            padding: 24px 18px;
+            width: 260px;
+        }
+        .display {
+            width: 100%;
+            height: 48px;
+            background: #222;
+            color: #fff;
+            font-size: 2rem;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            text-align: right;
+            padding: 8px 12px;
+            box-sizing: border-box;
+            overflow-x: auto;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 16px 0;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 4px;
+            background: #e0e0e0;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        button:active {
+            background: #bdbdbd;
+        }
+        .operator {
+            background: #f9a825;
+            color: #fff;
+        }
+        .equals {
+            background: #43a047;
+            color: #fff;
+            grid-column: span 2;
+        }
+        .clear {
+            background: #e53935;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div id="display" class="display">0</div>
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('(')">(</button>
+            <button onclick="appendToDisplay(')')">)</button>
+            <button class="operator" onclick="appendToDisplay('/')">÷</button>
+            
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('*')">×</button>
+            
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button class="equals" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById('display');
+        let currentInput = '';
+
+        function appendToDisplay(value) {
+            if (currentInput === '0' && value !== '.' && value !== '+' && value !== '-' && value !== '*' && value !== '/') {
+                currentInput = value;
+            } else {
+                currentInput += value;
+            }
+            display.textContent = currentInput;
+        }
+
+        function clearDisplay() {
+            currentInput = '';
+            display.textContent = '0';
+        }
+
+        function calculateResult() {
+            try {
+                // eslint-disable-next-line no-eval
+                let result = eval(currentInput.replace(/÷/g, '/').replace(/×/g, '*'));
+                display.textContent = result;
+                currentInput = String(result);
+            } catch (e) {
+                display.textContent = 'Error';
+                currentInput = '';
+            }
+        }
+    </script>
+</body>
+</html>
+```
+Copy the above code into a file named `calculator.html` and open it in your browser to use your simple calculator!
