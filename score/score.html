@@ -49,6 +49,11 @@
             background: #555;
         }
     </style>
+
+    <script src="[https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js](https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js)"></script>
+<script src="[https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js](https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js)"></script>
+<script src="[https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js](https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js)"></script>
+    
 </head>
 <body class="antialiased">
 
@@ -132,6 +137,29 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDownMHSXgqlTDCe8rAcD_7cQv8AZdMBlM",
+  authDomain: "score-401f6.firebaseapp.com",
+  projectId: "score-401f6",
+  storageBucket: "score-401f6.firebasestorage.app",
+  messagingSenderId: "277040199275",
+  appId: "1:277040199275:web:0cefac86741302cd2c232e",
+  measurementId: "G-1RCC7GT016"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+            
             const views = document.querySelectorAll('.view');
             const toast = document.getElementById('toast');
             const modal = document.getElementById('grades-modal');
@@ -625,4 +653,5 @@
     </script>
 </body>
 </html>
+
 
