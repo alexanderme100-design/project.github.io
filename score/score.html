@@ -88,7 +88,13 @@
                             </div>
                             <div>
                                 <label for="password" class="text-sm font-medium text-gray-700">密碼</label>
-                                <input type="password" id="password" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                                <div class="relative mt-1">
+                                    <input type="password" id="password" class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 pr-12" required>
+                                    <button type="button" id="toggle-login-password" class="absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 hover:text-gray-700">
+                                        <svg class="w-5 h-5 eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                        <svg class="w-5 h-5 eye-off-icon hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                                    </button>
+                                </div>
                             </div>
                             <div id="error-message" class="text-red-500 text-sm text-center hidden"></div>
                             <button type="submit" class="w-full flex justify-center py-3 px-4 border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">登入</button>
@@ -267,9 +273,9 @@
                 let user = null;
 
                 if (currentUserRole === 'parent') {
-                    user = dbData.users.find(u => u.role === 'parent' && u.idCard === userInput && u.password === password);
+                    user = dbData.users.find(u => u.role === 'parent' && u.idCard.toLowerCase() === userInput.toLowerCase() && u.password === password);
                 } else if (currentUserRole === 'teacher') {
-                    user = dbData.users.find(u => u.role === 'teacher' && u.username === userInput && u.password === password);
+                    user = dbData.users.find(u => u.role === 'teacher' && u.username.toLowerCase() === userInput.toLowerCase() && u.password === password);
                 }
 
                 if (user) {
@@ -286,6 +292,26 @@
                     errorMessage.classList.remove('hidden');
                 }
             });
+
+            // ===== 登入頁面密碼顯示切換 =====
+            const toggleLoginPasswordBtn = document.getElementById('toggle-login-password');
+            if (toggleLoginPasswordBtn) {
+                toggleLoginPasswordBtn.addEventListener('click', () => {
+                    const passwordInput = document.getElementById('password');
+                    const eyeIcon = toggleLoginPasswordBtn.querySelector('.eye-icon');
+                    const eyeOffIcon = toggleLoginPasswordBtn.querySelector('.eye-off-icon');
+
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        eyeIcon.classList.add('hidden');
+                        eyeOffIcon.classList.remove('hidden');
+                    } else {
+                        passwordInput.type = 'password';
+                        eyeIcon.classList.remove('hidden');
+                        eyeOffIcon.classList.add('hidden');
+                    }
+                });
+            }
 
             function setupLogout(viewId) {
                 const logoutButton = document.querySelector(`#${viewId} #logout-button, #${viewId} #back-to-main`);
@@ -416,7 +442,17 @@
                         const idCell = isEditingStudents ? `<td class="p-2"><input type="text" value="${student.id}" data-id="${student.id}" data-type="id" class="w-full p-2 border rounded-md bg-yellow-50"></td>` : `<td class="p-4 text-gray-700">${student.id}</td>`;
                         const nameCell = isEditingStudents ? `<td class="p-2"><input type="text" value="${student.name}" data-id="${student.id}" data-type="name" class="w-full p-2 border rounded-md bg-yellow-50"></td>` : `<td class="p-4 font-medium text-gray-800">${student.name}</td>`;
                         const idCardCell = isEditingStudents ? `<td class="p-2"><input type="text" value="${parentUser ? parentUser.idCard : ''}" data-id="${student.id}" data-type="idCard" class="w-full p-2 border rounded-md bg-yellow-50"></td>` : `<td class="p-4 text-gray-700">${parentUser ? parentUser.idCard : 'N/A'}</td>`;
-                        const passwordCell = isEditingStudents ? `<td class="p-2"><input type="text" value="${parentUser ? parentUser.password : ''}" data-id="${student.id}" data-type="password" class="w-full p-2 border rounded-md bg-yellow-50"></td>` : `<td class="p-4 text-gray-700">******</td>`;
+                        const passwordCell = isEditingStudents 
+                            ? `<td class="p-2">
+                                 <div class="relative flex items-center">
+                                   <input type="password" value="${parentUser ? parentUser.password : ''}" data-id="${student.id}" data-type="password" class="w-full p-2 border rounded-md bg-yellow-50 pr-10">
+                                   <button class="absolute right-0 mr-3 text-gray-500 hover:text-gray-700 toggle-password-btn">
+                                     <svg class="w-5 h-5 eye-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                     <svg class="w-5 h-5 eye-off-icon hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                                   </button>
+                                 </div>
+                               </td>`
+                            : `<td class="p-4 text-gray-700">******</td>`;
 
                         row.innerHTML = `
                             <td class="p-4 text-center text-gray-700">${student.seat}</td>
@@ -444,6 +480,25 @@
                     });
                 }
                 
+                studentsTableBody.addEventListener('click', (e) => {
+                    const toggleBtn = e.target.closest('.toggle-password-btn');
+                    if (toggleBtn) {
+                        const input = toggleBtn.previousElementSibling;
+                        const eyeIcon = toggleBtn.querySelector('.eye-icon');
+                        const eyeOffIcon = toggleBtn.querySelector('.eye-off-icon');
+
+                        if (input.type === 'password') {
+                            input.type = 'text';
+                            eyeIcon.classList.add('hidden');
+                            eyeOffIcon.classList.remove('hidden');
+                        } else {
+                            input.type = 'password';
+                            eyeIcon.classList.remove('hidden');
+                            eyeOffIcon.classList.add('hidden');
+                        }
+                    }
+                });
+
                 editStudentsBtn.addEventListener('click', () => {
                     isEditingStudents = !isEditingStudents;
                     if (isEditingStudents) {
@@ -570,6 +625,4 @@
     </script>
 </body>
 </html>
-
-
 
