@@ -224,11 +224,9 @@
                 document.getElementById('login-subtitle').textContent = '請輸入您的身分證字號查詢';
                 document.querySelector('label[for="username"]').textContent = '身分證字號';
                 
-                const dbData = getDbData();
-                const firstParent = dbData.users.find(u => u.role === 'parent');
                 const usernameInput = document.getElementById('username');
-                usernameInput.value = firstParent ? firstParent.idCard : '';
-                document.getElementById('password').value = firstParent ? firstParent.password : '';
+                usernameInput.value = '';
+                document.getElementById('password').value = '';
                 usernameInput.placeholder = '例如 A123456789';
                 
                 showView('login-view');
@@ -240,8 +238,8 @@
                 document.getElementById('login-subtitle').textContent = '請輸入您的教師帳號密碼';
                 document.querySelector('label[for="username"]').textContent = '帳號';
                 const usernameInput = document.getElementById('username');
-                usernameInput.value = 'teacher';
-                document.getElementById('password').value = 'password123';
+                usernameInput.value = '';
+                document.getElementById('password').value = '';
                 usernameInput.placeholder = '';
                 
                 showView('login-view');
@@ -565,4 +563,5 @@
     </script>
 </body>
 </html>
+
 
