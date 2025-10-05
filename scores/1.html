@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成績查詢系統</title>
+    <!-- Chosen Palette: Warm Neutrals (Slate Gray, Stone) with a calming Blue accent. -->
+    <!-- Application Structure Plan: A Single-Page Application (SPA) with three distinct views: Login, Parent Dashboard, and Admin Dashboard. This structure separates user roles for a focused, intuitive workflow. The Login view acts as a secure gateway. The Parent Dashboard is designed for quick visual insights (charts for performance comparison) and detailed lookup (grouped lists), prioritizing data comprehension. The Admin Dashboard provides a task-oriented interface for efficient data entry and management (forms and a comprehensive table), streamlining administrative tasks. This user-centric architecture ensures each user type has a tailored and efficient experience. -->
+    <!-- Visualization & Content Choices: 
+        1. Parent View - Subject Performance Chart: 
+            - Report Info: Average scores per subject. 
+            - Goal: Compare academic performance across different subjects at a glance.
+            - Viz/Method: Vertical Bar Chart. 
+            - Interaction: Tooltip on hover displays the exact average score for a subject.
+            - Justification: A bar chart is the most effective and universally understood visualization for comparing values across discrete categories (subjects), enabling quick identification of strengths and weaknesses.
+            - Library/Method: Chart.js on a Canvas element.
+        2. Parent View - Detailed Grade Lists:
+            - Report Info: Individual scores for all assessments (midterm, final, quizzes).
+            - Goal: Provide parents with detailed, specific results for each assessment.
+            - Viz/Method: Grouped HTML lists, organized by subject.
+            - Interaction: None; pure information display.
+            - Justification: Clean, semantic lists are clearer and more mobile-friendly than a dense table for displaying hierarchical, detailed information.
+            - Library/Method: Dynamic HTML generated with Vanilla JS.
+        3. Admin View - All Grades Management Table:
+            - Report Info: The entire dataset of student grades.
+            - Goal: Organize all data for easy lookup, verification, and management (deletion).
+            - Viz/Method: A comprehensive HTML table.
+            - Interaction: A "Delete" button on each row to remove specific entries.
+            - Justification: For data management tasks, a table provides the necessary structure, density, and functionality that administrators expect for efficiency.
+            - Library/Method: Dynamic HTML generated with Vanilla JS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Inter', '微軟正黑體', sans-serif; }
+        .view { display: none; }
+        .active-view { display: block; }
+        .loader-container {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            backdrop-filter: blur(4px);
+            display: none; /* Initially hidden */
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3b82f6;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div id="app-container" class="min-h-screen p-4 flex flex-col items-center justify-center transition-opacity duration-500">
+
+        <!-- Loading Spinner -->
+        <div id="loadingView" class="loader-container">
+            <div class="loader"></div>
+        </div>
+
+        <!-- Login View -->
+        <div id="loginView" class="view w-full max-w-sm">
+            <div class="bg-white p-8 rounded-2xl shadow-md border border-slate-200">
+                <h1 class="text-3xl font-bold text-center text-slate-900 mb-2">成績查詢系統</h1>
+                <p class="text-center text-slate-500 mb-8">歡迎使用</p>
+                
+                <div id="login-forms-container">
+                    <!-- Parent Login Form -->
+                    <form id="parentLoginForm">
+                        <div class="mb-4">
+                            <label for="studentId" class="block text-slate-700 text-sm font-semibold mb-2">學號</label>
+                            <input type="text" id="studentId" placeholder="請輸入學號" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 transition" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="parentPassword" class="block text-slate-700 text-sm font-semibold mb-2">家長密碼</label>
+                            <input type="password" id="parentPassword" placeholder="••••••••" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 transition" required>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-bold py-2.5 px-4 rounded-lg text-center transition duration-200">
+                            家長登入
+                        </button>
+                    </form>
+
+                    <!-- Admin Login Form (Hidden by default) -->
+                    <form id="adminLoginForm" class="hidden">
+                         <div class="mb-6">
+                            <label for="adminPassword" class="block text-slate-700 text-sm font-semibold mb-2">管理者密碼</label>
+                            <input type="password" id="adminPassword" placeholder="••••••••" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 transition" required>
+                        </div>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 text-white font-bold py-2.5 px-4 rounded-lg text-center transition duration-200">
+                            管理者登入
+                        </button>
+                    </form>
+                </div>
+
+                <div class="text-center mt-6">
+                    <a href="#" id="loginToggleLink" class="text-sm text-blue-600 hover:underline">切換至管理者登入</a>
+                </div>
+
+                <p id="loginError" class="text-red-500 text-sm text-center mt-4 h-5"></p>
+            </div>
+        </div>
+
+        <!-- Parent View -->
+        <div id="parentView" class="view w-full max-w-5xl">
+            <header class="flex justify-between items-center mb-6 pb-4 border-b border-slate-200">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-slate-900">學生成績儀表板</h1>
+                    <p id="welcomeMessage" class="text-slate-600 mt-1"></p>
+                </div>
+                <button id="parentLogout" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded-lg text-sm transition duration-200">登出</button>
+            </header>
+            
+            <main id="parentDashboard" class="space-y-8">
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4">各科平均表現</h2>
+                    <div class="chart-container">
+                        <canvas id="gradesChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4">詳細成績列表</h2>
+                    <div id="gradesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Grades will be injected here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Admin View -->
+        <div id="adminView" class="view w-full max-w-6xl">
+             <header class="flex justify-between items-center mb-6 pb-4 border-b border-slate-200">
+                <h1 class="text-2xl sm:text-3xl font-bold text-slate-900">管理者後台</h1>
+                <button id="adminLogout" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded-lg text-sm transition duration-200">登出</button>
+            </header>
+
+            <main id="adminDashboard" class="space-y-8">
+                <!-- Add Score Form -->
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200">
+                    <h2 class="text-xl font-semibold mb-4 text-slate-800">新增平時考成績</h2>
+                    <form id="addScoreForm" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 items-end">
+                        <div>
+                            <label for="adminStudentId" class="block text-sm font-medium text-slate-700 mb-1">學號</label>
+                            <select id="adminStudentId" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></select>
+                        </div>
+                        <div>
+                            <label for="adminSubject" class="block text-sm font-medium text-slate-700 mb-1">科目</label>
+                            <input type="text" id="adminSubject" placeholder="例如: 國語" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        </div>
+                        <div>
+                            <label for="adminType" class="block text-sm font-medium text-slate-700 mb-1">評量類型</label>
+                            <input type="text" id="adminType" placeholder="例如: 平時考1" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        </div>
+                        <div>
+                            <label for="adminScore" class="block text-sm font-medium text-slate-700 mb-1">分數</label>
+                            <input type="number" id="adminScore" min="0" max="100" class="bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">新增成績</button>
+                    </form>
+                     <p id="adminMessage" class="text-sm text-center mt-4 h-5"></p>
+                </div>
+
+                <!-- All Grades Table -->
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200">
+                    <h2 class="text-xl font-semibold mb-4 text-slate-800">所有成績總覽</h2>
+                     <div class="overflow-x-auto relative">
+                        <table class="w-full text-sm text-left text-slate-500">
+                            <thead class="text-xs text-slate-700 uppercase bg-slate-100">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">學號 (姓名)</th>
+                                    <th scope="col" class="px-6 py-3">科目</th>
+                                    <th scope="col" class="px-6 py-3">評量類型</th>
+                                    <th scope="col" class="px-6 py-3">分數</th>
+                                    <th scope="col" class="px-6 py-3">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allGradesBody">
+                                <!-- Data will be injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = '請貼上您部署後的 Apps Script 網址';
+
+        const views = {
+            loading: document.getElementById('loadingView'),
+            login: document.getElementById('loginView'),
+            parent: document.getElementById('parentView'),
+            admin: document.getElementById('adminView'),
+        };
+        
+        const parentLoginForm = document.getElementById('parentLoginForm');
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        const loginError = document.getElementById('loginError');
+        const loginToggleLink = document.getElementById('loginToggleLink');
+
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const gradesContainer = document.getElementById('gradesContainer');
+        const parentLogoutBtn = document.getElementById('parentLogout');
+        
+        const adminLogoutBtn = document.getElementById('adminLogout');
+        const addScoreForm = document.getElementById('addScoreForm');
+        const adminMessage = document.getElementById('adminMessage');
+        const adminStudentIdSelect = document.getElementById('adminStudentId');
+        const allGradesBody = document.getElementById('allGradesBody');
+        
+        let gradesChart = null;
+
+        function showView(viewName) {
+            Object.values(views).forEach(view => view.classList.remove('active-view'));
+            if (views[viewName]) {
+                views[viewName].classList.add('active-view');
+            }
+        }
+        
+        function showLoading() { views.loading.style.display = 'flex'; }
+        function hideLoading() { views.loading.style.display = 'none'; }
+
+        async function apiCall(action, payload = {}) {
+            showLoading();
+            loginError.textContent = '';
+            adminMessage.textContent = '';
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action, payload }),
+                    headers: { 'Content-Type': 'application/json' },
+                    redirect: 'follow'
+                });
+                if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+                const result = await response.json();
+                hideLoading();
+                return result;
+            } catch (error) {
+                hideLoading();
+                console.error('API Call Error:', error);
+                const errorMessage = `發生錯誤，請稍後再試。`;
+                loginError.textContent = errorMessage;
+                adminMessage.textContent = errorMessage;
+                adminMessage.className = 'text-sm text-center mt-4 h-5 text-red-500';
+                return { status: 'error', message: error.message };
+            }
+        }
+        
+        loginToggleLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isParentFormVisible = !parentLoginForm.classList.contains('hidden');
+            if (isParentFormVisible) {
+                parentLoginForm.classList.add('hidden');
+                adminLoginForm.classList.remove('hidden');
+                e.target.textContent = '切換至家長登入';
+            } else {
+                adminLoginForm.classList.add('hidden');
+                parentLoginForm.classList.remove('hidden');
+                e.target.textContent = '切換至管理者登入';
+            }
+            loginError.textContent = '';
+        });
+        
+        parentLoginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const studentId = document.getElementById('studentId').value;
+            const password = document.getElementById('parentPassword').value;
+            const result = await apiCall('parentLogin', { studentId, password });
+
+            if (result.status === 'success') {
+                sessionStorage.setItem('user', JSON.stringify({ type: 'parent', studentId, studentName: result.studentName }));
+                showView('parent');
+                loadParentData();
+            } else {
+                loginError.textContent = result.message || '登入失敗';
+            }
+        });
+
+        adminLoginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const password = document.getElementById('adminPassword').value;
+            const result = await apiCall('adminLogin', { password });
+
+            if (result.status === 'success') {
+                sessionStorage.setItem('user', JSON.stringify({ type: 'admin' }));
+                showView('admin');
+                loadAdminData();
+            } else {
+                loginError.textContent = result.message || '登入失敗';
+            }
+        });
+
+        parentLogoutBtn.addEventListener('click', logout);
+        adminLogoutBtn.addEventListener('click', logout);
+
+        addScoreForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                studentId: document.getElementById('adminStudentId').value,
+                subject: document.getElementById('adminSubject').value.trim(),
+                type: document.getElementById('adminType').value.trim(),
+                score: document.getElementById('adminScore').value,
+            };
+
+            const result = await apiCall('addScore', payload);
+            if (result.status === 'success') {
+                adminMessage.textContent = '新增成功！';
+                adminMessage.className = 'text-sm text-center mt-4 h-5 text-green-600';
+                addScoreForm.reset();
+                loadAdminData();
+            } else {
+                adminMessage.textContent = result.message || '新增失敗';
+                adminMessage.className = 'text-sm text-center mt-4 h-5 text-red-500';
+            }
+        });
+
+        async function loadParentData() {
+            const user = JSON.parse(sessionStorage.getItem('user'));
+            if (!user || user.type !== 'parent') return;
+
+            welcomeMessage.textContent = `${user.studentName} 同學，您好！`;
+            const result = await apiCall('getGrades', { studentId: user.studentId });
+
+            if (result.status === 'success' && result.data) {
+                renderParentGrades(result.data);
+                renderGradesChart(result.data);
+            } else {
+                gradesContainer.innerHTML = `<p class="text-slate-500 col-span-full">${result.message || '無法載入成績資料。'}</p>`;
+            }
+        }
+
+        function renderParentGrades(grades) {
+            if (grades.length === 0) {
+                gradesContainer.innerHTML = `<p class="text-slate-500 col-span-full">目前沒有成績資料。</p>`;
+                return;
+            }
+
+            const gradesBySubject = grades.reduce((acc, grade) => {
+                (acc[grade.subject] = acc[grade.subject] || []).push(grade);
+                return acc;
+            }, {});
+
+            let html = '';
+            for (const subject in gradesBySubject) {
+                html += `
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 h-full">
+                        <h3 class="text-lg font-semibold text-blue-700 mb-3">${subject}</h3>
+                        <ul class="divide-y divide-slate-200">
+                `;
+                gradesBySubject[subject].forEach(grade => {
+                    const scoreColor = grade.score >= 60 ? 'text-slate-800' : 'text-red-600';
+                    html += `
+                        <li class="py-2 flex justify-between items-center">
+                            <span class="text-slate-600">${grade.type}</span>
+                            <span class="font-bold text-lg ${scoreColor}">${grade.score}</span>
+                        </li>
+                    `;
+                });
+                html += '</ul></div>';
+            }
+            gradesContainer.innerHTML = html;
+        }
+        
+        function renderGradesChart(grades) {
+            const ctx = document.getElementById('gradesChart').getContext('2d');
+            if (gradesChart) {
+                gradesChart.destroy();
+            }
+
+            const gradesBySubject = grades.reduce((acc, grade) => {
+                (acc[grade.subject] = acc[grade.subject] || []).push(parseFloat(grade.score));
+                return acc;
+            }, {});
+
+            const labels = Object.keys(gradesBySubject);
+            const data = labels.map(subject => {
+                const scores = gradesBySubject[subject];
+                return scores.reduce((a, b) => a + b, 0) / scores.length;
+            });
+
+            gradesChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '科目平均分數',
+                        data: data,
+                        backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { color: '#e2e8f0' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `平均: ${context.parsed.y.toFixed(1)}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        async function loadAdminData() {
+            const result = await apiCall('getAllDataForAdmin');
+            if (result.status === 'success' && result.data) {
+                renderAdminStudentSelect(result.data.students);
+                renderAdminGradesTable(result.data.grades, result.data.students);
+            } else {
+                 allGradesBody.innerHTML = `<tr><td colspan="5" class="px-6 py-4 text-center text-red-500">${result.message || '無法載入資料。'}</td></tr>`;
+            }
+        }
+        
+        function renderAdminStudentSelect(students) {
+            adminStudentIdSelect.innerHTML = students
+                .map(s => `<option value="${s.studentId}">${s.studentId} (${s.studentName})</option>`)
+                .join('');
+        }
+
+        function renderAdminGradesTable(grades, students) {
+            if (grades.length === 0) {
+                allGradesBody.innerHTML = `<tr><td colspan="5" class="px-6 py-4 text-center text-slate-500">目前沒有成績資料。</td></tr>`;
+                return;
+            }
+            
+            const studentNameMap = students.reduce((map, student) => ({ ...map, [student.studentId]: student.studentName }), {});
+
+            allGradesBody.innerHTML = grades.map(grade => `
+                <tr id="grade-row-${grade.gradeId}" class="bg-white border-b hover:bg-slate-50">
+                    <td class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">${grade.studentId} (${studentNameMap[grade.studentId] || 'N/A'})</td>
+                    <td class="px-6 py-4">${grade.subject}</td>
+                    <td class="px-6 py-4">${grade.type}</td>
+                    <td class="px-6 py-4 font-medium ${grade.score >= 60 ? 'text-slate-900' : 'text-red-600'}">${grade.score}</td>
+                    <td class="px-6 py-4">
+                        <button onclick="handleDelete('${grade.gradeId}')" class="font-medium text-red-600 hover:underline">刪除</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        async function handleDelete(gradeId) {
+            if (!confirm('您確定要永久刪除這筆成績嗎？此操作無法復原。')) return;
+
+            const result = await apiCall('deleteScore', { gradeId });
+            if (result.status === 'success') {
+                const row = document.getElementById(`grade-row-${gradeId}`);
+                if (row) {
+                    row.style.opacity = 0;
+                    setTimeout(() => row.remove(), 300);
+                }
+                adminMessage.textContent = '刪除成功！';
+                adminMessage.className = 'text-sm text-center mt-4 h-5 text-green-600';
+            } else {
+                adminMessage.textContent = result.message || '刪除失敗';
+                adminMessage.className = 'text-sm text-center mt-4 h-5 text-red-500';
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('user');
+            parentLoginForm.reset();
+            adminLoginForm.reset();
+            if (gradesChart) {
+                gradesChart.destroy();
+                gradesChart = null;
+            }
+            showView('login');
+        }
+
+        function checkSession() {
+            try {
+                const user = JSON.parse(sessionStorage.getItem('user'));
+                if (user) {
+                    if (user.type === 'parent' && user.studentId) {
+                        showView('parent');
+                        loadParentData();
+                    } else if (user.type === 'admin') {
+                        showView('admin');
+                        loadAdminData();
+                    } else {
+                        logout();
+                    }
+                } else {
+                    showView('login');
+                }
+            } catch (e) {
+                logout();
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', checkSession);
+    </script>
+</body>
+</html>
+
