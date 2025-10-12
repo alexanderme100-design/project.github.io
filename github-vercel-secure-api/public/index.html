@@ -705,7 +705,7 @@
         // ***************************************************************
         const apiKey = "AIzaSyCQmx4CBBBhjU43uuEr9WmTrk51ZPSxPRs"; 
 
-        async function callGeminiAPI(userQuery, systemPrompt) {
+        async function CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt) {
             if (apiKey === "") {
                 return "AI 功能錯誤：尚未設定 API 金鑰。";
             }
@@ -771,7 +771,7 @@
             throw new Error("API 請求重試多次後仍然失敗。");
         }
 
-        async function callGeminiTtsAPI(text) {
+        async function CALL_GEMINI_TTS_DEPRECATED(text) {
              if (apiKey === "") {
                 throw new Error("TTS 功能錯誤：尚未設定 API 金鑰。");
             }
@@ -983,8 +983,8 @@
             const fullPrompt = `這是學校四個重要處室的業務資料：\n${studentAffairsContext}\n${generalAffairsContext}\n${academicAffairsContext}\n${guidanceAffairsContext}\n\n現在，請根據上述所有資料，並嚴格遵守你的指引規則，回答這位使用者的問題：\n\n「${userQuery}」`;
 
             try {
-                const result = await callGeminiAPI(fullPrompt, systemPrompt);
-                generalResponseDiv.innerHTML = formatResponse(result);
+                const result = await CALL_GEMINI_API_DEPRECATED(fullPrompt, systemPrompt);
+                generalResponseDiv.innerHTML = FORMAT_RESPONSE_DEPRECATED(result);
             } catch (error) {
                 console.error("Gemini API call failed for general helper:", error);
                 generalResponseDiv.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
@@ -1052,8 +1052,8 @@
             const userQuery = `請草擬一份學校公告，資訊如下：\n- 公告主題：${subject}\n- 目標對象：${audience}\n- 重要資訊要點：\n${info}\n- 公告語氣：${tone}\n\n請生成一份包含主旨、說明、發布單位的完整公告。`;
 
             try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                announcementTextContent.innerHTML = formatResponse(result.replace(/\n/g, '<br>'));
+                const result = await CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt);
+                announcementTextContent.innerHTML = FORMAT_RESPONSE_DEPRECATED(result.replace(/\n/g, '<br>'));
                 if (!result.startsWith("AI 功能錯誤")) {
                     announcementAudioSection.classList.remove('hidden'); 
                 }
@@ -1075,7 +1075,7 @@
             generateAudioBtn.disabled = true;
 
             try {
-                const { audioData, sampleRate } = await callGeminiTtsAPI(textToSpeak);
+                const { audioData, sampleRate } = await CALL_GEMINI_TTS_DEPRECATED(textToSpeak);
                 const pcmBuffer = base64ToArrayBuffer(audioData);
                 const pcm16 = new Int16Array(pcmBuffer);
                 const wavBlob = pcmToWav(pcm16, sampleRate);
@@ -1138,8 +1138,8 @@
             const userQuery = `請為我設計一份為期一週的運動訓練計畫，我的資料如下：\n- 運動項目：${sport}\n- 目前體能水平：${level}\n- 主要訓練目標：${goal}\n- 每週希望訓練天數：${days}\n\n請提供每日的詳細訓練內容（包含具體動作、次數或時間），並規劃休息日。計畫應包含訓練前的暖身與訓練後的緩和伸展。`;
 
             try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                trainingResponseDiv.innerHTML = formatResponse(result);
+                const result = await CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt);
+                trainingResponseDiv.innerHTML = FORMAT_RESPONSE_DEPRECATED(result);
             } catch (error)
             {
                 console.error("Gemini API call failed for training planner:", error);
@@ -1196,8 +1196,8 @@
             const userQuery = `請為一場學校活動撰寫新聞稿，資訊如下：\n- 活動主題：${subject}\n- 新聞稿重點：\n${info}\n- 希望發布的對象/媒體：${media}\n\n請生成一篇包含【即時發布】標籤、新聞標題、導言、內文、新聞聯絡人等資訊的完整新聞稿。`;
 
             try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                pressReleaseTextContent.innerHTML = formatResponse(result);
+                const result = await CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt);
+                pressReleaseTextContent.innerHTML = FORMAT_RESPONSE_DEPRECATED(result);
             } catch (error) {
                 console.error("Gemini API call failed for press release generator:", error);
                 pressReleaseTextContent.innerText = '抱歉，現在無法產生新聞稿，請稍後再試。';
@@ -1253,8 +1253,8 @@
             const userQuery = `請針對以下學生事件提供處理建議：\n- 事件簡述：${description}\n- 事件輕重：${severity}\n- 希望的溝通語氣：${tone}\n\n請提供三項內容：\n1.  **給老師的狀況分析與處理建議。**\n2.  **與學生溝通的建議談話腳本。**\n3.  **給家長的通知訊息文字草稿。**`;
             
             try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                incidentTextContent.innerHTML = formatResponse(result);
+                const result = await CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt);
+                incidentTextContent.innerHTML = FORMAT_RESPONSE_DEPRECATED(result);
             } catch (error) {
                 console.error("Gemini API call failed for incident helper:", error);
                 incidentTextContent.innerText = '抱歉，現在無法產生處理建議，請稍後再試。';
@@ -1311,8 +1311,8 @@
                 請用繁體中文，以條列式、易於理解的方式回答。`;
             
             try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                firstAidResponseDiv.innerHTML = formatResponse(result);
+                const result = await CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt);
+                firstAidResponseDiv.innerHTML = FORMAT_RESPONSE_DEPRECATED(result);
             } catch (error) {
                 console.error("Gemini API call failed for first aid guide:", error);
                 firstAidResponseDiv.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
@@ -1395,8 +1395,8 @@
             }
             
             try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                lunchHelperTextContent.innerHTML = formatResponse(result);
+                const result = await CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt);
+                lunchHelperTextContent.innerHTML = FORMAT_RESPONSE_DEPRECATED(result);
             } catch (error) {
                 console.error("Gemini API call failed for lunch helper:", error);
                 lunchHelperTextContent.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
@@ -1525,7 +1525,7 @@
 </script>
 <!-- ===== /安全版腳本結束 ===== -->
 
-</body></html>";
+
             
             const content = `
                 <div style="font-family: 'KaiTi', '標楷體', serif; margin: 50px; font-size: 14pt;">
@@ -1678,7 +1678,7 @@
 </script>
 <!-- ===== /安全版腳本結束 ===== -->
 
-</body></html>";
+
             
             const content = `
                 <div style="font-family: 'KaiTi', '標楷體', serif; margin: 50px; font-size: 14pt;">
@@ -1797,8 +1797,8 @@
             const userQuery = "請給我一個護眼挑戰題。";
 
             try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                visionResponseDiv.innerHTML = formatResponse(result);
+                const result = await CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt);
+                visionResponseDiv.innerHTML = FORMAT_RESPONSE_DEPRECATED(result);
             } catch (error) {
                 console.error("Gemini API call failed for vision challenge:", error);
                 visionResponseDiv.innerText = '抱歉，現在無法產生挑戰題，請稍後再試。';
@@ -1880,8 +1880,8 @@
             const systemPrompt = `你是一位親切、熱情的 AI 環保小老師，專門為台灣的小學生解答環保相關問題。你的回答應該要簡單易懂、充滿趣味，可以適時使用表情符號，並鼓勵學生身體力行。請用繁體中文回答。`;
             
             try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                ecoResponseDiv.innerHTML = formatResponse(result);
+                const result = await CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt);
+                ecoResponseDiv.innerHTML = FORMAT_RESPONSE_DEPRECATED(result);
             } catch (error) {
                 console.error("Gemini API call failed for eco helper:", error);
                 ecoResponseDiv.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
@@ -1906,8 +1906,8 @@
             const userQuery = "請給我一個垃圾分類挑戰題。";
 
             try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                ecoResponseDiv.innerHTML = formatResponse(result);
+                const result = await CALL_GEMINI_API_DEPRECATED(userQuery, systemPrompt);
+                ecoResponseDiv.innerHTML = FORMAT_RESPONSE_DEPRECATED(result);
             } catch (error) {
                 console.error("Gemini API call failed for eco challenge:", error);
                 ecoResponseDiv.innerText = '抱歉，現在無法產生挑戰題，請稍後再試。';
@@ -2009,5 +2009,241 @@
 </script>
 <!-- ===== /安全版腳本結束 ===== -->
 
+
+<!-- === 安全修正版補丁：統一走 /api/generate；去除前端金鑰需求 === -->
+<script id="safe-patch">
+(function(){
+  // ---- 安全：所有 AI 呼叫都透過此函式代理到後端 /api/generate ----
+  async function askAI(prompt) {
+    const r = await fetch("/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt })
+    });
+    const data = await r.json();
+    return (data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content)
+      ? data.choices[0].message.content
+      : JSON.stringify(data);
+  }
+
+  // ---- 將舊的函式打掉（避免未定義錯誤或誤用前端金鑰） ----
+  window.CALL_GEMINI_API_DEPRECATED = async function(){
+    throw new Error("此頁已改為安全版：請改用 askAI() 透過 /api/generate 呼叫。");
+  };
+  window.FORMAT_RESPONSE_DEPRECATED = function(x){ return typeof x === "string" ? x : JSON.stringify(x); };
+  window.CALL_GEMINI_TTS_DEPRECATED = async function(){
+    alert("已停用前端直連 TTS（避免金鑰外流）。如需 TTS，請改由後端 /api/tts 代理。");
+    return null;
+  };
+
+  // ---- Word 下載：安全且簡潔（不再使用 data URI header/footer） ----
+  function downloadWord(filename, textContent) {
+    const html =
+      '<!DOCTYPE html><html><head><meta charset="UTF-8"></head>' +
+      '<body style="white-space:pre-wrap;line-height:1.8;font-family: system-ui, \'Noto Sans TC\', sans-serif;">' +
+      String(textContent).replace(/\n/g, '<br>') +
+      '</body></html>';
+    const blob = new Blob([html], { type: "application/msword;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+    a.remove(); URL.revokeObjectURL(url);
+  }
+
+  // 朝會頒獎登記表
+  const awardBtn = document.getElementById("download-word-form-btn");
+  if (awardBtn) {
+    awardBtn.addEventListener("click", () => {
+      const content = [
+        "國立展賦大學 學務處訓育組",
+        "朝會頒獎登記表",
+        "",
+        "學生姓名：____________________",
+        "",
+        "班　　級：____________________",
+        "",
+        "獎項全名：________________________________________",
+        "",
+        "頒獎單位：________________________________________",
+        "",
+        "導師簽名：____________________",
+        "",
+        "繳交日期：________ 年 ________ 月 ________ 日",
+        "",
+        "",
+        "本人確認已將上述獎狀之正本繳交至訓育組，並申請於學生朝會公開頒獎表揚。"
+      ].join("\n");
+      downloadWord("朝會頒獎登記表.doc", content);
+    });
+  }
+
+  // 運動社團報名表
+  const clubBtn = document.getElementById("download-club-form-btn");
+  if (clubBtn) {
+    clubBtn.addEventListener("click", () => {
+      const content = [
+        "國立展賦大學 學務處體育組",
+        "運動社團報名表",
+        "",
+        "學生姓名　　　　　班級",
+        "學號　　　　　　　聯絡電話",
+        "",
+        "請勾選您想參加的社團（可複選）：",
+        "☐ 籃球社",
+        "☐ 羽球社",
+        "☐ 田徑社",
+        "☐ 游泳社",
+        "☐ 足球社",
+        "",
+        "家長/監護人簽名：____________________",
+        "學生簽名：____________________",
+        "報名日期：________ 年 ________ 月 ________ 日",
+        "",
+        "請將此報名表填妥後，繳交至學務處體育組。"
+      ].join("\n");
+      downloadWord("運動社團報名表.doc", content);
+    });
+  }
+
+  // ---- 綁定：環保問答 ----
+  const ecoInput = document.getElementById("eco-question-input");
+  const ecoBtn = document.getElementById("submit-eco-question-btn");
+  const ecoOut = document.getElementById("eco-response");
+  const ecoLoader = document.getElementById("eco-loader");
+  if (ecoBtn && ecoOut) {
+    ecoBtn.addEventListener("click", async () => {
+      const q = (ecoInput && ecoInput.value || "").trim();
+      if (!q) { ecoOut.textContent = "請輸入您的問題。"; ecoOut.classList.remove("hidden"); return; }
+      ecoLoader && ecoLoader.classList.remove("hidden"); ecoOut.classList.add("hidden");
+      try {
+        const text = await askAI("你是台灣小學生的環保小老師，繁體中文回答。\n問題：" + q);
+        ecoOut.textContent = text;
+      } catch { ecoOut.textContent = "抱歉，現在無法處理您的請求。"; }
+      finally { ecoLoader && ecoLoader.classList.add("hidden"); ecoOut.classList.remove("hidden"); }
+    });
+  }
+
+  // ---- 綁定：垃圾分類挑戰 ----
+  const ecoChBtn = document.getElementById("generate-challenge-btn");
+  if (ecoChBtn && ecoOut) {
+    ecoChBtn.addEventListener("click", async () => {
+      ecoLoader && ecoLoader.classList.remove("hidden"); ecoOut.classList.add("hidden");
+      const prompt = "你是環保教育遊戲設計師，為台灣國小學生出一題垃圾分類挑戰，格式：\\n1. 物品：\\n2. 問題：\\n3. 解答與說明：";
+      try { ecoOut.textContent = await askAI(prompt); }
+      catch { ecoOut.textContent = "抱歉，現在無法產生挑戰題。"; }
+      finally { ecoLoader && ecoLoader.classList.add("hidden"); ecoOut.classList.remove("hidden"); }
+    });
+  }
+
+  // ---- 綁定：視力保健挑戰 ----
+  const vvBtn = document.getElementById("generate-vision-challenge-btn");
+  const vvOut = document.getElementById("vision-response");
+  const vvLoader = document.getElementById("vision-loader");
+  if (vvBtn && vvOut) {
+    vvBtn.addEventListener("click", async () => {
+      vvLoader && vvLoader.classList.remove("hidden"); vvOut.classList.add("hidden");
+      const prompt = "你是護眼小老師，為台灣國小生設計一題護眼挑戰，格式：\\n1. 挑戰項目：\\n2. 問題：\\n3. 解答與說明：";
+      try { vvOut.textContent = await askAI(prompt); }
+      catch { vvOut.textContent = "抱歉，現在無法產生挑戰題。"; }
+      finally { vvLoader && vvLoader.classList.add("hidden"); vvOut.classList.remove("hidden"); }
+    });
+  }
+
+  // ---- 綁定：午餐小幫手 ----
+  const lunchBtn = document.getElementById("submit-lunch-helper-question");
+  const lunchTask = document.getElementById("lunch-helper-task");
+  const lunchReq = document.getElementById("lunch-menu-request");
+  const lunchBox = document.getElementById("lunch-helper-response");
+  const lunchOut = document.getElementById("lunch-helper-text-content") || lunchBox;
+  const lunchLoader = document.getElementById("lunch-helper-loader");
+  if (lunchBtn && lunchOut) {
+    lunchBtn.addEventListener("click", async () => {
+      lunchLoader && lunchLoader.classList.remove("hidden"); lunchBox && lunchBox.classList.add("hidden");
+      const task = (lunchTask && lunchTask.value) || "menu";
+      const content = (lunchReq && lunchReq.value) || "";
+      const prompt = task === "menu"
+        ? ("請以台灣國小午餐規範設計菜單（主食/主菜/副菜/湯品與留樣注意）。需求：\\n" + content)
+        : "請產生『學校午餐驗收食品安全檢查清單』，條列重點並附說明。";
+      try { lunchOut.textContent = await askAI(prompt); }
+      catch { lunchOut.textContent = "抱歉，現在無法處理您的請求。"; }
+      finally { lunchLoader && lunchLoader.classList.add("hidden"); lunchBox && lunchBox.classList.remove("hidden"); }
+    });
+  }
+
+  // ---- 綁定：急救/健康中心 ----
+  const faBtn = document.getElementById("submit-first-aid-question");
+  const faInput = document.getElementById("first-aid-question");
+  const faOut = document.getElementById("first-aid-response");
+  const faLoader = document.getElementById("first-aid-loader");
+  if (faBtn && faOut) {
+    faBtn.addEventListener("click", async () => {
+      const q = (faInput && faInput.value) || "";
+      faLoader && faLoader.classList.remove("hidden"); faOut.classList.add("hidden");
+      try { faOut.textContent = await askAI("以校護語氣提供初步建議（非醫療診斷）：\\n" + q); }
+      catch { faOut.textContent = "抱歉，現在無法提供建議。"; }
+      finally { faLoader && faLoader.classList.add("hidden"); faOut.classList.remove("hidden"); }
+    });
+  }
+
+  // ---- 綁定：全校萬事通 ----
+  const allBtn = document.getElementById("submit-general-question");
+  const allInput = document.getElementById("general-user-question");
+  const allOut = document.getElementById("general-ai-response");
+  const allLoader = document.getElementById("general-loader");
+  if (allBtn && allOut) {
+    allBtn.addEventListener("click", async () => {
+      const q = (allInput && allInput.value) || "";
+      allLoader && allLoader.classList.remove("hidden"); allOut.classList.add("hidden");
+      try { allOut.textContent = await askAI("判斷以下需求應由學務處哪個組別處理並給步驟：\\n" + q); }
+      catch { allOut.textContent = "抱歉，目前無法分析您的問題。"; }
+      finally { allLoader && allLoader.classList.add("hidden"); allOut.classList.remove("hidden"); }
+    });
+  }
+
+  // ---- 綁定：公告草擬 ----
+  const annBtn = document.getElementById("submit-announcement");
+  const annSub = document.getElementById("announcement-subject");
+  const annAud = document.getElementById("announcement-audience");
+  const annInfo = document.getElementById("announcement-info");
+  const annTone = document.getElementById("announcement-tone");
+  const annBox = document.getElementById("announcement-response");
+  const annOut = document.getElementById("announcement-text-content") || annBox;
+  const annLoader = document.getElementById("announcement-loader");
+  if (annBtn && annOut) {
+    annBtn.addEventListener("click", async () => {
+      annLoader && annLoader.classList.remove("hidden"); annBox && annBox.classList.remove("hidden");
+      const prompt = `請用「${(annTone && annTone.value) || "正式"}」語氣草擬一份學校公告：
+主題：${(annSub && annSub.value) || ""}
+對象：${(annAud && annAud.value) || ""}
+重點：${(annInfo && annInfo.value) || ""}
+請有標題、前言、條列重點與結語。`;
+      try { annOut.textContent = await askAI(prompt); }
+      catch { annOut.textContent = "抱歉，現在無法生成公告草稿。"; }
+      finally { annLoader && annLoader.classList.add("hidden"); }
+    });
+  }
+
+  // ---- 綁定：新聞稿產生器 ----
+  const prBtn = document.getElementById("submit-press-release");
+  const prSub = document.getElementById("event-subject");
+  const prMedia = document.getElementById("press-release-media");
+  const prInfo = document.getElementById("press-release-info");
+  const prBox = document.getElementById("press-release-response");
+  const prOut = document.getElementById("press-release-text-content") || prBox;
+  const prLoader = document.getElementById("press-release-loader");
+  if (prBtn && prOut) {
+    prBtn.addEventListener("click", async () => {
+      prLoader && prLoader.classList.remove("hidden"); prBox && prBox.classList.remove("hidden");
+      const prompt = `請以學校對外新聞稿格式撰寫，主題：${(prSub && prSub.value) || ""}，發布對象：${(prMedia && prMedia.value) || ""}，重點如下：
+${(prInfo && prInfo.value) || ""}
+請包含：標題、導言、重點段落(條列)、引述語、聯絡資訊。`;
+      try { prOut.textContent = await askAI(prompt); }
+      catch { prOut.textContent = "抱歉，現在無法生成新聞稿。"; }
+      finally { prLoader && prLoader.classList.add("hidden"); }
+    });
+  }
+
+})(); 
+</script>
 </body>
 </html>
