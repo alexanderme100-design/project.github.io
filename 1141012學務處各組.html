@@ -51,7 +51,7 @@
             <h2 class="text-2xl font-bold text-blue-800">需要協助嗎？</h2>
             <p class="mt-2 text-gray-600">如果您不確定該找哪個單位，請點擊下方按鈕，讓我們的 AI 導覽員為您指引方向。</p>
             <button id="general-ai-btn" class="mt-4 px-8 py-3 bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300">
-                ✨ 啟動 AI 學務處萬事通
+                ✨ 啟動 AI 全校萬事通
             </button>
         </div>
     </section>
@@ -461,12 +461,12 @@
         <div id="general-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
             <div class="p-6">
                 <div class="flex justify-between items-start">
-                    <h3 class="text-2xl font-bold text-gray-800">✨ AI 學務處萬事通</h3>
+                    <h3 class="text-2xl font-bold text-gray-800">✨ AI 全校萬事通</h3>
                     <button id="close-general-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
                 </div>
                 <div class="mt-4">
                     <p class="text-sm text-gray-600 mb-3">請告訴我您遇到的問題，AI 將為您分析並導引至最適合的單位。</p>
-                    <textarea id="general-user-question" class="w-full h-28 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="例如：我不小心弄丟了學生證，該怎麼辦？或是：教室的電燈壞了，要找誰修理？"></textarea>
+                    <textarea id="general-user-question" class="w-full h-28 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="例如：我想報名課後班。或是：教室的電燈壞了，要找誰修理？"></textarea>
                 </div>
                 <div id="general-loader" class="mt-4 text-center hidden">
                      <svg class="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -684,7 +684,7 @@
                     <p class="text-sm text-gray-500 mt-2">AI 輔導老師建議中...</p>
                 </div>
                 <div id="incident-response" class="relative mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
-                    <button id="copy-incident-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg></button>
+                    <button id="copy-incident-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg></button>
                     <div id="incident-text-content"></div>
                 </div>
             </div>
@@ -836,7 +836,7 @@
             });
         }
         
-        const clipboardIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>`;
+        const clipboardIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg>`;
         const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022z"/></svg>`;
 
         function base64ToArrayBuffer(base64) {
@@ -929,25 +929,58 @@
             generalResponseDiv.classList.add('hidden');
             generalQuestionInput.disabled = true;
             
-            let allDeptsContext = '';
-            document.querySelectorAll('main .bg-white').forEach(card => {
-                const title = card.querySelector('h2').innerText;
-                const contact = card.querySelector('p.text-sm')?.innerText || '無';
-                const responsibilities = Array.from(card.querySelectorAll('ul li')).map(li => li.innerText.replace('✦','').trim()).join(', ');
-                if(responsibilities) {
-                    allDeptsContext += `單位名稱：${title}\n業務職掌：${responsibilities}\n聯絡資訊：${contact}\n\n`;
-                }
-            });
+            // Context for all departments
+            const studentAffairsContext = `\n--- 學務處業務職掌 ---\n` +
+                `學務主任 (蔡主任 / 9305): 綜理學務處業務\n`+
+                `生教組 (吳組長 / 9302): 學生上放學安全, 急難扶助, 學生偶發事件處理, 生活禮儀, 服裝儀容, 校外生活管理, 集會輔導, 獎懲申訴, 門禁管理, 中輟生通報\n` +
+                `訓育組 (劉組長 / 9304): 學生自治活動, 生活環保交通安全教育, 民主法治教育,防災演習, 品德考查, 壁報出刊, 模範生表揚, 社區活動, 畢業紀念冊, 兒童朝會, 失物拾遺, 兒童卡\n` +
+                `體育組 (林組長 / 9301): 體育競賽培訓, 運動場所設備管理, 學生社團, 體能測驗, 運動會, 校慶, 運動選手培訓, 校外教學\n` +
+                `衛生組 (李組長 / 9303): 衛生保健工作, 整潔活動, 資源回收, 環境衛生教育, 能源教育, 緊急醫療照護, 學生午餐, 環境教育, 假日多元課後社團(週六才藝班), 學生平安保險\n` +
+                `健康中心 (廖護理師,王護理師 / 9311,9312): 緊急傷病處理, 健康管理與篩檢, 特殊疾病個案管理, 傳染病防治, 預防接種, 健康促進活動\n` +
+                `午餐秘書 (呂小姐 / 9353): 午餐招標, 用餐人數統計, 菜單審核, 午餐費用, 餐點驗收, 營養教育\n`;
+            
+            const generalAffairsContext = `\n--- 總務處業務職掌 ---\n` +
+                `總務主任 (盧主任 / 9505): 綜理總務處業務\n` +
+                `出納組 (吳組長 / 9501): 現金出納, 保管, 登記; 各項費用收付與保管; 員工薪資發放與代扣; 帳務登錄等\n` +
+                `事務組 (簡組長 / 9502): 學校物品管理與採購; 校舍與教室修繕工程; 環境綠美化; 課桌椅調配; 門禁管理; 水電管理; 工友管理; 大型垃圾處理\n` +
+                `文書組 (林組長 / 9503): 學校公文收發, 建檔, 管理; 會議通知與紀錄; 印信典守; 檔案室管理\n` +
+                `幹事 (鍾組長 / 9504): 財產管理; 校園場地租借; 員工勞健保與勞退業務; 停車場管理\n`;
 
-            const systemPrompt = `你是一位專業、友善的大學學務處 AI 導覽員。你的核心任務是根據下面提供的「所有單位」的業務職掌資料，準確地為使用者指引方向。
-                1.  仔細分析使用者的問題。
-                2.  比對所有單位的業務職掌，找出最相關的一個或多個單位。
-                3.  在回答中，明確指出建議的單位名稱。
-                4.  提供該單位的承辦人與聯絡分機。
-                5.  特別注意：如果問題明顯屬於校園設施維修、設備報修（例如電燈、桌椅、冷氣損壞）、或環境清潔問題，這些通常由「總務處」負責。在這種情況下，請直接建議使用者聯繫「總務處」，即使總務處的資料沒有在下方提供。這是一個重要的例外規則。
-                6.  如果使用者的問題不屬於上述維修類別，且與所有單位的業務都無關，請委婉告知，並建議他們直接聯繫學務處辦公室。
-                你的回答應該要簡潔、明確、有幫助，並且語氣親切。請用繁體中文回答。`;
-            const fullPrompt = `這是學務處所有單位的業務職掌資料：\n\n${allDeptsContext}\n\n現在，請根據上述所有資料，回答這位使用者的問題：\n\n「${userQuery}」`;
+            const academicAffairsContext = `\n--- 教務處業務職掌 ---\n` +
+                `教務主任 (唐主任 / 9205): 綜理教務處業務\n`+
+                `教學組 (湛組長 / 9201): 教師進修, 編排日課表, 課務安排, 定期評量, 調代課, 學藝競賽, 作業查閱, 補救教學, 週一至週五課後班\n` +
+                `資訊組 (朱組長 / 9202): 資訊教育, 軟硬體建置管理, 校務行政電腦化, 學校網頁管理, 電腦教室管理\n` +
+                `課程組 (吳組長 / 9203): 學校課程規劃, 編教材, 編行事曆, 教師進修, 教科書事宜, 校務評鑑\n` +
+                `註冊組 (紀組長 / 9204): 圖書館業務, 編輯校刊, 閱讀活動, 學生註冊, 編班, 轉休學, 學籍管理, 核發畢業證書, 獎助學金申請, 中輟生通報\n` +
+                `雙語組 (呂組長 / 9206): 國際教育, 雙語實驗學校計畫, 英語團隊統籌\n`;
+
+            const guidanceAffairsContext = `\n--- 輔導處業務職掌 ---\n` +
+                `輔導主任 (鄭主任 / 9405): 綜理輔導處業務\n` +
+                `輔導組 (蘇組長 / 9401): 生涯輔導, 性平教育, 情緒教育, 個別諮商, 偏差行為輔導, 親職教育, 家庭訪視, 認輔業務, 心理測驗\n` +
+                `特教組 (柳組長 / 9402): 特殊學生課程與照護, 特教生鑑定與安置, 特教宣導, 資優教育, 提早入學鑑定, 語言治療, 週一至週五課後才藝班\n` +
+                `社服組 (簡組長 / 9403): 新生迎新, 多元文化教育, 新住民業務, 學習扶助, 志工服務, 樂齡中心\n`;
+
+            const systemPrompt = `你是一位專業、友善且資訊全面的大學行政 AI 導覽員。你的核心任務是根據下方提供的「學務處」、「總務處」、「教務處」與「輔導處」這四個處室的業務職掌資料，為使用者提供最精準的單位指引。
+
+                **指引規則：**
+                1.  **優先處理特殊規則：** 在比對一般業務前，請優先檢查問題是否符合以下特殊規則：
+                    * **課後班問題：** 必須釐清是哪種課後班。
+                        * **週一至週五的普通課後班** -> 教務處「教學組」(湛組長/9201)。
+                        * **週六的才藝班** -> 學務處「衛生組」(李組長/9303)。
+                        * **週一至週五的課後「才藝」班** -> 輔導處「特教組」(柳組長/9402)。
+                    * **環境清潔問題：**
+                        * **一般校園環境打掃、整潔活動** -> 學務處「衛生組」(李組長/9303)。
+                        * **大型垃圾、或需要請工友處理的清潔問題** -> 總務處「事務組」(簡組長/9502)。
+
+                2.  **全面比對業務職掌：** 如果問題不符合上述特殊規則，請全面比對四個處室的所有組別業務，找出最符合的單位。
+                3.  **提供精準到組的答案：** 你的回答**必須**明確指出應聯繫的**處室**、**組別**、**承辦人**與**分機**。
+                    * 例如：**問題：「教室電燈壞了」 -> 回答：「關於電燈壞掉的問題，這屬於校園設施的維修，請您聯繫總務處的「事務組」簡組長（分機 9502），他們負責水電管理與修繕。」**
+                    * 例如：**問題：「我想申請獎學金」 -> 回答：「關於獎學金申請事宜，請您聯繫教務處的「註冊組」紀組長（分機 9204）。」**
+
+                4.  **無法判斷時的處理：** 如果問題內容非常模糊，或完全不屬於這四個處室的業務，請建議他們聯繫業務最廣的**學務處辦公室（蔡主任 / 分機 9305）**進行初步洽詢。
+                5.  你的回答應該要簡潔、明確、有幫助，並且語氣親切。請用繁體中文回答。`;
+                
+            const fullPrompt = `這是學校四個重要處室的業務資料：\n${studentAffairsContext}\n${generalAffairsContext}\n${academicAffairsContext}\n${guidanceAffairsContext}\n\n現在，請根據上述所有資料，並嚴格遵守你的指引規則，回答這位使用者的問題：\n\n「${userQuery}」`;
 
             try {
                 const result = await callGeminiAPI(fullPrompt, systemPrompt);
@@ -1708,3 +1741,4 @@
     </script>
 </body>
 </html>
+
