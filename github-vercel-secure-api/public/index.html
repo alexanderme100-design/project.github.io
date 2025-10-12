@@ -1468,13 +1468,13 @@
 
   // ====== 以下把你頁面上的各個按鈕，改成呼叫 /api/generate ======
   // 環保問答
-  document.getElementById("submit-eco-question-btn")?.addEventListener("click", () => {
+  document.getElementById("submit-eco-question-btn")?.addEventListener("click", (e) => { e.preventDefault(); 
     const q = document.getElementById("eco-question-input")?.value?.trim() || "";
     askAI("【環保問答】" + q, "eco-loader", "eco-response");
   });
 
   // 午餐小幫手
-  document.getElementById("submit-lunch-helper-question")?.addEventListener("click", () => {
+  document.getElementById("submit-lunch-helper-question")?.addEventListener("click", (e) => { e.preventDefault(); 
     const task = document.getElementById("lunch-helper-task")?.value || "menu";
     const content = document.getElementById("lunch-menu-request")?.value?.trim() || "";
     const prompt = task === "menu"
@@ -1484,19 +1484,19 @@
   });
 
   // 急救/健康中心
-  document.getElementById("submit-first-aid-question")?.addEventListener("click", () => {
+  document.getElementById("submit-first-aid-question")?.addEventListener("click", (e) => { e.preventDefault(); 
     const q = document.getElementById("first-aid-question")?.value?.trim() || "";
     askAI("【傷病處理諮詢】" + q + "（提醒：僅供教育用途，非醫療診斷）", "first-aid-loader", "first-aid-response");
   });
 
   // 全校萬事通
-  document.getElementById("submit-general-question")?.addEventListener("click", () => {
+  document.getElementById("submit-general-question")?.addEventListener("click", (e) => { e.preventDefault(); 
     const q = document.getElementById("general-user-question")?.value?.trim() || "";
     askAI("【學務處導引】" + q, "general-loader", "general-ai-response");
   });
 
   // 公告草擬
-  document.getElementById("submit-announcement")?.addEventListener("click", () => {
+  document.getElementById("submit-announcement")?.addEventListener("click", (e) => { e.preventDefault(); 
     const subject = document.getElementById("announcement-subject")?.value || "";
     const audience = document.getElementById("announcement-audience")?.value || "";
     const info = document.getElementById("announcement-info")?.value || "";
@@ -1508,7 +1508,7 @@
   });
 
   // 新聞稿產生器
-  document.getElementById("submit-press-release")?.addEventListener("click", () => {
+  document.getElementById("submit-press-release")?.addEventListener("click", (e) => { e.preventDefault(); 
     const subject = document.getElementById("event-subject")?.value || "";
     const media = document.getElementById("press-release-media")?.value || "";
     const info = document.getElementById("press-release-info")?.value || "";
@@ -1621,13 +1621,13 @@
 
   // ====== 以下把你頁面上的各個按鈕，改成呼叫 /api/generate ======
   // 環保問答
-  document.getElementById("submit-eco-question-btn")?.addEventListener("click", () => {
+  document.getElementById("submit-eco-question-btn")?.addEventListener("click", (e) => { e.preventDefault(); 
     const q = document.getElementById("eco-question-input")?.value?.trim() || "";
     askAI("【環保問答】" + q, "eco-loader", "eco-response");
   });
 
   // 午餐小幫手
-  document.getElementById("submit-lunch-helper-question")?.addEventListener("click", () => {
+  document.getElementById("submit-lunch-helper-question")?.addEventListener("click", (e) => { e.preventDefault(); 
     const task = document.getElementById("lunch-helper-task")?.value || "menu";
     const content = document.getElementById("lunch-menu-request")?.value?.trim() || "";
     const prompt = task === "menu"
@@ -1637,19 +1637,19 @@
   });
 
   // 急救/健康中心
-  document.getElementById("submit-first-aid-question")?.addEventListener("click", () => {
+  document.getElementById("submit-first-aid-question")?.addEventListener("click", (e) => { e.preventDefault(); 
     const q = document.getElementById("first-aid-question")?.value?.trim() || "";
     askAI("【傷病處理諮詢】" + q + "（提醒：僅供教育用途，非醫療診斷）", "first-aid-loader", "first-aid-response");
   });
 
   // 全校萬事通
-  document.getElementById("submit-general-question")?.addEventListener("click", () => {
+  document.getElementById("submit-general-question")?.addEventListener("click", (e) => { e.preventDefault(); 
     const q = document.getElementById("general-user-question")?.value?.trim() || "";
     askAI("【學務處導引】" + q, "general-loader", "general-ai-response");
   });
 
   // 公告草擬
-  document.getElementById("submit-announcement")?.addEventListener("click", () => {
+  document.getElementById("submit-announcement")?.addEventListener("click", (e) => { e.preventDefault(); 
     const subject = document.getElementById("announcement-subject")?.value || "";
     const audience = document.getElementById("announcement-audience")?.value || "";
     const info = document.getElementById("announcement-info")?.value || "";
@@ -1661,7 +1661,7 @@
   });
 
   // 新聞稿產生器
-  document.getElementById("submit-press-release")?.addEventListener("click", () => {
+  document.getElementById("submit-press-release")?.addEventListener("click", (e) => { e.preventDefault(); 
     const subject = document.getElementById("event-subject")?.value || "";
     const media = document.getElementById("press-release-media")?.value || "";
     const info = document.getElementById("press-release-info")?.value || "";
@@ -1952,13 +1952,13 @@
 
   // ====== 以下把你頁面上的各個按鈕，改成呼叫 /api/generate ======
   // 環保問答
-  document.getElementById("submit-eco-question-btn")?.addEventListener("click", () => {
+  document.getElementById("submit-eco-question-btn")?.addEventListener("click", (e) => { e.preventDefault(); 
     const q = document.getElementById("eco-question-input")?.value?.trim() || "";
     askAI("【環保問答】" + q, "eco-loader", "eco-response");
   });
 
   // 午餐小幫手
-  document.getElementById("submit-lunch-helper-question")?.addEventListener("click", () => {
+  document.getElementById("submit-lunch-helper-question")?.addEventListener("click", (e) => { e.preventDefault(); 
     const task = document.getElementById("lunch-helper-task")?.value || "menu";
     const content = document.getElementById("lunch-menu-request")?.value?.trim() || "";
     const prompt = task === "menu"
@@ -1968,19 +1968,19 @@
   });
 
   // 急救/健康中心
-  document.getElementById("submit-first-aid-question")?.addEventListener("click", () => {
+  document.getElementById("submit-first-aid-question")?.addEventListener("click", (e) => { e.preventDefault(); 
     const q = document.getElementById("first-aid-question")?.value?.trim() || "";
     askAI("【傷病處理諮詢】" + q + "（提醒：僅供教育用途，非醫療診斷）", "first-aid-loader", "first-aid-response");
   });
 
   // 全校萬事通
-  document.getElementById("submit-general-question")?.addEventListener("click", () => {
+  document.getElementById("submit-general-question")?.addEventListener("click", (e) => { e.preventDefault(); 
     const q = document.getElementById("general-user-question")?.value?.trim() || "";
     askAI("【學務處導引】" + q, "general-loader", "general-ai-response");
   });
 
   // 公告草擬
-  document.getElementById("submit-announcement")?.addEventListener("click", () => {
+  document.getElementById("submit-announcement")?.addEventListener("click", (e) => { e.preventDefault(); 
     const subject = document.getElementById("announcement-subject")?.value || "";
     const audience = document.getElementById("announcement-audience")?.value || "";
     const info = document.getElementById("announcement-info")?.value || "";
@@ -1992,7 +1992,7 @@
   });
 
   // 新聞稿產生器
-  document.getElementById("submit-press-release")?.addEventListener("click", () => {
+  document.getElementById("submit-press-release")?.addEventListener("click", (e) => { e.preventDefault(); 
     const subject = document.getElementById("event-subject")?.value || "";
     const media = document.getElementById("press-release-media")?.value || "";
     const info = document.getElementById("press-release-info")?.value || "";
@@ -2012,6 +2012,8 @@
 
 <!-- === 安全修正版補丁：統一走 /api/generate；去除前端金鑰需求 === -->
 <script id="safe-patch">
+document.addEventListener('DOMContentLoaded', function() {
+
 (function(){
   // ---- 安全：所有 AI 呼叫都透過此函式代理到後端 /api/generate ----
   async function askAI(prompt) {
@@ -2053,7 +2055,7 @@
   // 朝會頒獎登記表
   const awardBtn = document.getElementById("download-word-form-btn");
   if (awardBtn) {
-    awardBtn.addEventListener("click", () => {
+    awardBtn.addEventListener("click", (e) => { e.preventDefault(); 
       const content = [
         "國立展賦大學 學務處訓育組",
         "朝會頒獎登記表",
@@ -2080,7 +2082,7 @@
   // 運動社團報名表
   const clubBtn = document.getElementById("download-club-form-btn");
   if (clubBtn) {
-    clubBtn.addEventListener("click", () => {
+    clubBtn.addEventListener("click", (e) => { e.preventDefault(); 
       const content = [
         "國立展賦大學 學務處體育組",
         "運動社團報名表",
@@ -2111,7 +2113,7 @@
   const ecoOut = document.getElementById("eco-response");
   const ecoLoader = document.getElementById("eco-loader");
   if (ecoBtn && ecoOut) {
-    ecoBtn.addEventListener("click", async () => {
+    ecoBtn.addEventListener("click", async (e) => { e.preventDefault(); 
       const q = (ecoInput && ecoInput.value || "").trim();
       if (!q) { ecoOut.textContent = "請輸入您的問題。"; ecoOut.classList.remove("hidden"); return; }
       ecoLoader && ecoLoader.classList.remove("hidden"); ecoOut.classList.add("hidden");
@@ -2126,7 +2128,7 @@
   // ---- 綁定：垃圾分類挑戰 ----
   const ecoChBtn = document.getElementById("generate-challenge-btn");
   if (ecoChBtn && ecoOut) {
-    ecoChBtn.addEventListener("click", async () => {
+    ecoChBtn.addEventListener("click", async (e) => { e.preventDefault(); 
       ecoLoader && ecoLoader.classList.remove("hidden"); ecoOut.classList.add("hidden");
       const prompt = "你是環保教育遊戲設計師，為台灣國小學生出一題垃圾分類挑戰，格式：\\n1. 物品：\\n2. 問題：\\n3. 解答與說明：";
       try { ecoOut.textContent = await askAI(prompt); }
@@ -2140,7 +2142,7 @@
   const vvOut = document.getElementById("vision-response");
   const vvLoader = document.getElementById("vision-loader");
   if (vvBtn && vvOut) {
-    vvBtn.addEventListener("click", async () => {
+    vvBtn.addEventListener("click", async (e) => { e.preventDefault(); 
       vvLoader && vvLoader.classList.remove("hidden"); vvOut.classList.add("hidden");
       const prompt = "你是護眼小老師，為台灣國小生設計一題護眼挑戰，格式：\\n1. 挑戰項目：\\n2. 問題：\\n3. 解答與說明：";
       try { vvOut.textContent = await askAI(prompt); }
@@ -2157,7 +2159,7 @@
   const lunchOut = document.getElementById("lunch-helper-text-content") || lunchBox;
   const lunchLoader = document.getElementById("lunch-helper-loader");
   if (lunchBtn && lunchOut) {
-    lunchBtn.addEventListener("click", async () => {
+    lunchBtn.addEventListener("click", async (e) => { e.preventDefault(); 
       lunchLoader && lunchLoader.classList.remove("hidden"); lunchBox && lunchBox.classList.add("hidden");
       const task = (lunchTask && lunchTask.value) || "menu";
       const content = (lunchReq && lunchReq.value) || "";
@@ -2176,7 +2178,7 @@
   const faOut = document.getElementById("first-aid-response");
   const faLoader = document.getElementById("first-aid-loader");
   if (faBtn && faOut) {
-    faBtn.addEventListener("click", async () => {
+    faBtn.addEventListener("click", async (e) => { e.preventDefault(); 
       const q = (faInput && faInput.value) || "";
       faLoader && faLoader.classList.remove("hidden"); faOut.classList.add("hidden");
       try { faOut.textContent = await askAI("以校護語氣提供初步建議（非醫療診斷）：\\n" + q); }
@@ -2191,7 +2193,7 @@
   const allOut = document.getElementById("general-ai-response");
   const allLoader = document.getElementById("general-loader");
   if (allBtn && allOut) {
-    allBtn.addEventListener("click", async () => {
+    allBtn.addEventListener("click", async (e) => { e.preventDefault(); 
       const q = (allInput && allInput.value) || "";
       allLoader && allLoader.classList.remove("hidden"); allOut.classList.add("hidden");
       try { allOut.textContent = await askAI("判斷以下需求應由學務處哪個組別處理並給步驟：\\n" + q); }
@@ -2210,7 +2212,7 @@
   const annOut = document.getElementById("announcement-text-content") || annBox;
   const annLoader = document.getElementById("announcement-loader");
   if (annBtn && annOut) {
-    annBtn.addEventListener("click", async () => {
+    annBtn.addEventListener("click", async (e) => { e.preventDefault(); 
       annLoader && annLoader.classList.remove("hidden"); annBox && annBox.classList.remove("hidden");
       const prompt = `請用「${(annTone && annTone.value) || "正式"}」語氣草擬一份學校公告：
 主題：${(annSub && annSub.value) || ""}
@@ -2232,7 +2234,7 @@
   const prOut = document.getElementById("press-release-text-content") || prBox;
   const prLoader = document.getElementById("press-release-loader");
   if (prBtn && prOut) {
-    prBtn.addEventListener("click", async () => {
+    prBtn.addEventListener("click", async (e) => { e.preventDefault(); 
       prLoader && prLoader.classList.remove("hidden"); prBox && prBox.classList.remove("hidden");
       const prompt = `請以學校對外新聞稿格式撰寫，主題：${(prSub && prSub.value) || ""}，發布對象：${(prMedia && prMedia.value) || ""}，重點如下：
 ${(prInfo && prInfo.value) || ""}
@@ -2244,6 +2246,15 @@ ${(prInfo && prInfo.value) || ""}
   }
 
 })(); 
+
+// 事件委派保險：若按鈕是動態出現，使用 data-action 綁定也可在這裡加
+// document.addEventListener('click', function(e){
+//   const t = e.target.closest('[data-action]');
+//   if (!t) return;
+//   e.preventDefault();
+//   if (t.dataset.action === 'eco-submit') { /* 呼叫 askAI(...) */ }
+// });
+});
 </script>
 </body>
 </html>
