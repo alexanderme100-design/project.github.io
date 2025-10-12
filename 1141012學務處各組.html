@@ -176,8 +176,9 @@
                         </ul>
                         <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：李組長 / 分機：9303</p>
                     </div>
-                    <div class="p-4 bg-gray-50 mt-auto">
-                        <button id="vision-helper-btn" class="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-300 font-semibold">✨ 視力保健小幫手</button>
+                    <div class="p-4 bg-gray-50 mt-auto grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <button id="vision-helper-btn" class="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-300 font-semibold text-sm">✨ 視力保健幫手</button>
+                        <button id="eco-helper-btn" class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors duration-300 font-semibold text-sm">✨ 環保知識幫手</button>
                     </div>
                 </div>
 
@@ -258,6 +259,51 @@
             <div class="bg-gray-50 px-6 py-4 rounded-b-lg text-center">
                 <button id="download-club-form-btn" class="w-full md:w-auto px-6 py-3 bg-green-600 text-white font-bold rounded-lg shadow-lg hover:bg-green-700 transform hover:scale-105 transition-all duration-300">
                     下載報名表 (Word檔)
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Eco Helper Modal -->
+    <div id="eco-helper-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="eco-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 環保知識小幫手</h3>
+                    <button id="close-eco-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <!-- Tabs -->
+                <div class="border-b border-gray-200 mt-4">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button id="eco-qna-tab" class="tab-btn active">環保問答</button>
+                        <button id="eco-challenge-tab" class="tab-btn">分類挑戰</button>
+                    </nav>
+                </div>
+
+                <!-- Q&A Content -->
+                <div id="eco-qna-content" class="mt-4">
+                    <p class="text-sm text-gray-600 mb-3">有任何關於環保、回收、節能的問題嗎？<br>問問 AI 環保小老師吧！</p>
+                    <textarea id="eco-question-input" class="w-full h-24 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition" placeholder="例如：寶特瓶回收前為什麼要先壓扁？"></textarea>
+                </div>
+
+                <!-- Challenge Content -->
+                <div id="eco-challenge-content" class="mt-4 hidden text-center">
+                     <p class="text-sm text-gray-600 mb-3">準備好接受垃圾分類挑戰了嗎？<br>點擊下方按鈕，看看 AI 會出什麼題目！</p>
+                     <button id="generate-challenge-btn" class="px-6 py-2 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors duration-300">給我一個挑戰！</button>
+                </div>
+
+                <div id="eco-loader" class="mt-4 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-green-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 思考中...</p>
+                </div>
+                <div id="eco-response" class="mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[150px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed"></div>
+            </div>
+            <div id="eco-qna-footer" class="bg-gray-50 px-6 py-4 rounded-b-lg">
+                <button id="submit-eco-question-btn" class="w-full px-4 py-2 bg-green-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-300 disabled:bg-gray-400">
+                    送出問題
                 </button>
             </div>
         </div>
@@ -1613,7 +1659,115 @@
                 generateVisionChallengeBtn.disabled = false;
             }
         });
+        
+        // --- Eco Helper Modal Logic ---
+        const ecoModal = document.getElementById('eco-helper-modal');
+        const ecoModalContent = document.getElementById('eco-modal-content');
+        const openEcoModalBtn = document.getElementById('eco-helper-btn');
+        const closeEcoModalBtn = document.getElementById('close-eco-modal');
 
+        const ecoQnaTab = document.getElementById('eco-qna-tab');
+        const ecoChallengeTab = document.getElementById('eco-challenge-tab');
+        const ecoQnaContent = document.getElementById('eco-qna-content');
+        const ecoChallengeContent = document.getElementById('eco-challenge-content');
+        const ecoQnaFooter = document.getElementById('eco-qna-footer');
+
+        const ecoResponseDiv = document.getElementById('eco-response');
+        const ecoLoader = document.getElementById('eco-loader');
+        
+        const submitEcoQuestionBtn = document.getElementById('submit-eco-question-btn');
+        const generateChallengeBtn = document.getElementById('generate-challenge-btn');
+        const ecoQuestionInput = document.getElementById('eco-question-input');
+
+        const openEcoModal = () => {
+            ecoModal.classList.remove('hidden');
+            setTimeout(() => { ecoModalContent.classList.add('modal-fade-enter-active'); }, 10);
+            ecoResponseDiv.classList.add('hidden');
+            ecoQuestionInput.value = '';
+            ecoQnaTab.click();
+        };
+        const closeEcoModal = () => {
+            ecoModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { ecoModal.classList.add('hidden'); }, 200);
+        };
+        
+        if (openEcoModalBtn) {
+            openEcoModalBtn.addEventListener('click', openEcoModal);
+        }
+        closeEcoModalBtn.addEventListener('click', closeEcoModal);
+        ecoModal.addEventListener('click', (e) => { if (e.target === ecoModal) closeEcoModal(); });
+
+        ecoQnaTab.addEventListener('click', () => {
+            ecoQnaTab.classList.add('active');
+            ecoChallengeTab.classList.remove('active');
+            ecoQnaContent.classList.remove('hidden');
+            ecoChallengeContent.classList.add('hidden');
+            ecoQnaFooter.classList.remove('hidden');
+            ecoResponseDiv.classList.add('hidden');
+        });
+
+        ecoChallengeTab.addEventListener('click', () => {
+            ecoChallengeTab.classList.add('active');
+            ecoQnaTab.classList.remove('active');
+            ecoChallengeContent.classList.remove('hidden');
+            ecoQnaContent.classList.add('hidden');
+            ecoQnaFooter.classList.add('hidden');
+            ecoResponseDiv.classList.add('hidden');
+        });
+
+        submitEcoQuestionBtn.addEventListener('click', async () => {
+            const userQuery = ecoQuestionInput.value;
+            if (!userQuery.trim()) {
+                ecoResponseDiv.innerHTML = '<p class="text-red-500">請輸入您的問題。</p>';
+                ecoResponseDiv.classList.remove('hidden');
+                return;
+            }
+
+            ecoLoader.classList.remove('hidden');
+            submitEcoQuestionBtn.disabled = true;
+            ecoResponseDiv.classList.add('hidden');
+            ecoQuestionInput.disabled = true;
+
+            const systemPrompt = `你是一位親切、熱情的 AI 環保小老師，專門為台灣的小學生解答環保相關問題。你的回答應該要簡單易懂、充滿趣味，可以適時使用表情符號，並鼓勵學生身體力行。請用繁體中文回答。`;
+            
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                ecoResponseDiv.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for eco helper:", error);
+                ecoResponseDiv.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
+            } finally {
+                ecoLoader.classList.add('hidden');
+                ecoResponseDiv.classList.remove('hidden');
+                submitEcoQuestionBtn.disabled = false;
+                ecoQuestionInput.disabled = false;
+            }
+        });
+
+        generateChallengeBtn.addEventListener('click', async () => {
+            ecoLoader.classList.remove('hidden');
+            generateChallengeBtn.disabled = true;
+            ecoResponseDiv.classList.add('hidden');
+
+            const systemPrompt = `你是一位在台灣的環保教育遊戲設計師。你的任務是創造一個簡單有趣的「垃圾分類挑戰」題目給國小學生。
+                請遵循以下格式，用繁體中文回答：
+                1.  **物品：** [寫出一個常見的生活廢棄物，例如：喝完的牛奶紙盒]
+                2.  **問題：** [根據這個物品，提出一個分類問題，例如：請問這個應該丟到「紙類回收」、「一般垃圾」還是要先沖洗乾淨再丟「紙容器回收」呢？]
+                3.  **解答與說明：** [用活潑的語氣公布正確答案，並詳細解釋原因。可以補充一個相關的環保小知識。]`;
+            const userQuery = "請給我一個垃圾分類挑戰題。";
+
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                ecoResponseDiv.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for eco challenge:", error);
+                ecoResponseDiv.innerText = '抱歉，現在無法產生挑戰題，請稍後再試。';
+            } finally {
+                ecoLoader.classList.add('hidden');
+                ecoResponseDiv.classList.remove('hidden');
+                generateChallengeBtn.disabled = false;
+            }
+        });
 
     </script>
 </body>
