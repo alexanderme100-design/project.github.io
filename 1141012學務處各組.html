@@ -151,8 +151,9 @@
                         </ul>
                          <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：林組長 / 分機：9301</p>
                     </div>
-                     <div class="p-4 bg-gray-50 mt-auto">
-                        <button id="training-plan-btn" class="w-full bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors duration-300 font-semibold">✨ 個人化運動訓練計畫</button>
+                     <div class="p-4 bg-gray-50 mt-auto grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <button id="training-plan-btn" class="w-full bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors duration-300 font-semibold text-sm">✨ 運動訓練計畫</button>
+                        <button id="club-registration-btn" class="w-full bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-300 font-semibold text-sm">✨ 社團報名表下載</button>
                     </div>
                 </div>
 
@@ -176,7 +177,7 @@
                         <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：李組長 / 分機：9303</p>
                     </div>
                     <div class="p-4 bg-gray-50 mt-auto">
-                        <button id="eco-helper-btn" class="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-300 font-semibold">✨ 環保知識小幫手</button>
+                        <button id="vision-helper-btn" class="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-300 font-semibold">✨ 視力保健小幫手</button>
                     </div>
                 </div>
 
@@ -235,48 +236,77 @@
     </footer>
 
     <!-- All Modals Below -->
-
-     <!-- NEW: Eco Helper Modal -->
-    <div id="eco-helper-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
-        <div id="eco-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+    
+    <!-- Club Registration Modal -->
+    <div id="club-registration-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="club-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
             <div class="p-6">
                 <div class="flex justify-between items-start">
-                    <h3 class="text-2xl font-bold text-gray-800">✨ 環保知識小幫手</h3>
-                    <button id="close-eco-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 體育組社團報名</h3>
+                    <button id="close-club-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4 text-gray-700 space-y-4">
+                    <p>對運動充滿熱情嗎？歡迎加入我們的運動社團！請依下列步驟完成報名：</p>
+                    <ol class="list-decimal list-inside space-y-2 bg-gray-50 p-4 rounded-md">
+                        <li>點擊下方按鈕，下載「<strong>運動社團報名表</strong>」(Word 檔案)。</li>
+                        <li>列印並填寫表單中的個人資料，並勾選想參加的社團。</li>
+                        <li>將填寫好的表單繳交至體育組林組長處，即完成報名。</li>
+                    </ol>
+                    <p>各社團的甄選或開課資訊將另行通知，敬請期待！</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg text-center">
+                <button id="download-club-form-btn" class="w-full md:w-auto px-6 py-3 bg-green-600 text-white font-bold rounded-lg shadow-lg hover:bg-green-700 transform hover:scale-105 transition-all duration-300">
+                    下載報名表 (Word檔)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vision Health Helper Modal -->
+    <div id="vision-helper-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="vision-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 視力保健小幫手</h3>
+                    <button id="close-vision-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
                 </div>
                 <!-- Tabs -->
                 <div class="border-b border-gray-200 mt-4">
                     <nav class="-mb-px flex space-x-6" aria-label="Tabs">
-                        <button id="eco-qna-tab" class="tab-btn active">環保問答</button>
-                        <button id="eco-challenge-tab" class="tab-btn">分類挑戰</button>
+                        <button id="vision-info-tab" class="tab-btn active">保健重點</button>
+                        <button id="vision-challenge-tab" class="tab-btn">護眼挑戰</button>
                     </nav>
                 </div>
 
-                <!-- Q&A Content -->
-                <div id="eco-qna-content" class="mt-4">
-                    <p class="text-sm text-gray-600 mb-3">有任何關於環保、回收、節能的問題嗎？<br>問問 AI 環保小老師吧！</p>
-                    <textarea id="eco-question-input" class="w-full h-24 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-red-500 focus:border-red-500 transition" placeholder="例如：寶特瓶回收前為什麼要先壓扁？"></textarea>
+                <!-- Info Content -->
+                <div id="vision-info-content" class="mt-4 text-gray-700 space-y-3 max-h-[60vh] overflow-y-auto">
+                    <h4 class="text-lg font-bold text-red-600">愛眼守則，eye你唷！</h4>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>用眼3010：</strong>近距離用眼每30分鐘，就要休息10分鐘，看看遠方。</li>
+                        <li><strong>正確姿勢：</strong>讀書寫字時，腰桿挺直，眼睛與書本保持35-45公分距離。</li>
+                        <li><strong>充足光線：</strong>光線要充足且均勻，避免在太亮或太暗的地方看東西。</li>
+                        <li><strong>戶外活動：</strong>每天至少2小時的戶外活動，讓眼睛多接觸自然光，可以預防近視喔！</li>
+                        <li><strong>均衡飲食：</strong>多吃深綠色蔬菜（如菠菜、花椰菜）和橘黃色蔬果（如胡蘿蔔、南瓜），補充葉黃素。</li>
+                        <li><strong>螢幕設定：</strong>使用電子產品時，螢幕亮度要適中，並保持適當距離。</li>
+                        <li><strong>定期檢查：</strong>每年定期接受視力檢查，及早發現問題，及早治療。</li>
+                    </ul>
                 </div>
 
                 <!-- Challenge Content -->
-                <div id="eco-challenge-content" class="mt-4 hidden text-center">
-                     <p class="text-sm text-gray-600 mb-3">準備好接受垃圾分類挑戰了嗎？<br>點擊下方按鈕，看看 AI 會出什麼題目！</p>
-                     <button id="generate-challenge-btn" class="px-6 py-2 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors duration-300">給我一個挑戰！</button>
+                <div id="vision-challenge-content" class="mt-4 hidden text-center">
+                     <p class="text-sm text-gray-600 mb-3">來挑戰看看你是不是護眼小達人！<br>點擊下方按鈕，讓 AI 老師出題考考你！</p>
+                     <button id="generate-vision-challenge-btn" class="px-6 py-2 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors duration-300">給我一個挑戰！</button>
                 </div>
 
-                <div id="eco-loader" class="mt-4 text-center hidden">
+                <div id="vision-loader" class="mt-4 text-center hidden">
                      <svg class="animate-spin h-8 w-8 text-red-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    <p class="text-sm text-gray-500 mt-2">AI 思考中...</p>
+                    <p class="text-sm text-gray-500 mt-2">AI 老師出題中...</p>
                 </div>
-                <div id="eco-response" class="mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[150px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed"></div>
-            </div>
-            <div id="eco-qna-footer" class="bg-gray-50 px-6 py-4 rounded-b-lg">
-                <button id="submit-eco-question-btn" class="w-full px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-300 disabled:bg-gray-400">
-                    送出問題
-                </button>
+                <div id="vision-response" class="mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[150px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed"></div>
             </div>
         </div>
     </div>
@@ -445,7 +475,7 @@
                     <p class="text-sm text-gray-500 mt-2">AI 秘書草擬中...</p>
                 </div>
                 <div id="announcement-response" class="relative mt-6 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
-                     <button id="copy-announcement-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1 1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg></button>
+                     <button id="copy-announcement-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg></button>
                     <div id="announcement-text-content"></div>
                     <!-- New TTS Section -->
                     <div id="announcement-audio-section" class="mt-4 pt-4 border-t border-gray-200 hidden">
@@ -526,36 +556,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Health Advisor Modal -->
-    <div id="health-advisor-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
-        <div id="health-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
-            <div class="p-6">
-                <div class="flex justify-between items-start">
-                    <h3 class="text-2xl font-bold text-gray-800">✨ AI 健康顧問</h3>
-                    <button id="close-health-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
-                </div>
-                <div class="mt-4">
-                    <p class="text-sm text-gray-600 mb-3">請在此輸入您的健康相關問題。AI 將提供一般性建議，本服務無法取代專業醫療診斷。</p>
-                    <textarea id="health-question" class="w-full h-28 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition" placeholder="例如：最近壓力很大，有什麼方法可以放鬆？"></textarea>
-                </div>
-                <div id="health-loader" class="mt-4 text-center hidden">
-                     <svg class="animate-spin h-8 w-8 text-red-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <p class="text-sm text-gray-500 mt-2">AI 顧問回覆中...</p>
-                </div>
-                <div id="health-response" class="mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[100px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed"></div>
-            </div>
-            <div class="bg-gray-50 px-6 py-4 rounded-b-lg">
-                <button id="submit-health-question" class="w-full px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-300 disabled:bg-gray-400">
-                    尋求建議
-                </button>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Commendation Generator Modal -->
     <div id="commendation-generator-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
         <div id="commendation-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
@@ -1454,111 +1455,162 @@
             document.body.removeChild(fileDownload);
         });
 
-        // --- NEW: Eco Helper Modal Logic ---
-        const ecoModal = document.getElementById('eco-helper-modal');
-        const ecoModalContent = document.getElementById('eco-modal-content');
-        const openEcoModalBtn = document.getElementById('eco-helper-btn');
-        const closeEcoModalBtn = document.getElementById('close-eco-modal');
+        // --- Club Registration Modal Logic ---
+        const clubModal = document.getElementById('club-registration-modal');
+        const clubModalContent = document.getElementById('club-modal-content');
+        const openClubModalBtn = document.getElementById('club-registration-btn');
+        const closeClubModalBtn = document.getElementById('close-club-modal');
+        const downloadClubFormBtn = document.getElementById('download-club-form-btn');
 
-        const qnaTab = document.getElementById('eco-qna-tab');
-        const challengeTab = document.getElementById('eco-challenge-tab');
-        const qnaContent = document.getElementById('eco-qna-content');
-        const challengeContent = document.getElementById('eco-challenge-content');
-        const qnaFooter = document.getElementById('eco-qna-footer');
-
-        const ecoResponseDiv = document.getElementById('eco-response');
-        const ecoLoader = document.getElementById('eco-loader');
-        
-        const submitEcoQuestionBtn = document.getElementById('submit-eco-question-btn');
-        const generateChallengeBtn = document.getElementById('generate-challenge-btn');
-        const ecoQuestionInput = document.getElementById('eco-question-input');
-
-        const openEcoModal = () => {
-            ecoModal.classList.remove('hidden');
-            setTimeout(() => { ecoModalContent.classList.add('modal-fade-enter-active'); }, 10);
-            ecoResponseDiv.classList.add('hidden');
-            ecoQuestionInput.value = '';
+        const openClubModal = () => {
+            clubModal.classList.remove('hidden');
+            setTimeout(() => { clubModalContent.classList.add('modal-fade-enter-active'); }, 10);
         };
-        const closeEcoModal = () => {
-            ecoModalContent.classList.remove('modal-fade-enter-active');
-            setTimeout(() => { ecoModal.classList.add('hidden'); }, 200);
+        const closeClubModal = () => {
+            clubModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { clubModal.classList.add('hidden'); }, 200);
         };
-        
-        if (openEcoModalBtn) {
-            openEcoModalBtn.addEventListener('click', openEcoModal);
+
+        if (openClubModalBtn) {
+            openClubModalBtn.addEventListener('click', openClubModal);
         }
-        closeEcoModalBtn.addEventListener('click', closeEcoModal);
-        ecoModal.addEventListener('click', (e) => { if (e.target === ecoModal) closeEcoModal(); });
+        closeClubModalBtn.addEventListener('click', closeClubModal);
+        clubModal.addEventListener('click', (e) => { if (e.target === clubModal) { closeClubModal(); } });
 
-        qnaTab.addEventListener('click', () => {
-            qnaTab.classList.add('active');
+        downloadClubFormBtn.addEventListener('click', () => {
+            const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' "+
+                "xmlns:w='urn:schemas-microsoft-com:office:word' "+
+                "xmlns='http://www.w3.org/TR/REC-html40'>"+
+                "<head><meta charset='utf-8'><title>運動社團報名表</title></head><body>";
+            
+            const footer = "</body></html>";
+            
+            const content = `
+                <div style="font-family: 'KaiTi', '標楷體', serif; margin: 50px; font-size: 14pt;">
+                    <h1 style="text-align: center; font-size: 24pt; font-weight: bold;">國立展賦大學 學務處體育組</h1>
+                    <h2 style="text-align: center; font-size: 20pt; font-weight: bold;">運動社團報名表</h2>
+                    <br/>
+                    <table style="width:100%; border-collapse: collapse; font-size: 14pt;" border="1">
+                        <tr>
+                            <td style="padding: 8px; width: 20%;"><strong>學生姓名</strong></td>
+                            <td style="padding: 8px; width: 30%;"></td>
+                            <td style="padding: 8px; width: 20%;"><strong>班級</strong></td>
+                            <td style="padding: 8px; width: 30%;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px;"><strong>學號</strong></td>
+                            <td style="padding: 8px;"></td>
+                            <td style="padding: 8px;"><strong>聯絡電話</strong></td>
+                            <td style="padding: 8px;"></td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <h3 style="font-size: 16pt; font-weight: bold;">請勾選您想參加的社團（可複選）：</h3>
+                    <div style="font-size: 14pt; line-height: 2;">
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 籃球社</p>
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 羽球社</p>
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 田徑社</p>
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 游泳社</p>
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 足球社</p>
+                    </div>
+                    <br/><br/>
+                    <p><strong>家長/監護人簽名：</strong>____________________</p>
+                    <br/>
+                    <p><strong>學生簽名：</strong>____________________</p>
+                    <br/>
+                    <p><strong>報名日期：</strong>________ 年 ________ 月 ________ 日</p>
+                     <br/><br/>
+                    <hr/>
+                    <p style="font-size: 12pt; margin-top: 15px;">
+                        請將此報名表填妥後，繳交至學務處體育組。
+                    </p>
+                </div>
+            `;
+            
+            const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(header + content + footer);
+            const fileDownload = document.createElement("a");
+            document.body.appendChild(fileDownload);
+            fileDownload.href = source;
+            fileDownload.download = '運動社團報名表.doc';
+            fileDownload.click();
+            document.body.removeChild(fileDownload);
+        });
+        
+        // --- Vision Health Helper Modal Logic ---
+        const visionModal = document.getElementById('vision-helper-modal');
+        const visionModalContent = document.getElementById('vision-modal-content');
+        const openVisionModalBtn = document.getElementById('vision-helper-btn');
+        const closeVisionModalBtn = document.getElementById('close-vision-modal');
+
+        const infoTab = document.getElementById('vision-info-tab');
+        const challengeTab = document.getElementById('vision-challenge-tab');
+        const infoContent = document.getElementById('vision-info-content');
+        const challengeContent = document.getElementById('vision-challenge-content');
+
+        const visionResponseDiv = document.getElementById('vision-response');
+        const visionLoader = document.getElementById('vision-loader');
+
+        const generateVisionChallengeBtn = document.getElementById('generate-vision-challenge-btn');
+
+        const openVisionModal = () => {
+            visionModal.classList.remove('hidden');
+            setTimeout(() => { visionModalContent.classList.add('modal-fade-enter-active'); }, 10);
+            visionResponseDiv.classList.add('hidden');
+            // Reset to info tab by default
+            infoTab.click();
+        };
+        const closeVisionModal = () => {
+            visionModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { visionModal.classList.add('hidden'); }, 200);
+        };
+
+        if (openVisionModalBtn) {
+            openVisionModalBtn.addEventListener('click', openVisionModal);
+        }
+        closeVisionModalBtn.addEventListener('click', closeVisionModal);
+        visionModal.addEventListener('click', (e) => { if (e.target === visionModal) closeVisionModal(); });
+
+        infoTab.addEventListener('click', () => {
+            infoTab.classList.add('active');
             challengeTab.classList.remove('active');
-            qnaContent.classList.remove('hidden');
+            infoContent.classList.remove('hidden');
             challengeContent.classList.add('hidden');
-            qnaFooter.classList.remove('hidden');
-            ecoResponseDiv.classList.add('hidden');
+            visionResponseDiv.classList.add('hidden');
+            visionLoader.classList.add('hidden');
         });
 
         challengeTab.addEventListener('click', () => {
             challengeTab.classList.add('active');
-            qnaTab.classList.remove('active');
+            infoTab.classList.remove('active');
             challengeContent.classList.remove('hidden');
-            qnaContent.classList.add('hidden');
-            qnaFooter.classList.add('hidden');
-            ecoResponseDiv.classList.add('hidden');
+            infoContent.classList.add('hidden');
+            visionResponseDiv.classList.add('hidden');
+            visionLoader.classList.add('hidden');
         });
 
-        submitEcoQuestionBtn.addEventListener('click', async () => {
-            const userQuery = ecoQuestionInput.value;
-            if (!userQuery.trim()) {
-                ecoResponseDiv.innerHTML = '<p class="text-red-500">請輸入您的問題。</p>';
-                ecoResponseDiv.classList.remove('hidden');
-                return;
-            }
+        generateVisionChallengeBtn.addEventListener('click', async () => {
+            visionLoader.classList.remove('hidden');
+            generateVisionChallengeBtn.disabled = true;
+            visionResponseDiv.classList.add('hidden');
 
-            ecoLoader.classList.remove('hidden');
-            submitEcoQuestionBtn.disabled = true;
-            ecoResponseDiv.classList.add('hidden');
-            ecoQuestionInput.disabled = true;
-
-            const systemPrompt = `你是一位親切、熱情的 AI 環保小老師，專門為台灣的小學生解答環保相關問題。你的回答應該要簡單易懂、充滿趣味，可以適時使用表情符號，並鼓勵學生身體力行。請用繁體中文回答。`;
-            
-            try {
-                const result = await callGeminiAPI(userQuery, systemPrompt);
-                ecoResponseDiv.innerHTML = formatResponse(result);
-            } catch (error) {
-                console.error("Gemini API call failed for eco helper:", error);
-                ecoResponseDiv.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
-            } finally {
-                ecoLoader.classList.add('hidden');
-                ecoResponseDiv.classList.remove('hidden');
-                submitEcoQuestionBtn.disabled = false;
-                ecoQuestionInput.disabled = false;
-            }
-        });
-
-        generateChallengeBtn.addEventListener('click', async () => {
-            ecoLoader.classList.remove('hidden');
-            generateChallengeBtn.disabled = true;
-            ecoResponseDiv.classList.add('hidden');
-
-            const systemPrompt = `你是一位在台灣的環保教育遊戲設計師。你的任務是創造一個簡單有趣的「垃圾分類挑戰」題目給國小學生。
+            const systemPrompt = `你是一位親切有趣的 AI 護眼小老師，專門為台灣的國小學生設計「護眼大挑戰」遊戲。
+                你的任務是創造一個簡單的分類題目，考考學生某個行為或食物對眼睛是好是壞。
                 請遵循以下格式，用繁體中文回答：
-                1.  **物品：** [寫出一個常見的生活廢棄物，例如：喝完的牛奶紙盒]
-                2.  **問題：** [根據這個物品，提出一個分類問題，例如：請問這個應該丟到「紙類回收」、「一般垃圾」還是要先沖洗乾淨再丟「紙容器回收」呢？]
-                3.  **解答與說明：** [用活潑的語氣公布正確答案，並詳細解釋原因。可以補充一個相關的環保小知識。]`;
-            const userQuery = "請給我一個垃圾分類挑戰題。";
+                1. **挑戰項目：** [寫出一個具體的行為或食物，例如：躺在床上看書]
+                2. **問題：** [根據這個項目，提出一個分類問題，例如：請問這個行為對眼睛是「好寶寶👍」還是「壞習慣👎」呢？]
+                3. **解答與說明：** [用活潑的語氣公布正確答案，並用小朋友聽得懂的方式解釋原因。可以補充一個相關的護眼小知識。]`;
+            const userQuery = "請給我一個護眼挑戰題。";
 
             try {
                 const result = await callGeminiAPI(userQuery, systemPrompt);
-                ecoResponseDiv.innerHTML = formatResponse(result);
+                visionResponseDiv.innerHTML = formatResponse(result);
             } catch (error) {
-                console.error("Gemini API call failed for eco challenge:", error);
-                ecoResponseDiv.innerText = '抱歉，現在無法產生挑戰題，請稍後再試。';
+                console.error("Gemini API call failed for vision challenge:", error);
+                visionResponseDiv.innerText = '抱歉，現在無法產生挑戰題，請稍後再試。';
             } finally {
-                ecoLoader.classList.add('hidden');
-                ecoResponseDiv.classList.remove('hidden');
-                generateChallengeBtn.disabled = false;
+                visionLoader.classList.add('hidden');
+                visionResponseDiv.classList.remove('hidden');
+                generateVisionChallengeBtn.disabled = false;
             }
         });
 
