@@ -2256,5 +2256,224 @@ ${(prInfo && prInfo.value) || ""}
 // });
 });
 </script>
+
+<!-- ===== 安全橋接：統一以 /api/generate 呼叫 AI，避免前端金鑰外流 ===== -->
+<script id="safe-bridge">
+document.addEventListener("DOMContentLoaded", function(){
+  async function askAI(prompt, loaderId, outputId){
+    try{
+      if (loaderId) document.getElementById(loaderId)?.classList.remove("hidden");
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      // 兼容多種回傳格式
+      const txt =
+        data?.choices?.[0]?.message?.content ||
+        data?.content || data?.text || JSON.stringify(data);
+      if (outputId){
+        const el = document.getElementById(outputId);
+        if (el){
+          el.textContent = "";         // 清空舊內容
+          el.innerText = txt;          // 以純文字呈現（避免 XSS）
+        }
+      }
+      return txt;
+    }catch(e){
+      if (outputId){
+        const el = document.getElementById(outputId);
+        if (el){ el.textContent = "抱歉，目前無法連線到 AI 服務。"; }
+      }
+      console.error(e);
+      return null;
+    }finally{
+      if (loaderId) document.getElementById(loaderId)?.classList.add("hidden");
+    }
+  }
+
+  // 讓舊版函式自動走 /api/generate（向下相容，不再報錯終止）
+  window.formatResponse = function(x){ return typeof x==="string" ? x : JSON.stringify(x); };
+  window.callGeminiAPI = async function(userQuery, systemPrompt){
+    const prompt = (systemPrompt ? String(systemPrompt)+"\n" : "") + String(userQuery||"");
+    return await askAI(prompt);
+  };
+  window.CALL_GEMINI_API_DEPRECATED = window.callGeminiAPI;
+  window.FORMAT_RESPONSE_DEPRECATED = window.formatResponse;
+  window.CALL_GEMINI_TTS_DEPRECATED = async function(){
+    alert("已停用前端直連 TTS。若需要，請在後端新增 /api/tts 代理。");
+    return null;
+  };
+
+  // Word 檔下載（共用）
+  window.downloadWord = function(filename, htmlInner){
+    const html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="white-space:pre-wrap;line-height:1.8;font-family: system-ui, \\\"Noto Sans TC\\\", sans-serif;">'
+      + htmlInner + '</body></html>';
+    const blob = new Blob([html], { type: "application/msword;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+    a.remove(); URL.revokeObjectURL(url);
+  };
+
+  // 若頁面上有需要的按鈕但未綁定，提供保險的開窗綁定
+  const map = [
+    ["general-ai-btn", "general-ai-modal"],
+    ["announcement-drafter-btn", "announcement-drafter-modal"],
+    ["press-release-generator-btn", "press-release-generator-modal"],
+    ["incident-helper-btn", "incident-helper-modal"],
+    ["training-plan-btn", "training-plan-modal"],
+    ["club-registration-btn", "club-registration-modal"],
+    ["vision-helper-btn", "vision-helper-modal"],
+    ["eco-helper-btn", "eco-helper-modal"],
+    ["first-aid-guide-btn", "first-aid-modal"],
+    ["lunch-helper-btn", "lunch-helper-modal"],
+    ["award-registration-btn", "award-registration-modal"]
+  ];
+  function openModal(id){ const m=document.getElementById(id); const c=m&&m.querySelector(".modal-fade-enter"); if(m){ m.classList.remove("hidden"); setTimeout(()=>c&&c.classList.add("modal-fade-enter-active"), 10); } }
+  function closeModal(id){ const m=document.getElementById(id); const c=m&&m.querySelector(".modal-fade-enter-active"); if(m){ c&&c.classList.remove("modal-fade-enter-active"); setTimeout(()=>m.classList.add("hidden"), 200);} }
+
+  map.forEach(([btnId, modalId])=>{
+    const btn = document.getElementById(btnId);
+    const modal = document.getElementById(modalId);
+    const closeBtn = modal ? modal.querySelector("button[id^='close-']") : null;
+    if (btn && modal){
+      btn.addEventListener("click", (e)=>{ e.preventDefault(); openModal(modalId); });
+      modal.addEventListener("click", (e)=>{ if (e.target === modal) closeModal(modalId); });
+      if (closeBtn){ closeBtn.addEventListener("click", (e)=>{ e.preventDefault(); closeModal(modalId); }); }
+    }
+  });
+
+  // 為關鍵送出按鈕補綁一份 /api/generate 的行為（若原本已有邏輯則不影響）
+  const safeBind = (id, buildPrompt, loaderId, outputId) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.dataset.safeBound) return;
+    el.dataset.safeBound = "1";
+    el.addEventListener("click", async (e)=>{
+      e.preventDefault();
+      const p = buildPrompt();
+      if (!p) return;
+      const box = document.getElementById(outputId);
+      box && box.classList.remove("hidden");
+      await askAI(p, loaderId, outputId);
+    });
+  };
+
+  // 基本範例：新聞稿 / 公告 / 午餐 / 視力 / 環保 / 急救 / 萬事通 / 訓練計畫
+  safeBind("submit-press-release", ()=>{
+    const s = document.getElementById("event-subject")?.value || "";
+    const m = document.getElementById("press-release-media")?.value || "";
+    const info = document.getElementById("press-release-info")?.value || "";
+    if (!s || !info) return "請至少填主題與重點後再嘗試。";
+    return `請以學校對外新聞稿格式撰寫，主題：${s}，發布對象：${m}，重點如下：\n${info}\n請包含標題、前言、重點條列、引述語與聯絡資訊。`;
+  }, "press-release-loader", "press-release-text-content");
+
+  safeBind("submit-announcement", ()=>{
+    const sub = document.getElementById("announcement-subject")?.value || "";
+    const aud = document.getElementById("announcement-audience")?.value || "";
+    const info = document.getElementById("announcement-info")?.value || "";
+    const tone = document.getElementById("announcement-tone")?.value || "正式";
+    return `請用「${tone}」語氣撰寫學校公告：\n主題：${sub}\n對象：${aud}\n重點：\n${info}\n請包含標題、前言、條列重點與結語。`;
+  }, "announcement-loader", "announcement-text-content");
+
+  safeBind("submit-lunch-helper-question", ()=>{
+    const task = document.getElementById("lunch-helper-task")?.value || "menu";
+    if (task==="menu"){
+      const req = document.getElementById("lunch-menu-request")?.value || "";
+      return "請以台灣國小午餐規範設計菜單（主食/主菜/副菜/湯品與留樣注意）。需求：\n"+req;
+    }else{
+      return "請產生『學校午餐驗收食品安全檢查清單』，條列要點並附說明。";
+    }
+  }, "lunch-helper-loader", "lunch-helper-text-content");
+
+  safeBind("generate-vision-challenge-btn", ()=>{
+    return "你是護眼小老師，為台灣國小生設計一題護眼挑戰：\n1. 挑戰項目：\n2. 問題：\n3. 解答與說明：";
+  }, "vision-loader", "vision-response");
+
+  safeBind("submit-eco-question-btn", ()=>{
+    const q = document.getElementById("eco-question-input")?.value || "";
+    return "你是一位親切的環保小老師，請用繁體中文回答以下問題：\n" + q;
+  }, "eco-loader", "eco-response");
+
+  safeBind("generate-challenge-btn", ()=>{
+    return "你是環保教育遊戲設計師，為台灣國小生出一題垃圾分類挑戰，格式：\n1. 物品：\n2. 問題：\n3. 解答與說明：";
+  }, "eco-loader", "eco-response");
+
+  safeBind("submit-first-aid-question", ()=>{
+    const q = document.getElementById("first-aid-question")?.value || "";
+    return "針對以下症狀提供初步處理建議（非醫療診斷），條列式回答，結尾加入重要提醒：\n"+q;
+  }, "first-aid-loader", "first-aid-response");
+
+  safeBind("submit-general-question", ()=>{
+    const q = document.getElementById("general-user-question")?.value || "";
+    return "判斷以下需求應由學務處/總務處/教務處/輔導室哪個單位處理，列出承辦人與分機，並給步驟：\n"+q;
+  }, "general-loader", "general-ai-response");
+
+  safeBind("submit-training-plan", ()=>{
+    const sport = document.getElementById("training-sport")?.value || "";
+    const level = document.getElementById("training-level")?.value || "";
+    const goal  = document.getElementById("training-goal")?.value || "";
+    const days  = document.getElementById("training-days")?.value || "";
+    if (!sport) return "請先填寫運動項目。";
+    return `請設計一份為期一週的運動訓練計畫：
+- 運動項目：${sport}
+- 目前體能水平：${level}
+- 主要訓練目標：${goal}
+- 每週希望訓練天數：${days}
+請提供每日詳細內容，包含暖身與緩和運動，並在結尾加上免責聲明。`;
+  }, "training-plan-loader", "training-plan-response");
+
+  // Word 下載按鈕保險
+  const awardDocBtn = document.getElementById("download-word-form-btn");
+  if (awardDocBtn){
+    awardDocBtn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      const inner = [
+        "國立展賦大學 學務處訓育組",
+        "朝會頒獎登記表",
+        "",
+        "學生姓名：____________________",
+        "班　　級：____________________",
+        "獎項全名：________________________________________",
+        "頒獎單位：________________________________________",
+        "導師簽名：____________________",
+        "繳交日期：________ 年 ________ 月 ________ 日",
+        "",
+        "本人確認已將上述獎狀之正本繳交至訓育組，並申請於學生朝會公開頒獎表揚。"
+      ].join("\\n");
+      downloadWord("朝會頒獎登記表.doc", inner.replace(/\\n/g,"<br>"));
+    });
+  }
+  const clubDocBtn = document.getElementById("download-club-form-btn");
+  if (clubDocBtn){
+    clubDocBtn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      const inner = [
+        "國立展賦大學 學務處體育組",
+        "運動社團報名表",
+        "",
+        "學生姓名　　　　　班級",
+        "學號　　　　　　　聯絡電話",
+        "",
+        "請勾選您想參加的社團（可複選）：",
+        "☐ 籃球社",
+        "☐ 羽球社",
+        "☐ 田徑社",
+        "☐ 游泳社",
+        "☐ 足球社",
+        "",
+        "家長/監護人簽名：____________________",
+        "學生簽名：____________________",
+        "報名日期：________ 年 ________ 月 ________ 日",
+        "",
+        "請將此報名表填妥後，繳交至學務處體育組。"
+      ].join("\\n");
+      downloadWord("運動社團報名表.doc", inner.replace(/\\n/g,"<br>"));
+    });
+  }
+
+});</script>
 </body>
 </html>
