@@ -123,7 +123,8 @@
                         <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：劉組長 / 分機：9304</p>
                     </div>
                     <div class="p-4 bg-gray-50 mt-auto grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <button id="commendation-generator-btn" class="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors duration-300 font-semibold text-sm">✨ 表揚稿產生器</button>
+                        <!-- Changed from Commendation to Press Release -->
+                        <button id="press-release-generator-btn" class="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors duration-300 font-semibold text-sm">✨ 新聞稿產生器</button>
                         <button id="award-registration-btn" class="w-full bg-amber-500 text-white py-2 px-4 rounded-lg hover:bg-amber-600 transition-colors duration-300 font-semibold text-sm">✨ 朝會頒獎登記</button>
                     </div>
                 </div>
@@ -413,7 +414,7 @@
                     <p class="text-sm text-gray-500 mt-2">AI 營養師思考中...</p>
                 </div>
                 <div id="lunch-helper-response" class="relative mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
-                    <button id="copy-lunch-helper-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2-2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg></button>
+                    <button id="copy-lunch-helper-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2-2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg></button>
                     <div id="lunch-helper-text-content"></div>
                 </div>
             </div>
@@ -521,7 +522,7 @@
                     <p class="text-sm text-gray-500 mt-2">AI 秘書草擬中...</p>
                 </div>
                 <div id="announcement-response" class="relative mt-6 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
-                     <button id="copy-announcement-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg></button>
+                     <button id="copy-announcement-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg></button>
                     <div id="announcement-text-content"></div>
                     <!-- New TTS Section -->
                     <div id="announcement-audio-section" class="mt-4 pt-4 border-t border-gray-200 hidden">
@@ -603,47 +604,43 @@
         </div>
     </div>
     
-    <!-- Commendation Generator Modal -->
-    <div id="commendation-generator-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
-        <div id="commendation-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+    <!-- Press Release Generator Modal (Replaced Commendation) -->
+    <div id="press-release-generator-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="press-release-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-3xl modal-fade-enter">
             <div class="p-6">
                 <div class="flex justify-between items-start">
-                    <h3 class="text-2xl font-bold text-gray-800">✨ 獎狀/表揚稿產生器</h3>
-                    <button id="close-commendation-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 新聞稿產生器</h3>
+                    <button id="close-press-release-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
                 </div>
                 <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                      <div>
-                        <label for="commendation-student-name" class="block text-sm font-medium text-gray-700">學生姓名</label>
-                        <input type="text" id="commendation-student-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="例如：王小明">
+                        <label for="event-subject" class="block text-sm font-medium text-gray-700">活動主題</label>
+                        <input type="text" id="event-subject" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="例如：第一屆校園AI藝術節">
                     </div>
                      <div>
-                        <label for="commendation-tone" class="block text-sm font-medium text-gray-700">語氣風格</label>
-                        <select id="commendation-tone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500">
-                            <option>正式莊重</option>
-                            <option>活潑鼓勵</option>
-                            <option>溫暖誠懇</option>
-                        </select>
+                        <label for="press-release-media" class="block text-sm font-medium text-gray-700">發布對象/媒體</label>
+                        <input type="text" id="press-release-media" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="例如：教育線記者、社區報章">
                     </div>
                     <div class="md:col-span-2">
-                        <label for="commendation-reason" class="block text-sm font-medium text-gray-700">表揚事由 (請簡述)</label>
-                        <input type="text" id="commendation-reason" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="例如：熱心助人，主動協助同學解決課業問題">
+                        <label for="press-release-info" class="block text-sm font-medium text-gray-700">新聞稿重點 (請條列式輸入)</label>
+                        <textarea id="press-release-info" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="活動時間：&#10;活動地點：&#10;參與對象：&#10;活動亮點：&#10;引述師長或學生的話："></textarea>
                     </div>
                 </div>
-                <div id="commendation-loader" class="mt-4 text-center hidden">
+                <div id="press-release-loader" class="mt-4 text-center hidden">
                      <svg class="animate-spin h-8 w-8 text-yellow-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    <p class="text-sm text-gray-500 mt-2">AI 文案撰寫中...</p>
+                    <p class="text-sm text-gray-500 mt-2">AI 公關專家撰寫中...</p>
                 </div>
-                <div id="commendation-response" class="relative mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[100px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
-                    <button id="copy-commendation-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg></button>
-                    <div id="commendation-text-content"></div>
+                <div id="press-release-response" class="relative mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
+                    <button id="copy-press-release-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg></button>
+                    <div id="press-release-text-content"></div>
                 </div>
             </div>
             <div class="bg-gray-50 px-6 py-4 rounded-b-lg">
-                <button id="submit-commendation" class="w-full px-4 py-2 bg-yellow-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300 disabled:bg-gray-400">
-                    產生表揚文稿
+                <button id="submit-press-release" class="w-full px-4 py-2 bg-yellow-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300 disabled:bg-gray-400">
+                    產生新聞稿
                 </button>
             </div>
         </div>
@@ -704,14 +701,13 @@
         
         // ***************************************************************
         // ** 重要提示：                                              **
-        // ** 為了讓 AI 功能在您的本機端正常運作，                  **
-        // ** 請將下方的 "" 替換成您從 Google AI Studio 取得的 API 金鑰。**
+        // ** API 金鑰已設定為您提供的值。                             **
         // ***************************************************************
         const apiKey = "AIzaSyCQmx4CBBBhjU43uuEr9WmTrk51ZPSxPRs"; 
 
         async function callGeminiAPI(userQuery, systemPrompt) {
-            if (apiKey === "請在此貼上您的 Google AI Studio API 金鑰" || apiKey === "") {
-                return "AI 功能錯誤：尚未設定 API 金鑰。請在 HTML 檔案的 <script> 區塊中填入您的 Google AI Studio API 金鑰。";
+            if (apiKey === "") {
+                return "AI 功能錯誤：尚未設定 API 金鑰。";
             }
             
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
@@ -775,70 +771,8 @@
             throw new Error("API 請求重試多次後仍然失敗。");
         }
 
-        async function callGeminiImageAPI(prompt) {
-            if (apiKey === "請在此貼上您的 Google AI Studio API 金鑰" || apiKey === "") {
-                throw new Error("Image Generation 功能錯誤：尚未設定 API 金鑰。");
-            }
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{
-                    parts: [{ text: prompt }]
-                }],
-                generationConfig: {
-                    responseModalities: ['IMAGE']
-                },
-            };
-
-            let response;
-            let attempts = 0;
-            const maxAttempts = 5;
-            let delay = 1000;
-
-            while (attempts < maxAttempts) {
-                try {
-                    response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (response.ok) {
-                        const result = await response.json();
-                        const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
-                        if (base64Data) {
-                            return base64Data;
-                        } else {
-                            console.error("Unexpected Gemini Image API response:", result);
-                            const safetyRating = result?.candidates?.[0]?.safetyRatings?.find(r => r.blocked);
-                            if (safetyRating) {
-                                throw new Error(`圖片生成請求因「${safetyRating.category}」因素而被過濾。`);
-                            }
-                            throw new Error("Gemini Image API 未能回傳有效的圖片資料。");
-                        }
-                    } else if (response.status === 429) {
-                        console.warn(`Image API rate limit exceeded. Retrying in ${delay / 1000}s...`);
-                    } else {
-                        const errorBody = await response.text();
-                        console.error("Gemini Image API Error:", errorBody);
-                        throw new Error(`Gemini Image API 請求失敗，狀態碼: ${response.status}`);
-                    }
-                } catch (error) {
-                    console.error(`Attempt ${attempts + 1} failed:`, error);
-                    if (attempts + 1 === maxAttempts) {
-                        throw error;
-                    }
-                }
-                
-                await new Promise(resolve => setTimeout(resolve, delay));
-                delay *= 2; // Exponential backoff
-                attempts++;
-            }
-            throw new Error("Image API 請求重試多次後仍然失敗。");
-        }
-
-
         async function callGeminiTtsAPI(text) {
-             if (apiKey === "請在此貼上您的 Google AI Studio API 金鑰" || apiKey === "") {
+             if (apiKey === "") {
                 throw new Error("TTS 功能錯誤：尚未設定 API 金鑰。");
             }
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
@@ -881,6 +815,8 @@
             const copyBtn = document.getElementById(copyBtnId);
             const textContent = document.getElementById(textContentId);
             
+            if (!copyBtn || !textContent) return;
+
             copyBtn.addEventListener('click', () => {
                 const textToCopy = textContent.innerText;
                 const textArea = document.createElement('textarea');
@@ -1182,60 +1118,60 @@
             }
         });
         
-        // --- Commendation Generator Modal Logic ---
-        const commendationModal = document.getElementById('commendation-generator-modal');
-        const commendationModalContent = document.getElementById('commendation-modal-content');
-        const openCommendationModalBtn = document.getElementById('commendation-generator-btn');
-        const closeCommendationModalBtn = document.getElementById('close-commendation-modal');
-        const submitCommendationBtn = document.getElementById('submit-commendation');
-        const commendationResponseDiv = document.getElementById('commendation-response');
-        const commendationTextContent = document.getElementById('commendation-text-content');
-        const commendationLoader = document.getElementById('commendation-loader');
+        // --- Press Release Generator Modal Logic (Replaced Commendation) ---
+        const pressReleaseModal = document.getElementById('press-release-generator-modal');
+        const pressReleaseModalContent = document.getElementById('press-release-modal-content');
+        const openPressReleaseBtn = document.getElementById('press-release-generator-btn');
+        const closePressReleaseModalBtn = document.getElementById('close-press-release-modal');
+        const submitPressReleaseBtn = document.getElementById('submit-press-release');
+        const pressReleaseResponseDiv = document.getElementById('press-release-response');
+        const pressReleaseTextContent = document.getElementById('press-release-text-content');
+        const pressReleaseLoader = document.getElementById('press-release-loader');
         
-        const openCommendationModal = () => {
-            commendationModal.classList.remove('hidden');
-            setTimeout(() => { commendationModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        const openPressReleaseModal = () => {
+            pressReleaseModal.classList.remove('hidden');
+            setTimeout(() => { pressReleaseModalContent.classList.add('modal-fade-enter-active'); }, 10);
         };
-        const closeCommendationModal = () => {
-            commendationModalContent.classList.remove('modal-fade-enter-active');
-            setTimeout(() => { commendationModal.classList.add('hidden'); }, 200);
+        const closePressReleaseModal = () => {
+            pressReleaseModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { pressReleaseModal.classList.add('hidden'); }, 200);
         };
 
-        if(openCommendationModalBtn) {
-            openCommendationModalBtn.addEventListener('click', openCommendationModal);
+        if(openPressReleaseBtn) {
+            openPressReleaseBtn.addEventListener('click', openPressReleaseModal);
         }
-        closeCommendationModalBtn.addEventListener('click', closeCommendationModal);
-        commendationModal.addEventListener('click', (e) => { if (e.target === commendationModal) { closeCommendationModal(); }});
-        setupCopyButton('copy-commendation-btn', 'commendation-text-content', clipboardIcon, checkIcon);
+        closePressReleaseModalBtn.addEventListener('click', closePressReleaseModal);
+        pressReleaseModal.addEventListener('click', (e) => { if (e.target === pressReleaseModal) { closePressReleaseModal(); }});
+        setupCopyButton('copy-press-release-btn', 'press-release-text-content', clipboardIcon, checkIcon);
 
-        submitCommendationBtn.addEventListener('click', async () => {
-            const studentName = document.getElementById('commendation-student-name').value;
-            const reason = document.getElementById('commendation-reason').value;
-            const tone = document.getElementById('commendation-tone').value;
+        submitPressReleaseBtn.addEventListener('click', async () => {
+            const subject = document.getElementById('event-subject').value;
+            const info = document.getElementById('press-release-info').value;
+            const media = document.getElementById('press-release-media').value;
 
-            if (!studentName.trim() || !reason.trim()) {
-                commendationTextContent.innerHTML = '<p class="text-red-500">請填寫「學生姓名」和「表揚事由」。</p>';
-                commendationResponseDiv.classList.remove('hidden');
+            if (!subject.trim() || !info.trim()) {
+                pressReleaseTextContent.innerHTML = '<p class="text-red-500">請填寫「活動主題」和「新聞稿重點」。</p>';
+                pressReleaseResponseDiv.classList.remove('hidden');
                 return;
             }
 
-            commendationLoader.classList.remove('hidden');
-            submitCommendationBtn.disabled = true;
-            commendationResponseDiv.classList.add('hidden');
+            pressReleaseLoader.classList.remove('hidden');
+            submitPressReleaseBtn.disabled = true;
+            pressReleaseResponseDiv.classList.add('hidden');
 
-            const systemPrompt = `你是一位在台灣的國中小學中，經驗豐富且溫暖的教育工作者，擅長撰寫鼓勵學生的表揚文稿。你的文字應該充滿正向能量、真誠，並符合所要求的語氣。請用繁體中文撰寫。`;
-            const userQuery = `請為一位學生撰寫一段簡短的表揚文稿，內容需適合放在獎狀或公開朗讀。資訊如下：\n- 學生姓名：${studentName}\n- 表揚事由：${reason}\n- 希望語氣：${tone}\n\n文稿長度請控制在50至80字之間。`;
+            const systemPrompt = `你是一位專業的學校公共關係主任，擅長為學校活動撰寫吸引人且格式正確的新聞稿。你的文稿應該包含引人注目的標題、清晰的導言（包含人、事、時、地、物等要素）、詳盡的內文、以及校方聯絡資訊。請用繁體中文撰寫。`;
+            const userQuery = `請為一場學校活動撰寫新聞稿，資訊如下：\n- 活動主題：${subject}\n- 新聞稿重點：\n${info}\n- 希望發布的對象/媒體：${media}\n\n請生成一篇包含【即時發布】標籤、新聞標題、導言、內文、新聞聯絡人等資訊的完整新聞稿。`;
 
             try {
                 const result = await callGeminiAPI(userQuery, systemPrompt);
-                commendationTextContent.innerHTML = formatResponse(result);
+                pressReleaseTextContent.innerHTML = formatResponse(result);
             } catch (error) {
-                console.error("Gemini API call failed for commendation generator:", error);
-                commendationTextContent.innerText = '抱歉，現在無法產生文稿，請稍後再試。';
+                console.error("Gemini API call failed for press release generator:", error);
+                pressReleaseTextContent.innerText = '抱歉，現在無法產生新聞稿，請稍後再試。';
             } finally {
-                commendationLoader.classList.add('hidden');
-                commendationResponseDiv.classList.remove('hidden');
-                submitCommendationBtn.disabled = false;
+                pressReleaseLoader.classList.add('hidden');
+                pressReleaseResponseDiv.classList.remove('hidden');
+                submitPressReleaseBtn.disabled = false;
             }
         });
 
@@ -1772,4 +1708,3 @@
     </script>
 </body>
 </html>
-
