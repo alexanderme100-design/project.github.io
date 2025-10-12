@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>project.github.io（Vercel 安全版）</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, "Helvetica Neue", sans-serif; margin: 2rem; line-height: 1.6; }
+    .wrap { max-width: 900px; margin: 0 auto; }
+    .card { border: 1px solid #e5e7eb; border-radius: 14px; padding: 1rem 1.25rem; box-shadow: 0 1px 6px rgba(0,0,0,.04); margin-bottom: 1rem; }
+    textarea, input { width: 100%; font-size: 16px; padding: .6rem .7rem; border:1px solid #e5e7eb; border-radius: 10px; }
+    button { padding: .6rem 1rem; font-size: 16px; border-radius: 10px; border: 0; cursor: pointer; background:#111827; color:#fff; }
+    pre { white-space: pre-wrap; word-break: break-word; background: #f8fafc; padding: .75rem; border-radius: 10px; border:1px dashed #e5e7eb; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>project.github.io（Vercel 安全版）</h1>
+    <p>把你原本的網站檔案放進 <code>/public</code> 即可。這個範例展示如何安全呼叫 AI：</p>
+
+    <div class="card">
+      <label for="prompt"><b>AI 測試</b></label>
+      <textarea id="prompt" placeholder="例如：幫我寫一段 50 字的鼓勵話"></textarea>
+      <div style="margin:.75rem 0;">
+        <button id="btn">送出</button>
+      </div>
+      <div id="box" class="hidden">
+        <p><b>回應：</b></p>
+        <pre id="out"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function askAI(prompt) {
+      const r = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await r.json();
+      return data?.choices?.[0]?.message?.content ?? JSON.stringify(data);
+    }
+
+    document.getElementById("btn").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const prompt = document.getElementById("prompt").value.trim();
+      if (!prompt) return;
+      const out = document.getElementById("out");
+      const box = document.getElementById("box");
+      out.textContent = "處理中…"; box.classList.remove("hidden");
+      try { out.textContent = await askAI(prompt); }
+      catch { out.textContent = "抱歉，無法連線至伺服器。"; }
+    });
+  </script>
+</body>
+</html>
