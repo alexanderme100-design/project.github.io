@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學務處工作職掌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        /* Style for the modal fade-in animation */
+        .modal-fade-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .modal-fade-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.2s ease-out;
+        }
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .tab-btn.active {
+            border-color: #f59e0b; /* amber-500 */
+            color: #1f2937; /* gray-800 */
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold leading-tight text-gray-900 text-center">
+                學務處工作職掌
+            </h1>
+            <p class="text-center text-gray-500 mt-2">我們致力於學生的全面發展與校園生活的和諧</p>
+        </div>
+    </header>
+
+    <!-- General AI Helper Section -->
+    <section class="py-8 bg-blue-50">
+        <div class="max-w-3xl mx-auto text-center px-4">
+            <h2 class="text-2xl font-bold text-blue-800">需要協助嗎？</h2>
+            <p class="mt-2 text-gray-600">如果您不確定該找哪個單位，請點擊下方按鈕，讓我們的 AI 導覽員為您指引方向。</p>
+            <button id="general-ai-btn" class="mt-4 px-8 py-3 bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300">
+                ✨ 啟動 AI 全校萬事通
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- 學務主任 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-blue-500 pl-4">學務主任</h2>
+                        <ul class="space-y-3 text-gray-600">
+                            <li><span class="font-semibold text-blue-600 mr-2">✦</span>綜理學務處業務。</li>
+                        </ul>
+                        <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：蔡主任 / 分機：9305</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 mt-auto">
+                        <button id="announcement-drafter-btn" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300 font-semibold">✨ 公告草擬小幫手</button>
+                    </div>
+                </div>
+
+                <!-- 生教組 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-green-500 pl-4">生教組</h2>
+                        <ul class="space-y-3 text-gray-600 text-sm">
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>規劃進行學生上、放學安全導護及校內外巡察事宜。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>急難扶助（含清寒助學金、仁愛基金）之申請。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>學生偶（突）發事件之防制、處理與反映。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>輔導學生實踐生活須知及國民生活禮儀。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>協助教師進行學生服裝儀容、出缺席、及作息管理。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>輔導與管理學生校外生活。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>教育及輔導學生參加各種集會。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>辦理學生急難扶助事宜。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>籌組訓練並實施學生生活糾察服務隊事宜。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>導師責任制與相關業務之安排、落實與視導。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>學生、師生衝突及偶發、意外事件處理。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>辦理學生獎懲及申訴評議事宜。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>學生門禁管理。</li>
+                            <li><span class="font-semibold text-green-600 mr-2">✦</span>中輟生通報。</li>
+                        </ul>
+                        <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：吳組長 / 分機：9302</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 mt-auto">
+                        <button id="incident-helper-btn" class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors duration-300 font-semibold">✨ 學生事件處理小幫手</button>
+                    </div>
+                </div>
+
+                <!-- 訓育組 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-yellow-500 pl-4">訓育組</h2>
+                        <ul class="space-y-3 text-gray-600 text-sm">
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>策劃及輔導學生自治活動。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>計劃及實施生活、環保、交通安全、時事教育等事宜。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>推行民主法治教育。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>學生防災教育及各項演習之策劃與執行。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>輔導辦理學生品德考查及獎懲事宜。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>辦理時事、紀念節日學校壁報出刊事宜。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>選拔孝惕楷模、模範兒童及其他優良事蹟兒童之表揚。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>協辦推展各項社區活動。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>策劃、辦理畢業紀念冊事宜。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>辦理、督導兒童朝會事宜。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>辦理學生失物及拾遺事宜。</li>
+                            <li><span class="font-semibold text-yellow-600 mr-2">✦</span>協助新北兒童卡相關事宜。</li>
+                        </ul>
+                        <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：劉組長 / 分機：9304</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 mt-auto grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <!-- Changed from Commendation to Press Release -->
+                        <button id="press-release-generator-btn" class="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors duration-300 font-semibold text-sm">✨ 新聞稿產生器</button>
+                        <button id="award-registration-btn" class="w-full bg-amber-500 text-white py-2 px-4 rounded-lg hover:bg-amber-600 transition-colors duration-300 font-semibold text-sm">✨ 朝會頒獎登記</button>
+                    </div>
+                </div>
+
+                <!-- 體育組 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-purple-500 pl-4">體育組</h2>
+                        <ul class="space-y-3 text-gray-600 text-sm">
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>擬訂及實施參加各項體育活動競賽之培訓計畫。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>運動場所及體育設備之規劃、管理及安全維護。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>規劃實施學生社團、課間活動事宜。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>辦理學生體能測驗及體育成績考查、統計與報告。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>辦理體操、舞蹈及各項體育活動。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>辦理學校運動會、校慶事宜。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>單項運動項目訓練比賽計畫之擬訂與實施。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>單項運動項目選手之發掘、培訓及運動安全維護事項。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>辦理運動績優學生課業輔導。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>協辦新北市推展重點運動項目事宜。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>規劃實施學生體育活動及校內外體育訓練、競賽事宜。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>協助推動教師休閒運動及體適能檢測。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>規劃實施學生校內外才藝展演及競賽事宜。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>策劃幼童軍、幼女童軍活動及訓練事宜。</li>
+                            <li><span class="font-semibold text-purple-600 mr-2">✦</span>辦理學生團體活動及校外教學事宜。</li>
+                        </ul>
+                         <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：林組長 / 分機：9301</p>
+                    </div>
+                     <div class="p-4 bg-gray-50 mt-auto grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <button id="training-plan-btn" class="w-full bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors duration-300 font-semibold text-sm">✨ 運動訓練計畫</button>
+                        <button id="club-registration-btn" class="w-full bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-300 font-semibold text-sm">✨ 社團報名表下載</button>
+                    </div>
+                </div>
+
+                <!-- 衛生組 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-red-500 pl-4">衛生組</h2>
+                        <ul class="space-y-3 text-gray-600 text-sm">
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>規劃全校衛生保健工作及其設備之使用、維護事宜。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>辦理衛生隊組訓與輔導晨間檢查。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>辦理整潔活動及定期大掃除。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>規劃實施學校資源回收及環境衛生教育。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>規劃實施學校能源教育，落實節能生活。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>調查彙整學生身體健康資料提供教師參考。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>辦理學生衛生保健教育及緊急醫療照護。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>辦理學生午餐及食品衛生教育事宜。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>辦理學校環境教育及班級綠美化事宜。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>假日多元課後社團。</li>
+                            <li><span class="font-semibold text-red-600 mr-2">✦</span>辦理學生平安保險。</li>
+                        </ul>
+                        <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：李組長 / 分機：9303</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 mt-auto grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <button id="vision-helper-btn" class="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-300 font-semibold text-sm">✨ 視力保健幫手</button>
+                        <button id="eco-helper-btn" class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors duration-300 font-semibold text-sm">✨ 環保知識幫手</button>
+                    </div>
+                </div>
+
+                <!-- 健康中心 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-teal-500 pl-4">健康中心</h2>
+                        <ul class="space-y-3 text-gray-600 text-sm">
+                            <li><span class="font-semibold text-teal-600 mr-2">✦</span>緊急傷病處理與照護。</li>
+                            <li><span class="font-semibold text-teal-600 mr-2">✦</span>學生健康管理與篩檢（身高體重、視力、口腔等）。</li>
+                            <li><span class="font-semibold text-teal-600 mr-2">✦</span>特殊疾病個案管理。</li>
+                            <li><span class="font-semibold text-teal-600 mr-2">✦</span>傳染病監測、通報與防治宣導。</li>
+                            <li><span class="font-semibold text-teal-600 mr-2">✦</span>協助預防接種事宜。</li>
+                            <li><span class="font-semibold text-teal-600 mr-2">✦</span>辦理健康促進與衛生教育活動。</li>
+                            <li><span class="font-semibold text-teal-600 mr-2">✦</span>設施設備、藥品管理與資料統計。</li>
+                            <li><span class="font-semibold text-teal-600 mr-2">✦</span>擔任學校與衛生單位、家長間的溝通橋樑。</li>
+                        </ul>
+                        <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：廖護理師、王護理師 / 分機：9311、9312</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 mt-auto">
+                        <button id="first-aid-guide-btn" class="w-full bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors duration-300 font-semibold">✨ AI 傷病處理指南</button>
+                    </div>
+                </div>
+                
+                <!-- 午餐秘書 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-orange-500 pl-4">午餐秘書</h2>
+                        <ul class="space-y-3 text-gray-600 text-sm">
+                            <li><span class="font-semibold text-orange-600 mr-2">✦</span>辦理午餐廠商招標、評選與簽約。</li>
+                            <li><span class="font-semibold text-orange-600 mr-2">✦</span>每日用餐人數統計、管理與訂餐。</li>
+                            <li><span class="font-semibold text-orange-600 mr-2">✦</span>菜單審核、協調與公告。</li>
+                            <li><span class="font-semibold text-orange-600 mr-2">✦</span>午餐費用計算、收繳與補助申請。</li>
+                            <li><span class="font-semibold text-orange-600 mr-2">✦</span>每日餐點驗收、測溫與留樣紀錄。</li>
+                            <li><span class="font-semibold text-orange-600 mr-2">✦</span>協調配餐流程與處理突發狀況。</li>
+                            <li><span class="font-semibold text-orange-600 mr-2">✦</span>擔任廠商、師生、家長間的溝通橋樑。</li>
+                            <li><span class="font-semibold text-orange-600 mr-2">✦</span>協助推廣營養教育。</li>
+                        </ul>
+                        <p class="mt-4 pt-4 border-t border-gray-200 text-sm font-medium text-gray-700">承辦人：呂小姐 / 分機：9353</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 mt-auto">
+                        <button id="lunch-helper-btn" class="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors duration-300 font-semibold">✨ AI 菜單/食安小幫手</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 mt-12">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-white">
+            <p>發布單位: 學務處 | 聯絡分機: 9305</p>
+            <p class="mt-1 text-sm text-gray-400">&copy; 2025 國立展賦大學 學務處版權所有</p>
+        </div>
+    </footer>
+
+    <!-- All Modals Below -->
+    
+    <!-- Club Registration Modal -->
+    <div id="club-registration-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="club-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 體育組社團報名</h3>
+                    <button id="close-club-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4 text-gray-700 space-y-4">
+                    <p>對運動充滿熱情嗎？歡迎加入我們的運動社團！請依下列步驟完成報名：</p>
+                    <ol class="list-decimal list-inside space-y-2 bg-gray-50 p-4 rounded-md">
+                        <li>點擊下方按鈕，下載「<strong>運動社團報名表</strong>」(Word 檔案)。</li>
+                        <li>列印並填寫表單中的個人資料，並勾選想參加的社團。</li>
+                        <li>將填寫好的表單繳交至體育組林組長處，即完成報名。</li>
+                    </ol>
+                    <p>各社團的甄選或開課資訊將另行通知，敬請期待！</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg text-center">
+                <button id="download-club-form-btn" class="w-full md:w-auto px-6 py-3 bg-green-600 text-white font-bold rounded-lg shadow-lg hover:bg-green-700 transform hover:scale-105 transition-all duration-300">
+                    下載報名表 (Word檔)
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Eco Helper Modal -->
+    <div id="eco-helper-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="eco-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 環保知識小幫手</h3>
+                    <button id="close-eco-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <!-- Tabs -->
+                <div class="border-b border-gray-200 mt-4">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button id="eco-qna-tab" class="tab-btn active">環保問答</button>
+                        <button id="eco-challenge-tab" class="tab-btn">分類挑戰</button>
+                    </nav>
+                </div>
+
+                <!-- Q&A Content -->
+                <div id="eco-qna-content" class="mt-4">
+                    <p class="text-sm text-gray-600 mb-3">有任何關於環保、回收、節能的問題嗎？<br>問問 AI 環保小老師吧！</p>
+                    <textarea id="eco-question-input" class="w-full h-24 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition" placeholder="例如：寶特瓶回收前為什麼要先壓扁？"></textarea>
+                </div>
+
+                <!-- Challenge Content -->
+                <div id="eco-challenge-content" class="mt-4 hidden text-center">
+                     <p class="text-sm text-gray-600 mb-3">準備好接受垃圾分類挑戰了嗎？<br>點擊下方按鈕，看看 AI 會出什麼題目！</p>
+                     <button id="generate-challenge-btn" class="px-6 py-2 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors duration-300">給我一個挑戰！</button>
+                </div>
+
+                <div id="eco-loader" class="mt-4 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-green-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 思考中...</p>
+                </div>
+                <div id="eco-response" class="mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[150px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed"></div>
+            </div>
+            <div id="eco-qna-footer" class="bg-gray-50 px-6 py-4 rounded-b-lg">
+                <button id="submit-eco-question-btn" class="w-full px-4 py-2 bg-green-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-300 disabled:bg-gray-400">
+                    送出問題
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vision Health Helper Modal -->
+    <div id="vision-helper-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="vision-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 視力保健小幫手</h3>
+                    <button id="close-vision-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <!-- Tabs -->
+                <div class="border-b border-gray-200 mt-4">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button id="vision-info-tab" class="tab-btn active">保健重點</button>
+                        <button id="vision-challenge-tab" class="tab-btn">護眼挑戰</button>
+                    </nav>
+                </div>
+
+                <!-- Info Content -->
+                <div id="vision-info-content" class="mt-4 text-gray-700 space-y-3 max-h-[60vh] overflow-y-auto">
+                    <h4 class="text-lg font-bold text-red-600">愛眼守則，eye你唷！</h4>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>用眼3010：</strong>近距離用眼每30分鐘，就要休息10分鐘，看看遠方。</li>
+                        <li><strong>正確姿勢：</strong>讀書寫字時，腰桿挺直，眼睛與書本保持35-45公分距離。</li>
+                        <li><strong>充足光線：</strong>光線要充足且均勻，避免在太亮或太暗的地方看東西。</li>
+                        <li><strong>戶外活動：</strong>每天至少2小時的戶外活動，讓眼睛多接觸自然光，可以預防近視喔！</li>
+                        <li><strong>均衡飲食：</strong>多吃深綠色蔬菜（如菠菜、花椰菜）和橘黃色蔬果（如胡蘿蔔、南瓜），補充葉黃素。</li>
+                        <li><strong>螢幕設定：</strong>使用電子產品時，螢幕亮度要適中，並保持適當距離。</li>
+                        <li><strong>定期檢查：</strong>每年定期接受視力檢查，及早發現問題，及早治療。</li>
+                    </ul>
+                </div>
+
+                <!-- Challenge Content -->
+                <div id="vision-challenge-content" class="mt-4 hidden text-center">
+                     <p class="text-sm text-gray-600 mb-3">來挑戰看看你是不是護眼小達人！<br>點擊下方按鈕，讓 AI 老師出題考考你！</p>
+                     <button id="generate-vision-challenge-btn" class="px-6 py-2 bg-amber-500 text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors duration-300">給我一個挑戰！</button>
+                </div>
+
+                <div id="vision-loader" class="mt-4 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-red-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 老師出題中...</p>
+                </div>
+                <div id="vision-response" class="mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[150px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Award Registration Modal -->
+    <div id="award-registration-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="award-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 朝會頒獎登記與證明</h3>
+                    <button id="close-award-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4 text-gray-700 space-y-4">
+                    <p>為利訓育組統計朝會公開頒獎名單，請需要表揚的同學，依下列步驟辦理：</p>
+                    <ol class="list-decimal list-inside space-y-2 bg-gray-50 p-4 rounded-md">
+                        <li>點擊下方按鈕，下載「<strong>朝會頒獎登記表</strong>」(Word 檔案)。</li>
+                        <li>列印並填寫表單中的學生姓名、班級、獎項等資訊。</li>
+                        <li>將填寫好的表單，連同您的「<strong>獎狀正本</strong>」，一同繳交至訓育組。</li>
+                    </ol>
+                    <p>訓育組收到您的登記表與獎狀後，將會為您安排最近一次的學生朝會進行公開頒獎表揚。</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg text-center">
+                <button id="download-word-form-btn" class="w-full md:w-auto px-6 py-3 bg-green-600 text-white font-bold rounded-lg shadow-lg hover:bg-green-700 transform hover:scale-105 transition-all duration-300">
+                    下載登記表單 (Word檔)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lunch Helper Modal -->
+    <div id="lunch-helper-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="lunch-helper-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ AI 菜單/食安小幫手</h3>
+                    <button id="close-lunch-helper-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4">
+                    <label for="lunch-helper-task" class="block text-sm font-medium text-gray-700">請選擇需要的協助：</label>
+                    <select id="lunch-helper-task" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                        <option value="menu">產生菜單建議</option>
+                        <option value="safety">生成食安檢查清單</option>
+                    </select>
+                </div>
+                <div id="lunch-menu-inputs" class="mt-4 space-y-3">
+                     <textarea id="lunch-menu-request" class="w-full h-24 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition" placeholder="請輸入菜單需求，例如：&#10;- 設計一份國小中年級的午餐菜單&#10;- 主菜希望是雞肉&#10;- 需包含一道深色蔬菜"></textarea>
+                </div>
+                 <div id="lunch-safety-inputs" class="mt-4 space-y-3 hidden">
+                     <p class="text-sm text-gray-600">AI 將為您生成一份適用於學校午餐驗收的食品安全檢查清單。</p>
+                </div>
+                <div id="lunch-helper-loader" class="mt-4 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-orange-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 營養師思考中...</p>
+                </div>
+                <div id="lunch-helper-response" class="relative mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
+                    <button id="copy-lunch-helper-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2-2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg></button>
+                    <div id="lunch-helper-text-content"></div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg">
+                <button id="submit-lunch-helper-question" class="w-full px-4 py-2 bg-orange-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors duration-300 disabled:bg-gray-400">
+                    生成結果
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- First Aid Guide Modal -->
+    <div id="first-aid-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="first-aid-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ AI 傷病處理指南</h3>
+                    <button id="close-first-aid-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4">
+                    <p class="text-sm text-gray-600 mb-3">請簡述您遇到的傷病狀況，AI 將提供初步的處理建議。本服務無法取代專業醫療判斷。</p>
+                    <textarea id="first-aid-question" class="w-full h-28 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition" placeholder="例如：打球的時候不小心扭到腳踝，現在有點腫起來。或是：被紙張割到手指流血了。"></textarea>
+                </div>
+                <div id="first-aid-loader" class="mt-4 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-teal-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 護理師建議中...</p>
+                </div>
+                <div id="first-aid-response" class="mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[100px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed"></div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg">
+                <button id="submit-first-aid-question" class="w-full px-4 py-2 bg-teal-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-colors duration-300 disabled:bg-gray-400">
+                    取得處理建議
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- General AI Modal -->
+    <div id="general-ai-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="general-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-2xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ AI 全校萬事通</h3>
+                    <button id="close-general-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4">
+                    <p class="text-sm text-gray-600 mb-3">請告訴我您遇到的問題，AI 將為您分析並導引至最適合的單位。</p>
+                    <textarea id="general-user-question" class="w-full h-28 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="例如：我想報名課後班。或是：教室的電燈壞了，要找誰修理？"></textarea>
+                </div>
+                <div id="general-loader" class="mt-4 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 導覽員分析中...</p>
+                </div>
+                <div id="general-ai-response" class="mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[100px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed"></div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg">
+                <button id="submit-general-question" class="w-full px-4 py-2 bg-blue-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300 disabled:bg-gray-400">
+                    送出問題
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Drafter Modal -->
+    <div id="announcement-drafter-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="announcement-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-3xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 公告草擬小幫手</h3>
+                    <button id="close-announcement-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="announcement-subject" class="block text-sm font-medium text-gray-700">公告主題</label>
+                        <input type="text" id="announcement-subject" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="例如：校慶園遊會交通管制">
+                    </div>
+                    <div>
+                        <label for="announcement-audience" class="block text-sm font-medium text-gray-700">目標對象</label>
+                        <input type="text" id="announcement-audience" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="例如：全校師生、家長">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="announcement-info" class="block text-sm font-medium text-gray-700">重要資訊 (請條列式輸入)</label>
+                        <textarea id="announcement-info" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="時間：10/25 上午8點至下午4點&#10;管制區域：校門口周邊道路&#10;替代停車場：第二運動場"></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="announcement-tone" class="block text-sm font-medium text-gray-700">公告語氣</label>
+                        <select id="announcement-tone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <option>正式</option>
+                            <option>溫馨提醒</option>
+                        </select>
+                    </div>
+                </div>
+                 <div id="announcement-loader" class="mt-6 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 秘書草擬中...</p>
+                </div>
+                <div id="announcement-response" class="relative mt-6 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
+                     <button id="copy-announcement-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg></button>
+                    <div id="announcement-text-content"></div>
+                    <!-- New TTS Section -->
+                    <div id="announcement-audio-section" class="mt-4 pt-4 border-t border-gray-200 hidden">
+                        <h4 class="text-sm font-semibold text-gray-700 mb-2">語音廣播預覽</h4>
+                        <div id="audio-loader" class="text-center hidden py-4">
+                            <svg class="animate-spin h-6 w-6 text-indigo-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <p class="text-xs text-gray-500 mt-1">AI 語音合成中...</p>
+                        </div>
+                        <audio id="announcement-audio-player" controls class="w-full hidden"></audio>
+                        <button id="generate-audio-btn" class="mt-2 w-full px-4 py-2 bg-indigo-500 text-white text-sm font-medium rounded-md shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-300">
+                            📢 生成語音廣播 (TTS)
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg">
+                <button id="submit-announcement" class="w-full px-4 py-2 bg-blue-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300 disabled:bg-gray-400">
+                    生成公告草稿
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Training Plan Modal -->
+    <div id="training-plan-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="training-plan-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-3xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 個人化運動訓練計畫</h3>
+                    <button id="close-training-plan-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="training-sport" class="block text-sm font-medium text-gray-700">運動項目</label>
+                        <input type="text" id="training-sport" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500" placeholder="例如：籃球、慢跑">
+                    </div>
+                     <div>
+                        <label for="training-level" class="block text-sm font-medium text-gray-700">目前體能水平</label>
+                        <select id="training-level" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                            <option>新手 (幾乎沒運動)</option>
+                            <option selected>中階 (每週運動1-2次)</option>
+                            <option>進階 (規律運動)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="training-goal" class="block text-sm font-medium text-gray-700">訓練目標</label>
+                        <select id="training-goal" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                            <option>增強體能</option>
+                            <option>減重減脂</option>
+                            <option>技巧提升</option>
+                            <option>賽前準備</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="training-days" class="block text-sm font-medium text-gray-700">每週訓練天數</label>
+                         <select id="training-days" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                            <option>2-3 天</option>
+                            <option>4-5 天</option>
+                        </select>
+                    </div>
+                </div>
+                 <div id="training-plan-loader" class="mt-6 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-purple-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 教練設計菜單中...</p>
+                </div>
+                <div id="training-plan-response" class="mt-6 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed"></div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg">
+                <button id="submit-training-plan" class="w-full px-4 py-2 bg-purple-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-300 disabled:bg-gray-400">
+                    產生訓練計畫
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Press Release Generator Modal (Replaced Commendation) -->
+    <div id="press-release-generator-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="press-release-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-3xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 新聞稿產生器</h3>
+                    <button id="close-press-release-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                     <div>
+                        <label for="event-subject" class="block text-sm font-medium text-gray-700">活動主題</label>
+                        <input type="text" id="event-subject" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="例如：第一屆校園AI藝術節">
+                    </div>
+                     <div>
+                        <label for="press-release-media" class="block text-sm font-medium text-gray-700">發布對象/媒體</label>
+                        <input type="text" id="press-release-media" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="例如：教育線記者、社區報章">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="press-release-info" class="block text-sm font-medium text-gray-700">新聞稿重點 (請條列式輸入)</label>
+                        <textarea id="press-release-info" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="活動時間：&#10;活動地點：&#10;參與對象：&#10;活動亮點：&#10;引述師長或學生的話："></textarea>
+                    </div>
+                </div>
+                <div id="press-release-loader" class="mt-4 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-yellow-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 公關專家撰寫中...</p>
+                </div>
+                <div id="press-release-response" class="relative mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
+                    <button id="copy-press-release-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg></button>
+                    <div id="press-release-text-content"></div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg">
+                <button id="submit-press-release" class="w-full px-4 py-2 bg-yellow-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300 disabled:bg-gray-400">
+                    產生新聞稿
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incident Helper Modal -->
+    <div id="incident-helper-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 hidden z-50">
+        <div id="incident-modal-content" class="relative bg-white rounded-lg shadow-xl w-full max-w-3xl modal-fade-enter">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold text-gray-800">✨ 學生事件處理小幫手</h3>
+                    <button id="close-incident-modal" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                     <div>
+                        <label for="incident-severity" class="block text-sm font-medium text-gray-700">事件輕重</label>
+                        <select id="incident-severity" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500">
+                            <option>輕微（例如：忘記帶作業）</option>
+                            <option selected>一般（例如：上課聊天）</option>
+                            <option>嚴重（例如：與同學起衝突）</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="incident-tone" class="block text-sm font-medium text-gray-700">溝通語氣</label>
+                        <select id="incident-tone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500">
+                            <option>關懷建議</option>
+                            <option>正式記錄</option>
+                            <option>溫和勸導</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="incident-description" class="block text-sm font-medium text-gray-700">事件簡述</label>
+                        <textarea id="incident-description" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500" placeholder="請簡述發生的人、事、時、地、物。例如：王小明今天在第三節數學課時，未經允許離開座位，並與鄰座同學聊天，影響上課秩序。"></textarea>
+                    </div>
+                </div>
+                <div id="incident-loader" class="mt-4 text-center hidden">
+                     <svg class="animate-spin h-8 w-8 text-green-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8-0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="text-sm text-gray-500 mt-2">AI 輔導老師建議中...</p>
+                </div>
+                <div id="incident-response" class="relative mt-4 p-4 bg-gray-50 rounded-md text-gray-700 min-h-[200px] max-h-[40vh] overflow-y-auto border border-gray-200 hidden leading-relaxed">
+                    <button id="copy-incident-btn" title="複製內文" class="absolute top-2 right-2 p-1.5 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg></button>
+                    <div id="incident-text-content"></div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-lg">
+                <button id="submit-incident" class="w-full px-4 py-2 bg-green-600 text-white text-base font-medium rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-300 disabled:bg-gray-400">
+                    產生處理建議
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module">
+        // --- Common Elements & Functions ---
+        
+        // ***************************************************************
+        // ** 重要提示：                                              **
+        // ** API 金鑰已設定為您提供的值。                             **
+        // ***************************************************************
+        const apiKey = "AIzaSyCQmx4CBBBhjU43uuEr9WmTrk51ZPSxPRs"; 
+
+        async function callGeminiAPI(userQuery, systemPrompt) {
+            if (apiKey === "") {
+                return "AI 功能錯誤：尚未設定 API 金鑰。";
+            }
+            
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+                generationConfig: {
+                    temperature: 0.7, 
+                    topK: 1,
+                    topP: 1,
+                    maxOutputTokens: 2048,
+                }
+            };
+
+            let response;
+            let attempts = 0;
+            const maxAttempts = 5;
+            let delay = 1000;
+
+            while (attempts < maxAttempts) {
+                try {
+                    response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        const candidate = result.candidates?.[0];
+                        if (candidate && candidate.content?.parts?.[0]?.text) {
+                            return candidate.content.parts[0].text;
+                        } else {
+                            const safetyRating = candidate?.safetyRatings?.find(r => r.blocked);
+                            if (safetyRating) {
+                                return `抱歉，您的請求因「${safetyRating.category}」因素而被過濾，無法提供回答。請嘗試調整您的輸入內容。`;
+                            }
+                            throw new Error("從 API 回應中找不到有效的內容。");
+                        }
+                    } else if (response.status === 429) {
+                        console.warn(`API rate limit exceeded. Retrying in ${delay / 1000}s...`);
+                    } else {
+                        const errorBody = await response.text();
+                        console.error("API Error:", errorBody);
+                        throw new Error(`API 請求失敗，狀態碼: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error(`Attempt ${attempts + 1} failed:`, error);
+                    if (attempts + 1 === maxAttempts) {
+                        throw error;
+                    }
+                }
+                
+                await new Promise(resolve => setTimeout(resolve, delay));
+                delay *= 2; // Exponential backoff
+                attempts++;
+            }
+            throw new Error("API 請求重試多次後仍然失敗。");
+        }
+
+        async function callGeminiTtsAPI(text) {
+             if (apiKey === "") {
+                throw new Error("TTS 功能錯誤：尚未設定 API 金鑰。");
+            }
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+            const payload = {
+                model: "gemini-2.5-flash-preview-tts",
+                contents: [{ parts: [{ text: `請以標準、清晰的台灣口音，用平穩的語速朗讀以下公告：${text}` }] }],
+                generationConfig: { responseModalities: ["AUDIO"] },
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error(`TTS API 請求失敗，狀態碼: ${response.status}`);
+
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioData = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType;
+
+                if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                    const sampleRateMatch = mimeType.match(/rate=(\d+)/);
+                    const sampleRate = sampleRateMatch ? parseInt(sampleRateMatch[1], 10) : 24000;
+                    return { audioData, sampleRate };
+                } else {
+                    throw new Error("從 TTS API 回應中找不到有效的音訊資料。");
+                }
+            } catch (error) {
+                console.error("TTS API call failed:", error);
+                throw error;
+            }
+        }
+        
+        const formatResponse = (text) => text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/(\r\n|\n|\r)/gm, "<br>");
+
+        function setupCopyButton(copyBtnId, textContentId, originalIcon, checkedIcon) {
+            const copyBtn = document.getElementById(copyBtnId);
+            const textContent = document.getElementById(textContentId);
+            
+            if (!copyBtn || !textContent) return;
+
+            copyBtn.addEventListener('click', () => {
+                const textToCopy = textContent.innerText;
+                const textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    copyBtn.innerHTML = checkedIcon;
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalIcon;
+                    }, 2000);
+                } catch (err) {
+                    console.error('無法複製文字: ', err);
+                }
+                document.body.removeChild(textArea);
+            });
+        }
+        
+        const clipboardIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2-0 0 0-2 2V14a2 2-0 0 0 2 2h10a2 2-0 0 0 2-2V3.5a2 2-0 0 0-2-2h-1v1h1a1 1-0 0 1 1 1V14a1 1-0 0 1-1-1H3a1 1-0 0 1-1-1V3.5a1 1-0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5-0 0 0 6.5 4h3A1.5 1.5-0 0 0 11 2.5v-1A1.5 1.5-0 0 0 9.5 0h-3z"/></svg>`;
+        const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022z"/></svg>`;
+
+        function base64ToArrayBuffer(base64) {
+            const binaryString = window.atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        function pcmToWav(pcmData, sampleRate) {
+            const numChannels = 1;
+            const bitsPerSample = 16;
+            const blockAlign = (numChannels * bitsPerSample) / 8;
+            const byteRate = sampleRate * blockAlign;
+            const dataSize = pcmData.length * (bitsPerSample / 8);
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+            
+            function writeString(view, offset, string) {
+                for (let i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            }
+
+            writeString(view, 0, 'RIFF');
+            view.setUint32(4, 36 + dataSize, true);
+            writeString(view, 8, 'WAVE');
+            writeString(view, 12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, bitsPerSample, true);
+            writeString(view, 36, 'data');
+            view.setUint32(40, dataSize, true);
+
+            let offset = 44;
+            for (let i = 0; i < pcmData.length; i++, offset += 2) {
+                view.setInt16(offset, pcmData[i], true);
+            }
+
+            return new Blob([view], { type: 'audio/wav' });
+        }
+
+
+        // --- General AI Helper Modal Logic ---
+        const generalModal = document.getElementById('general-ai-modal');
+        const generalModalContent = document.getElementById('general-modal-content');
+        const openGeneralModalBtn = document.getElementById('general-ai-btn');
+        const closeGeneralModalBtn = document.getElementById('close-general-modal');
+        const submitGeneralBtn = document.getElementById('submit-general-question');
+        const generalResponseDiv = document.getElementById('general-ai-response');
+        const generalLoader = document.getElementById('general-loader');
+        const generalQuestionInput = document.getElementById('general-user-question');
+
+        const openGeneralModal = () => {
+            generalModal.classList.remove('hidden');
+            setTimeout(() => { generalModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        };
+        const closeGeneralModal = () => {
+            generalModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { generalModal.classList.add('hidden'); }, 200);
+        };
+        
+        openGeneralModalBtn.addEventListener('click', () => {
+            generalQuestionInput.value = '';
+            generalResponseDiv.innerHTML = '';
+            generalResponseDiv.classList.add('hidden');
+            submitGeneralBtn.disabled = false;
+            openGeneralModal();
+        });
+        closeGeneralModalBtn.addEventListener('click', closeGeneralModal);
+        generalModal.addEventListener('click', (e) => { if (e.target === generalModal) { closeGeneralModal(); }});
+
+        submitGeneralBtn.addEventListener('click', async () => {
+            const userQuery = generalQuestionInput.value;
+            if (!userQuery.trim()) {
+                generalResponseDiv.innerHTML = '<p class="text-red-500">請輸入您的問題。</p>';
+                generalResponseDiv.classList.remove('hidden');
+                return;
+            }
+
+            generalLoader.classList.remove('hidden');
+            submitGeneralBtn.disabled = true;
+            generalResponseDiv.classList.add('hidden');
+            generalQuestionInput.disabled = true;
+            
+            // Context for all departments
+            const studentAffairsContext = `\n--- 學務處業務職掌 ---\n` +
+                `學務主任 (蔡主任 / 9305): 綜理學務處業務\n`+
+                `生教組 (吳組長 / 9302): 學生上放學安全, 急難扶助, 學生偶發事件處理, 生活禮儀, 服裝儀容, 校外生活管理, 集會輔導, 獎懲申訴, 門禁管理, 中輟生通報\n` +
+                `訓育組 (劉組長 / 9304): 學生自治活動, 生活環保交通安全教育, 民主法治教育,防災演習, 品德考查, 壁報出刊, 模範生表揚, 社區活動, 畢業紀念冊, 兒童朝會, 失物拾遺, 兒童卡\n` +
+                `體育組 (林組長 / 9301): 體育競賽培訓, 運動場所設備管理, 學生社團, 體能測驗, 運動會, 校慶, 運動選手培訓, 校外教學\n` +
+                `衛生組 (李組長 / 9303): 衛生保健工作, 整潔活動, 資源回收, 環境衛生教育, 能源教育, 緊急醫療照護, 學生午餐, 環境教育, 假日多元課後社團(週六才藝班), 學生平安保險\n` +
+                `健康中心 (廖護理師,王護理師 / 9311,9312): 緊急傷病處理, 健康管理與篩檢, 特殊疾病個案管理, 傳染病防治, 預防接種, 健康促進活動\n` +
+                `午餐秘書 (呂小姐 / 9353): 午餐招標, 用餐人數統計, 菜單審核, 午餐費用, 餐點驗收, 營養教育\n`;
+            
+            const generalAffairsContext = `\n--- 總務處業務職掌 ---\n` +
+                `總務主任 (盧主任 / 9505): 綜理總務處業務\n` +
+                `出納組 (吳組長 / 9501): 現金出納, 保管, 登記; 各項費用收付與保管; 員工薪資發放與代扣; 帳務登錄等\n` +
+                `事務組 (簡組長 / 9502): 學校物品管理與採購; 校舍與教室修繕工程; 環境綠美化; 課桌椅調配; 門禁管理; 水電管理; 工友管理; 大型垃圾處理\n` +
+                `文書組 (林組長 / 9503): 學校公文收發, 建檔, 管理; 會議通知與紀錄; 印信典守; 檔案室管理\n` +
+                `幹事 (鍾組長 / 9504): 財產管理; 校園場地租借; 員工勞健保與勞退業務; 停車場管理\n`;
+
+            const academicAffairsContext = `\n--- 教務處業務職掌 ---\n` +
+                `教務主任 (唐主任 / 9205): 綜理教務處業務\n`+
+                `教學組 (湛組長 / 9201): 教師進修, 編排日課表, 課務安排, 定期評量, 調代課, 學藝競賽, 作業查閱, 補救教學, 週一至週五課後班\n` +
+                `資訊組 (朱組長 / 9202): 資訊教育, 軟硬體建置管理, 校務行政電腦化, 學校網頁管理, 電腦教室管理\n` +
+                `課程組 (吳組長 / 9203): 學校課程規劃, 編教材, 編行事曆, 教師進修, 教科書事宜, 校務評鑑\n` +
+                `註冊組 (紀組長 / 9204): 圖書館業務, 編輯校刊, 閱讀活動, 學生註冊, 編班, 轉休學, 學籍管理, 核發畢業證書, 獎助學金申請, 中輟生通報\n` +
+                `雙語組 (呂組長 / 9206): 國際教育, 雙語實驗學校計畫, 英語團隊統籌\n`;
+
+            const guidanceAffairsContext = `\n--- 輔導處業務職掌 ---\n` +
+                `輔導主任 (鄭主任 / 9405): 綜理輔導處業務\n` +
+                `輔導組 (蘇組長 / 9401): 生涯輔導, 性平教育, 情緒教育, 個別諮商, 偏差行為輔導, 親職教育, 家庭訪視, 認輔業務, 心理測驗\n` +
+                `特教組 (柳組長 / 9402): 特殊學生課程與照護, 特教生鑑定與安置, 特教宣導, 資優教育, 提早入學鑑定, 語言治療, 週一至週五課後才藝班\n` +
+                `社服組 (簡組長 / 9403): 新生迎新, 多元文化教育, 新住民業務, 學習扶助, 志工服務, 樂齡中心\n`;
+
+            const systemPrompt = `你是一位專業、友善且資訊全面的大學行政 AI 導覽員。你的核心任務是根據下方提供的「學務處」、「總務處」、「教務處」與「輔導處」這四個處室的業務職掌資料，為使用者提供最精準的單位指引。
+
+                **指引規則：**
+                1.  **優先處理特殊規則：** 在比對一般業務前，請優先檢查問題是否符合以下特殊規則：
+                    * **課後班問題：** 必須釐清是哪種課後班。
+                        * **週一至週五的普通課後班** -> 教務處「教學組」(湛組長/9201)。
+                        * **週六的才藝班** -> 學務處「衛生組」(李組長/9303)。
+                        * **週一至週五的課後「才藝」班** -> 輔導處「特教組」(柳組長/9402)。
+                    * **環境清潔問題：**
+                        * **一般校園環境打掃、整潔活動** -> 學務處「衛生組」(李組長/9303)。
+                        * **大型垃圾、或需要請工友處理的清潔問題** -> 總務處「事務組」(簡組長/9502)。
+
+                2.  **全面比對業務職掌：** 如果問題不符合上述特殊規則，請全面比對四個處室的所有組別業務，找出最符合的單位。
+                3.  **提供精準到組的答案：** 你的回答**必須**明確指出應聯繫的**處室**、**組別**、**承辦人**與**分機**。
+                    * 例如：**問題：「教室電燈壞了」 -> 回答：「關於電燈壞掉的問題，這屬於校園設施的維修，請您聯繫總務處的「事務組」簡組長（分機 9502），他們負責水電管理與修繕。」**
+                    * 例如：**問題：「我想申請獎學金」 -> 回答：「關於獎學金申請事宜，請您聯繫教務處的「註冊組」紀組長（分機 9204）。」**
+
+                4.  **無法判斷時的處理：** 如果問題內容非常模糊，或完全不屬於這四個處室的業務，請建議他們聯繫業務最廣的**學務處辦公室（蔡主任 / 分機 9305）**進行初步洽詢。
+                5.  你的回答應該要簡潔、明確、有幫助，並且語氣親切。請用繁體中文回答。`;
+                
+            const fullPrompt = `這是學校四個重要處室的業務資料：\n${studentAffairsContext}\n${generalAffairsContext}\n${academicAffairsContext}\n${guidanceAffairsContext}\n\n現在，請根據上述所有資料，並嚴格遵守你的指引規則，回答這位使用者的問題：\n\n「${userQuery}」`;
+
+            try {
+                const result = await callGeminiAPI(fullPrompt, systemPrompt);
+                generalResponseDiv.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for general helper:", error);
+                generalResponseDiv.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
+            } finally {
+                generalLoader.classList.add('hidden');
+                generalResponseDiv.classList.remove('hidden');
+                submitGeneralBtn.disabled = false;
+                generalQuestionInput.disabled = false;
+            }
+        });
+        
+        // --- Announcement Drafter Modal Logic ---
+        const announcementModal = document.getElementById('announcement-drafter-modal');
+        const announcementModalContent = document.getElementById('announcement-modal-content');
+        const openAnnouncementModalBtn = document.getElementById('announcement-drafter-btn');
+        const closeAnnouncementModalBtn = document.getElementById('close-announcement-modal');
+        const submitAnnouncementBtn = document.getElementById('submit-announcement');
+        const announcementResponseDiv = document.getElementById('announcement-response');
+        const announcementTextContent = document.getElementById('announcement-text-content');
+        const announcementLoader = document.getElementById('announcement-loader');
+        const announcementAudioSection = document.getElementById('announcement-audio-section');
+        const generateAudioBtn = document.getElementById('generate-audio-btn');
+        const audioLoader = document.getElementById('audio-loader');
+        const audioPlayer = document.getElementById('announcement-audio-player');
+
+
+        const openAnnouncementModal = () => {
+            announcementModal.classList.remove('hidden');
+            setTimeout(() => { announcementModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        };
+        const closeAnnouncementModal = () => {
+            announcementModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { announcementModal.classList.add('hidden'); }, 200);
+        };
+
+        if (openAnnouncementModalBtn) {
+            openAnnouncementModalBtn.addEventListener('click', openAnnouncementModal);
+        }
+        closeAnnouncementModalBtn.addEventListener('click', closeAnnouncementModal);
+        announcementModal.addEventListener('click', (e) => { if (e.target === announcementModal) { closeAnnouncementModal(); }});
+        setupCopyButton('copy-announcement-btn', 'announcement-text-content', clipboardIcon, checkIcon);
+
+        submitAnnouncementBtn.addEventListener('click', async () => {
+            const subject = document.getElementById('announcement-subject').value;
+            const audience = document.getElementById('announcement-audience').value;
+            const info = document.getElementById('announcement-info').value;
+            const tone = document.getElementById('announcement-tone').value;
+
+            if (!subject.trim() || !info.trim()) {
+                announcementTextContent.innerHTML = '<p class="text-red-500">請填寫「公告主題」和「重要資訊」。</p>';
+                announcementResponseDiv.classList.remove('hidden');
+                return;
+            }
+
+            announcementLoader.classList.remove('hidden');
+            submitAnnouncementBtn.disabled = true;
+            announcementResponseDiv.classList.add('hidden');
+            announcementAudioSection.classList.add('hidden');
+            audioPlayer.classList.add('hidden');
+            generateAudioBtn.classList.remove('hidden');
+            generateAudioBtn.innerText = "📢 生成語音廣播 (TTS)";
+
+
+            const systemPrompt = `你是一位在台灣的學校中，經驗豐富、思慮周全的學務主任。你的任務是根據提供的要點，草擬一份結構完整、用詞精準、格式正確的正式公告。請用繁體中文撰寫。`;
+            const userQuery = `請草擬一份學校公告，資訊如下：\n- 公告主題：${subject}\n- 目標對象：${audience}\n- 重要資訊要點：\n${info}\n- 公告語氣：${tone}\n\n請生成一份包含主旨、說明、發布單位的完整公告。`;
+
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                announcementTextContent.innerHTML = formatResponse(result.replace(/\n/g, '<br>'));
+                if (!result.startsWith("AI 功能錯誤")) {
+                    announcementAudioSection.classList.remove('hidden'); 
+                }
+            } catch (error) {
+                console.error("Gemini API call failed for announcement drafter:", error);
+                announcementTextContent.innerText = '抱歉，現在無法產生公告，請稍後再試。';
+            } finally {
+                announcementLoader.classList.add('hidden');
+                announcementResponseDiv.classList.remove('hidden');
+                submitAnnouncementBtn.disabled = false;
+            }
+        });
+
+        generateAudioBtn.addEventListener('click', async () => {
+            const textToSpeak = announcementTextContent.innerText;
+            if (!textToSpeak) return;
+
+            audioLoader.classList.remove('hidden');
+            generateAudioBtn.disabled = true;
+
+            try {
+                const { audioData, sampleRate } = await callGeminiTtsAPI(textToSpeak);
+                const pcmBuffer = base64ToArrayBuffer(audioData);
+                const pcm16 = new Int16Array(pcmBuffer);
+                const wavBlob = pcmToWav(pcm16, sampleRate);
+                const audioUrl = URL.createObjectURL(wavBlob);
+                
+                audioPlayer.src = audioUrl;
+                audioPlayer.classList.remove('hidden');
+                generateAudioBtn.classList.add('hidden');
+
+            } catch (error) {
+                console.error("TTS generation failed:", error);
+                generateAudioBtn.innerText = "語音生成失敗，請重試";
+            } finally {
+                audioLoader.classList.add('hidden');
+                generateAudioBtn.disabled = false;
+            }
+        });
+
+        // --- Training Plan Modal Logic ---
+        const trainingModal = document.getElementById('training-plan-modal');
+        const trainingModalContent = document.getElementById('training-plan-modal-content');
+        const openTrainingModalBtn = document.getElementById('training-plan-btn');
+        const closeTrainingModalBtn = document.getElementById('close-training-plan-modal');
+        const submitTrainingBtn = document.getElementById('submit-training-plan');
+        const trainingResponseDiv = document.getElementById('training-plan-response');
+        const trainingLoader = document.getElementById('training-plan-loader');
+        
+        const openTrainingModal = () => {
+            trainingModal.classList.remove('hidden');
+            setTimeout(() => { trainingModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        };
+        const closeTrainingModal = () => {
+            trainingModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { trainingModal.classList.add('hidden'); }, 200);
+        };
+
+        if(openTrainingModalBtn) {
+            openTrainingModalBtn.addEventListener('click', openTrainingModal);
+        }
+        closeTrainingModalBtn.addEventListener('click', closeTrainingModal);
+        trainingModal.addEventListener('click', (e) => { if (e.target === trainingModal) { closeTrainingModal(); }});
+
+        submitTrainingBtn.addEventListener('click', async () => {
+            const sport = document.getElementById('training-sport').value;
+            const level = document.getElementById('training-level').value;
+            const goal = document.getElementById('training-goal').value;
+            const days = document.getElementById('training-days').value;
+
+            if (!sport.trim()) {
+                trainingResponseDiv.innerHTML = '<p class="text-red-500">請填寫「運動項目」。</p>';
+                trainingResponseDiv.classList.remove('hidden');
+                return;
+            }
+
+            trainingLoader.classList.remove('hidden');
+            submitTrainingBtn.disabled = true;
+            trainingResponseDiv.classList.add('hidden');
+            
+            const systemPrompt = `你是一位經驗豐富且持有證照的運動教練與健身專家。你的任務是根據使用者提供的條件，設計一份個人化、安全且有效的週訓練計畫。計畫應結構清晰、易於遵循，並包含完整的暖身與緩和運動說明。務必在回答的結尾加上免責聲明：「在開始任何新的運動計畫前，請務必諮詢醫師或專業人士。本計畫僅為建議，請依個人身體狀況調整。」請用繁體中文回答。`;
+            const userQuery = `請為我設計一份為期一週的運動訓練計畫，我的資料如下：\n- 運動項目：${sport}\n- 目前體能水平：${level}\n- 主要訓練目標：${goal}\n- 每週希望訓練天數：${days}\n\n請提供每日的詳細訓練內容（包含具體動作、次數或時間），並規劃休息日。計畫應包含訓練前的暖身與訓練後的緩和伸展。`;
+
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                trainingResponseDiv.innerHTML = formatResponse(result);
+            } catch (error)
+            {
+                console.error("Gemini API call failed for training planner:", error);
+                trainingResponseDiv.innerText = '抱歉，現在無法產生訓練計畫，請稍後再試。';
+            } finally {
+                trainingLoader.classList.add('hidden');
+                trainingResponseDiv.classList.remove('hidden');
+                submitTrainingBtn.disabled = false;
+            }
+        });
+        
+        // --- Press Release Generator Modal Logic (Replaced Commendation) ---
+        const pressReleaseModal = document.getElementById('press-release-generator-modal');
+        const pressReleaseModalContent = document.getElementById('press-release-modal-content');
+        const openPressReleaseBtn = document.getElementById('press-release-generator-btn');
+        const closePressReleaseModalBtn = document.getElementById('close-press-release-modal');
+        const submitPressReleaseBtn = document.getElementById('submit-press-release');
+        const pressReleaseResponseDiv = document.getElementById('press-release-response');
+        const pressReleaseTextContent = document.getElementById('press-release-text-content');
+        const pressReleaseLoader = document.getElementById('press-release-loader');
+        
+        const openPressReleaseModal = () => {
+            pressReleaseModal.classList.remove('hidden');
+            setTimeout(() => { pressReleaseModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        };
+        const closePressReleaseModal = () => {
+            pressReleaseModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { pressReleaseModal.classList.add('hidden'); }, 200);
+        };
+
+        if(openPressReleaseBtn) {
+            openPressReleaseBtn.addEventListener('click', openPressReleaseModal);
+        }
+        closePressReleaseModalBtn.addEventListener('click', closePressReleaseModal);
+        pressReleaseModal.addEventListener('click', (e) => { if (e.target === pressReleaseModal) { closePressReleaseModal(); }});
+        setupCopyButton('copy-press-release-btn', 'press-release-text-content', clipboardIcon, checkIcon);
+
+        submitPressReleaseBtn.addEventListener('click', async () => {
+            const subject = document.getElementById('event-subject').value;
+            const info = document.getElementById('press-release-info').value;
+            const media = document.getElementById('press-release-media').value;
+
+            if (!subject.trim() || !info.trim()) {
+                pressReleaseTextContent.innerHTML = '<p class="text-red-500">請填寫「活動主題」和「新聞稿重點」。</p>';
+                pressReleaseResponseDiv.classList.remove('hidden');
+                return;
+            }
+
+            pressReleaseLoader.classList.remove('hidden');
+            submitPressReleaseBtn.disabled = true;
+            pressReleaseResponseDiv.classList.add('hidden');
+
+            const systemPrompt = `你是一位專業的學校公共關係主任，擅長為學校活動撰寫吸引人且格式正確的新聞稿。你的文稿應該包含引人注目的標題、清晰的導言（包含人、事、時、地、物等要素）、詳盡的內文、以及校方聯絡資訊。請用繁體中文撰寫。`;
+            const userQuery = `請為一場學校活動撰寫新聞稿，資訊如下：\n- 活動主題：${subject}\n- 新聞稿重點：\n${info}\n- 希望發布的對象/媒體：${media}\n\n請生成一篇包含【即時發布】標籤、新聞標題、導言、內文、新聞聯絡人等資訊的完整新聞稿。`;
+
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                pressReleaseTextContent.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for press release generator:", error);
+                pressReleaseTextContent.innerText = '抱歉，現在無法產生新聞稿，請稍後再試。';
+            } finally {
+                pressReleaseLoader.classList.add('hidden');
+                pressReleaseResponseDiv.classList.remove('hidden');
+                submitPressReleaseBtn.disabled = false;
+            }
+        });
+
+        // --- Incident Helper Modal Logic ---
+        const incidentModal = document.getElementById('incident-helper-modal');
+        const incidentModalContent = document.getElementById('incident-modal-content');
+        const openIncidentModalBtn = document.getElementById('incident-helper-btn');
+        const closeIncidentModalBtn = document.getElementById('close-incident-modal');
+        const submitIncidentBtn = document.getElementById('submit-incident');
+        const incidentResponseDiv = document.getElementById('incident-response');
+        const incidentTextContent = document.getElementById('incident-text-content');
+        const incidentLoader = document.getElementById('incident-loader');
+
+        const openIncidentModal = () => {
+            incidentModal.classList.remove('hidden');
+            setTimeout(() => { incidentModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        };
+        const closeIncidentModal = () => {
+            incidentModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { incidentModal.classList.add('hidden'); }, 200);
+        };
+        
+        if(openIncidentModalBtn) {
+            openIncidentModalBtn.addEventListener('click', openIncidentModal);
+        }
+        closeIncidentModalBtn.addEventListener('click', closeIncidentModal);
+        incidentModal.addEventListener('click', (e) => { if (e.target === incidentModal) { closeIncidentModal(); }});
+        setupCopyButton('copy-incident-btn', 'incident-text-content', clipboardIcon, checkIcon);
+
+        submitIncidentBtn.addEventListener('click', async () => {
+            const severity = document.getElementById('incident-severity').value;
+            const tone = document.getElementById('incident-tone').value;
+            const description = document.getElementById('incident-description').value;
+
+            if (!description.trim()) {
+                incidentTextContent.innerHTML = '<p class="text-red-500">請填寫「事件簡述」。</p>';
+                incidentResponseDiv.classList.remove('hidden');
+                return;
+            }
+
+            incidentLoader.classList.remove('hidden');
+            submitIncidentBtn.disabled = true;
+            incidentResponseDiv.classList.add('hidden');
+
+            const systemPrompt = `你是一位在台灣的國中小學中，非常有經驗、具備同理心與輔導技巧的生教組長或輔導老師。你的任務是根據師長提供的學生事件描述，生成一份結構化、具體且有建設性的處理建議。內容應包含對老師的提醒、與學生的談話腳本，以及給家長的通知訊息。請務必根據要求的「溝通語氣」調整用詞。請用繁體中文撰寫。`;
+            const userQuery = `請針對以下學生事件提供處理建議：\n- 事件簡述：${description}\n- 事件輕重：${severity}\n- 希望的溝通語氣：${tone}\n\n請提供三項內容：\n1.  **給老師的狀況分析與處理建議。**\n2.  **與學生溝通的建議談話腳本。**\n3.  **給家長的通知訊息文字草稿。**`;
+            
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                incidentTextContent.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for incident helper:", error);
+                incidentTextContent.innerText = '抱歉，現在無法產生處理建議，請稍後再試。';
+            } finally {
+                incidentLoader.classList.add('hidden');
+                incidentResponseDiv.classList.remove('hidden');
+                submitIncidentBtn.disabled = false;
+            }
+        });
+        
+        // --- First Aid Guide Modal Logic ---
+        const firstAidModal = document.getElementById('first-aid-modal');
+        const firstAidModalContent = document.getElementById('first-aid-modal-content');
+        const openFirstAidModalBtn = document.getElementById('first-aid-guide-btn');
+        const closeFirstAidModalBtn = document.getElementById('close-first-aid-modal');
+        const submitFirstAidBtn = document.getElementById('submit-first-aid-question');
+        const firstAidResponseDiv = document.getElementById('first-aid-response');
+        const firstAidLoader = document.getElementById('first-aid-loader');
+        const firstAidQuestionInput = document.getElementById('first-aid-question');
+
+        const openFirstAidModal = () => {
+            firstAidModal.classList.remove('hidden');
+            setTimeout(() => { firstAidModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        };
+        const closeFirstAidModal = () => {
+            firstAidModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { firstAidModal.classList.add('hidden'); }, 200);
+        };
+
+        if(openFirstAidModalBtn) {
+            openFirstAidModalBtn.addEventListener('click', openFirstAidModal);
+        }
+        closeFirstAidModalBtn.addEventListener('click', closeFirstAidModal);
+        firstAidModal.addEventListener('click', (e) => { if (e.target === firstAidModal) { closeFirstAidModal(); }});
+        
+        submitFirstAidBtn.addEventListener('click', async () => {
+            const userQuery = firstAidQuestionInput.value;
+            if (!userQuery.trim()) {
+                firstAidResponseDiv.innerHTML = '<p class="text-red-500">請輸入您的傷病狀況。</p>';
+                firstAidResponseDiv.classList.remove('hidden');
+                return;
+            }
+
+            firstAidLoader.classList.remove('hidden');
+            submitFirstAidBtn.disabled = true;
+            firstAidResponseDiv.classList.add('hidden');
+            firstAidQuestionInput.disabled = true;
+
+            const systemPrompt = `你是一位專業、謹慎且有同理心的學校護理師 AI 助理。你的任務是針對使用者描述的校園常見輕微傷病，提供清晰、簡單、安全的「初步」處理步驟建議。
+                1.  **安全第一**：你的建議必須以基礎急救原則為依歸，絕不能提供侵入性或有風險的建議。
+                2.  **明確區分**：清楚告知使用者，哪些情況可以自行初步處理，哪些情況「必須」立即停止活動並前往健康中心。
+                3.  **絕不診斷**：嚴禁做出任何醫療診斷。只能針對使用者描述的「症狀」提供處理建議。
+                4.  **強制提醒**：你的每一次回答，都「必須」在結尾加上一段固定格式的警語：「***重要提醒：以上建議僅為初步處理參考，無法取代專業醫療人員的診斷。若狀況未改善、惡化或有任何疑慮，請立即前往健康中心或就醫！***」
+                請用繁體中文，以條列式、易於理解的方式回答。`;
+            
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                firstAidResponseDiv.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for first aid guide:", error);
+                firstAidResponseDiv.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
+            } finally {
+                firstAidLoader.classList.add('hidden');
+                firstAidResponseDiv.classList.remove('hidden');
+                submitFirstAidBtn.disabled = false;
+                firstAidQuestionInput.disabled = false;
+            }
+        });
+        
+        // --- Lunch Helper Modal Logic ---
+        const lunchHelperModal = document.getElementById('lunch-helper-modal');
+        const lunchHelperModalContent = document.getElementById('lunch-helper-modal-content');
+        const openLunchHelperBtn = document.getElementById('lunch-helper-btn');
+        const closeLunchHelperBtn = document.getElementById('close-lunch-helper-modal');
+        const submitLunchHelperBtn = document.getElementById('submit-lunch-helper-question');
+        const lunchHelperResponseDiv = document.getElementById('lunch-helper-response');
+        const lunchHelperTextContent = document.getElementById('lunch-helper-text-content');
+        const lunchHelperLoader = document.getElementById('lunch-helper-loader');
+        const lunchHelperTask = document.getElementById('lunch-helper-task');
+        const lunchMenuInputs = document.getElementById('lunch-menu-inputs');
+        const lunchSafetyInputs = document.getElementById('lunch-safety-inputs');
+
+        const openLunchHelperModal = () => {
+            lunchHelperModal.classList.remove('hidden');
+            setTimeout(() => { lunchHelperModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        };
+        const closeLunchHelperModal = () => {
+            lunchHelperModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { lunchHelperModal.classList.add('hidden'); }, 200);
+        };
+
+        if (openLunchHelperBtn) {
+            openLunchHelperBtn.addEventListener('click', openLunchHelperModal);
+        }
+        closeLunchHelperBtn.addEventListener('click', closeLunchHelperModal);
+        lunchHelperModal.addEventListener('click', (e) => { if (e.target === lunchHelperModal) { closeLunchHelperModal(); }});
+        setupCopyButton('copy-lunch-helper-btn', 'lunch-helper-text-content', clipboardIcon, checkIcon);
+
+        lunchHelperTask.addEventListener('change', () => {
+            if(lunchHelperTask.value === 'menu') {
+                lunchMenuInputs.classList.remove('hidden');
+                lunchSafetyInputs.classList.add('hidden');
+            } else {
+                lunchMenuInputs.classList.add('hidden');
+                lunchSafetyInputs.classList.remove('hidden');
+            }
+        });
+
+        submitLunchHelperBtn.addEventListener('click', async () => {
+            const task = lunchHelperTask.value;
+            
+            lunchHelperLoader.classList.remove('hidden');
+            submitLunchHelperBtn.disabled = true;
+            lunchHelperResponseDiv.classList.add('hidden');
+
+            let systemPrompt, userQuery;
+
+            if (task === 'menu') {
+                const menuRequest = document.getElementById('lunch-menu-request').value;
+                if (!menuRequest.trim()) {
+                     lunchHelperTextContent.innerHTML = '<p class="text-red-500">請輸入您的菜單需求。</p>';
+                     lunchHelperResponseDiv.classList.remove('hidden');
+                     lunchHelperLoader.classList.add('hidden');
+                     submitLunchHelperBtn.disabled = false;
+                     return;
+                }
+                systemPrompt = `你是一位經驗豐富的學校營養師，專門為台灣的國小學生設計午餐菜單。你的設計需遵守以下原則：
+                    1.  **營養均衡**：確保菜單包含主食、主菜、副菜和湯品，並符合學童營養建議。
+                    2.  **多樣化**：菜色應有變化，避免重複，並盡量使用當季食材。
+                    3.  **符合規範**：遵守學校午餐的相關規定（例如：深色蔬菜、全穀類、避免油炸等）。
+                    4.  **創意與吸引力**：菜名可以帶點創意，吸引學生用餐興趣。
+                    請以繁體中文，用清晰的表格或條列式呈現你的菜單建議。`;
+                userQuery = `請根據以下需求，設計一份午餐菜單：\n\n${menuRequest}`;
+
+            } else { // task === 'safety'
+                systemPrompt = `你是一位資深的食品安全稽查員，專門為學校午餐秘書提供專業建議。你的任務是生成一份清晰、完整、可執行的「午餐驗收食品安全檢查清單」。清單需要涵蓋從運送車輛、人員衛生，到餐點溫度、外觀、留樣等所有關鍵環節。請用繁體中文，以專業、嚴謹的語氣，用條列式檢查表（Checklist）的形式呈現。`;
+                userQuery = `請為我生成一份學校午餐驗收的食品安全檢查清單。`;
+            }
+            
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                lunchHelperTextContent.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for lunch helper:", error);
+                lunchHelperTextContent.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
+            } finally {
+                lunchHelperLoader.classList.add('hidden');
+                lunchHelperResponseDiv.classList.remove('hidden');
+                submitLunchHelperBtn.disabled = false;
+            }
+        });
+
+        // --- Award Registration Modal Logic ---
+        const awardModal = document.getElementById('award-registration-modal');
+        const awardModalContent = document.getElementById('award-modal-content');
+        const openAwardModalBtn = document.getElementById('award-registration-btn');
+        const closeAwardModalBtn = document.getElementById('close-award-modal');
+        const downloadWordBtn = document.getElementById('download-word-form-btn');
+
+        const openAwardModal = () => {
+            awardModal.classList.remove('hidden');
+            setTimeout(() => { awardModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        };
+        const closeAwardModal = () => {
+            awardModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { awardModal.classList.add('hidden'); }, 200);
+        };
+
+        if (openAwardModalBtn) {
+            openAwardModalBtn.addEventListener('click', openAwardModal);
+        }
+        closeAwardModalBtn.addEventListener('click', closeAwardModal);
+        awardModal.addEventListener('click', (e) => { if (e.target === awardModal) { closeAwardModal(); } });
+
+        downloadWordBtn.addEventListener('click', () => {
+            const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' "+
+                "xmlns:w='urn:schemas-microsoft-com:office:word' "+
+                "xmlns='http://www.w3.org/TR/REC-html40'>"+
+                "<head><meta charset='utf-8'><title>朝會頒獎登記表</title></head><body>";
+            
+            const footer = "const content = `
+                <div style="font-family: 'KaiTi', '標楷體', serif; margin: 50px; font-size: 14pt;">
+                    <h1 style="text-align: center; font-size: 24pt; font-weight: bold;">國立展賦大學 學務處訓育組</h1>
+                    <h2 style="text-align: center; font-size: 20pt; font-weight: bold;">朝會頒獎登記表</h2>
+                    <br/>
+                    <p><strong>學生姓名：</strong>____________________</p>
+                    <br/>
+                    <p><strong>班　　級：</strong>____________________</p>
+                    <br/>
+                    <p><strong>獎項全名：</strong>________________________________________</p>
+                    <br/>
+                    <p><strong>頒獎單位：</strong>________________________________________</p>
+                    <br/>
+                    <p><strong>導師簽名：</strong>____________________</p>
+                    <br/>
+                    <p><strong>繳交日期：</strong>________ 年 ________ 月 ________ 日</p>
+                    <br/><br/>
+                    <hr/>
+                    <p style="font-size: 12pt; margin-top: 15px;">
+                        本人確認已將上述獎狀之正本繳交至訓育組，並申請於學生朝會公開頒獎表揚。
+                    </p>
+                </div>
+            `;
+            
+            const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(header + content + footer);
+            const fileDownload = document.createElement("a");
+            document.body.appendChild(fileDownload);
+            fileDownload.href = source;
+            fileDownload.download = '朝會頒獎登記表.doc';
+            fileDownload.click();
+            document.body.removeChild(fileDownload);
+        });
+
+        // --- Club Registration Modal Logic ---
+        const clubModal = document.getElementById('club-registration-modal');
+        const clubModalContent = document.getElementById('club-modal-content');
+        const openClubModalBtn = document.getElementById('club-registration-btn');
+        const closeClubModalBtn = document.getElementById('close-club-modal');
+        const downloadClubFormBtn = document.getElementById('download-club-form-btn');
+
+        const openClubModal = () => {
+            clubModal.classList.remove('hidden');
+            setTimeout(() => { clubModalContent.classList.add('modal-fade-enter-active'); }, 10);
+        };
+        const closeClubModal = () => {
+            clubModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { clubModal.classList.add('hidden'); }, 200);
+        };
+
+        if (openClubModalBtn) {
+            openClubModalBtn.addEventListener('click', openClubModal);
+        }
+        closeClubModalBtn.addEventListener('click', closeClubModal);
+        clubModal.addEventListener('click', (e) => { if (e.target === clubModal) { closeClubModal(); } });
+
+        downloadClubFormBtn.addEventListener('click', () => {
+            const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' "+
+                "xmlns:w='urn:schemas-microsoft-com:office:word' "+
+                "xmlns='http://www.w3.org/TR/REC-html40'>"+
+                "<head><meta charset='utf-8'><title>運動社團報名表</title></head><body>";
+            
+            const footer = "const content = `
+                <div style="font-family: 'KaiTi', '標楷體', serif; margin: 50px; font-size: 14pt;">
+                    <h1 style="text-align: center; font-size: 24pt; font-weight: bold;">國立展賦大學 學務處體育組</h1>
+                    <h2 style="text-align: center; font-size: 20pt; font-weight: bold;">運動社團報名表</h2>
+                    <br/>
+                    <table style="width:100%; border-collapse: collapse; font-size: 14pt;" border="1">
+                        <tr>
+                            <td style="padding: 8px; width: 20%;"><strong>學生姓名</strong></td>
+                            <td style="padding: 8px; width: 30%;"></td>
+                            <td style="padding: 8px; width: 20%;"><strong>班級</strong></td>
+                            <td style="padding: 8px; width: 30%;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px;"><strong>學號</strong></td>
+                            <td style="padding: 8px;"></td>
+                            <td style="padding: 8px;"><strong>聯絡電話</strong></td>
+                            <td style="padding: 8px;"></td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <h3 style="font-size: 16pt; font-weight: bold;">請勾選您想參加的社團（可複選）：</h3>
+                    <div style="font-size: 14pt; line-height: 2;">
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 籃球社</p>
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 羽球社</p>
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 田徑社</p>
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 游泳社</p>
+                        <p><span style="font-family: 'Wingdings 2'; font-size: 18pt;">☐</span> 足球社</p>
+                    </div>
+                    <br/><br/>
+                    <p><strong>家長/監護人簽名：</strong>____________________</p>
+                    <br/>
+                    <p><strong>學生簽名：</strong>____________________</p>
+                    <br/>
+                    <p><strong>報名日期：</strong>________ 年 ________ 月 ________ 日</p>
+                     <br/><br/>
+                    <hr/>
+                    <p style="font-size: 12pt; margin-top: 15px;">
+                        請將此報名表填妥後，繳交至學務處體育組。
+                    </p>
+                </div>
+            `;
+            
+            const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(header + content + footer);
+            const fileDownload = document.createElement("a");
+            document.body.appendChild(fileDownload);
+            fileDownload.href = source;
+            fileDownload.download = '運動社團報名表.doc';
+            fileDownload.click();
+            document.body.removeChild(fileDownload);
+        });
+        
+        // --- Vision Health Helper Modal Logic ---
+        const visionModal = document.getElementById('vision-helper-modal');
+        const visionModalContent = document.getElementById('vision-modal-content');
+        const openVisionModalBtn = document.getElementById('vision-helper-btn');
+        const closeVisionModalBtn = document.getElementById('close-vision-modal');
+
+        const infoTab = document.getElementById('vision-info-tab');
+        const challengeTab = document.getElementById('vision-challenge-tab');
+        const infoContent = document.getElementById('vision-info-content');
+        const challengeContent = document.getElementById('vision-challenge-content');
+
+        const visionResponseDiv = document.getElementById('vision-response');
+        const visionLoader = document.getElementById('vision-loader');
+
+        const generateVisionChallengeBtn = document.getElementById('generate-vision-challenge-btn');
+
+        const openVisionModal = () => {
+            visionModal.classList.remove('hidden');
+            setTimeout(() => { visionModalContent.classList.add('modal-fade-enter-active'); }, 10);
+            visionResponseDiv.classList.add('hidden');
+            // Reset to info tab by default
+            infoTab.click();
+        };
+        const closeVisionModal = () => {
+            visionModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { visionModal.classList.add('hidden'); }, 200);
+        };
+
+        if (openVisionModalBtn) {
+            openVisionModalBtn.addEventListener('click', openVisionModal);
+        }
+        closeVisionModalBtn.addEventListener('click', closeVisionModal);
+        visionModal.addEventListener('click', (e) => { if (e.target === visionModal) closeVisionModal(); });
+
+        infoTab.addEventListener('click', () => {
+            infoTab.classList.add('active');
+            challengeTab.classList.remove('active');
+            infoContent.classList.remove('hidden');
+            challengeContent.classList.add('hidden');
+            visionResponseDiv.classList.add('hidden');
+            visionLoader.classList.add('hidden');
+        });
+
+        challengeTab.addEventListener('click', () => {
+            challengeTab.classList.add('active');
+            infoTab.classList.remove('active');
+            challengeContent.classList.remove('hidden');
+            infoContent.classList.add('hidden');
+            visionResponseDiv.classList.add('hidden');
+            visionLoader.classList.add('hidden');
+        });
+
+        generateVisionChallengeBtn.addEventListener('click', async () => {
+            visionLoader.classList.remove('hidden');
+            generateVisionChallengeBtn.disabled = true;
+            visionResponseDiv.classList.add('hidden');
+
+            const systemPrompt = `你是一位親切有趣的 AI 護眼小老師，專門為台灣的國小學生設計「護眼大挑戰」遊戲。
+                你的任務是創造一個簡單的分類題目，考考學生某個行為或食物對眼睛是好是壞。
+                請遵循以下格式，用繁體中文回答：
+                1. **挑戰項目：** [寫出一個具體的行為或食物，例如：躺在床上看書]
+                2. **問題：** [根據這個項目，提出一個分類問題，例如：請問這個行為對眼睛是「好寶寶👍」還是「壞習慣👎」呢？]
+                3. **解答與說明：** [用活潑的語氣公布正確答案，並用小朋友聽得懂的方式解釋原因。可以補充一個相關的護眼小知識。]`;
+            const userQuery = "請給我一個護眼挑戰題。";
+
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                visionResponseDiv.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for vision challenge:", error);
+                visionResponseDiv.innerText = '抱歉，現在無法產生挑戰題，請稍後再試。';
+            } finally {
+                visionLoader.classList.add('hidden');
+                visionResponseDiv.classList.remove('hidden');
+                generateVisionChallengeBtn.disabled = false;
+            }
+        });
+        
+        // --- Eco Helper Modal Logic ---
+        const ecoModal = document.getElementById('eco-helper-modal');
+        const ecoModalContent = document.getElementById('eco-modal-content');
+        const openEcoModalBtn = document.getElementById('eco-helper-btn');
+        const closeEcoModalBtn = document.getElementById('close-eco-modal');
+
+        const ecoQnaTab = document.getElementById('eco-qna-tab');
+        const ecoChallengeTab = document.getElementById('eco-challenge-tab');
+        const ecoQnaContent = document.getElementById('eco-qna-content');
+        const ecoChallengeContent = document.getElementById('eco-challenge-content');
+        const ecoQnaFooter = document.getElementById('eco-qna-footer');
+
+        const ecoResponseDiv = document.getElementById('eco-response');
+        const ecoLoader = document.getElementById('eco-loader');
+        
+        const submitEcoQuestionBtn = document.getElementById('submit-eco-question-btn');
+        const generateChallengeBtn = document.getElementById('generate-challenge-btn');
+        const ecoQuestionInput = document.getElementById('eco-question-input');
+
+        const openEcoModal = () => {
+            ecoModal.classList.remove('hidden');
+            setTimeout(() => { ecoModalContent.classList.add('modal-fade-enter-active'); }, 10);
+            ecoResponseDiv.classList.add('hidden');
+            ecoQuestionInput.value = '';
+            ecoQnaTab.click();
+        };
+        const closeEcoModal = () => {
+            ecoModalContent.classList.remove('modal-fade-enter-active');
+            setTimeout(() => { ecoModal.classList.add('hidden'); }, 200);
+        };
+        
+        if (openEcoModalBtn) {
+            openEcoModalBtn.addEventListener('click', openEcoModal);
+        }
+        closeEcoModalBtn.addEventListener('click', closeEcoModal);
+        ecoModal.addEventListener('click', (e) => { if (e.target === ecoModal) closeEcoModal(); });
+
+        ecoQnaTab.addEventListener('click', () => {
+            ecoQnaTab.classList.add('active');
+            ecoChallengeTab.classList.remove('active');
+            ecoQnaContent.classList.remove('hidden');
+            ecoChallengeContent.classList.add('hidden');
+            ecoQnaFooter.classList.remove('hidden');
+            ecoResponseDiv.classList.add('hidden');
+        });
+
+        ecoChallengeTab.addEventListener('click', () => {
+            ecoChallengeTab.classList.add('active');
+            ecoQnaTab.classList.remove('active');
+            ecoChallengeContent.classList.remove('hidden');
+            ecoQnaContent.classList.add('hidden');
+            ecoQnaFooter.classList.add('hidden');
+            ecoResponseDiv.classList.add('hidden');
+        });
+
+        submitEcoQuestionBtn.addEventListener('click', async () => {
+            const userQuery = ecoQuestionInput.value;
+            if (!userQuery.trim()) {
+                ecoResponseDiv.innerHTML = '<p class="text-red-500">請輸入您的問題。</p>';
+                ecoResponseDiv.classList.remove('hidden');
+                return;
+            }
+
+            ecoLoader.classList.remove('hidden');
+            submitEcoQuestionBtn.disabled = true;
+            ecoResponseDiv.classList.add('hidden');
+            ecoQuestionInput.disabled = true;
+
+            const systemPrompt = `你是一位親切、熱情的 AI 環保小老師，專門為台灣的小學生解答環保相關問題。你的回答應該要簡單易懂、充滿趣味，可以適時使用表情符號，並鼓勵學生身體力行。請用繁體中文回答。`;
+            
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                ecoResponseDiv.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for eco helper:", error);
+                ecoResponseDiv.innerText = '抱歉，現在無法處理您的請求，請稍後再試。';
+            } finally {
+                ecoLoader.classList.add('hidden');
+                ecoResponseDiv.classList.remove('hidden');
+                submitEcoQuestionBtn.disabled = false;
+                ecoQuestionInput.disabled = false;
+            }
+        });
+
+        generateChallengeBtn.addEventListener('click', async () => {
+            ecoLoader.classList.remove('hidden');
+            generateChallengeBtn.disabled = true;
+            ecoResponseDiv.classList.add('hidden');
+
+            const systemPrompt = `你是一位在台灣的環保教育遊戲設計師。你的任務是創造一個簡單有趣的「垃圾分類挑戰」題目給國小學生。
+                請遵循以下格式，用繁體中文回答：
+                1.  **物品：** [寫出一個常見的生活廢棄物，例如：喝完的牛奶紙盒]
+                2.  **問題：** [根據這個物品，提出一個分類問題，例如：請問這個應該丟到「紙類回收」、「一般垃圾」還是要先沖洗乾淨再丟「紙容器回收」呢？]
+                3.  **解答與說明：** [用活潑的語氣公布正確答案，並詳細解釋原因。可以補充一個相關的環保小知識。]`;
+            const userQuery = "請給我一個垃圾分類挑戰題。";
+
+            try {
+                const result = await callGeminiAPI(userQuery, systemPrompt);
+                ecoResponseDiv.innerHTML = formatResponse(result);
+            } catch (error) {
+                console.error("Gemini API call failed for eco challenge:", error);
+                ecoResponseDiv.innerText = '抱歉，現在無法產生挑戰題，請稍後再試。';
+            } finally {
+                ecoLoader.classList.add('hidden');
+                ecoResponseDiv.classList.remove('hidden');
+                generateChallengeBtn.disabled = false;
+            }
+        });
+
+    </script>
+
+<!-- ===== 單檔安全補丁：統一走 /api/generate；禁用前端金鑰與 TTS ===== -->
+<script id="safe-single-bridge">
+document.addEventListener("DOMContentLoaded", function(){
+  // 統一代理：所有 AI 呼叫都透過 /api/generate（後端保管金鑰）
+  async function askAI(prompt) {
+    const r = await fetch("/api/generate", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ prompt })
+    });
+    const data = await r.json();
+    return data?.choices?.[0]?.message?.content ?? JSON.stringify(data);
+  }
+  // 與舊程式相容：把 callGeminiAPI/formatResponse 重新導向/包一層
+  window.formatResponse = function(x){ return typeof x==="string" ? x : JSON.stringify(x); };
+  window.callGeminiAPI = async function(userQuery, systemPrompt){
+    const prompt = (systemPrompt ? String(systemPrompt)+"\n" : "") + String(userQuery||"");
+    return await askAI(prompt);
+  };
+  // 停用前端直連 TTS（避免金鑰外流）
+  window.callGeminiTtsAPI = async function(){
+    alert("已停用前端直連 TTS。若需要 TTS，請改由後端提供 /api/tts 代理。");
+    return null;
+  };
+
+  // Word 檔下載（共用）
+  function downloadWord(filename, htmlInner){
+    const html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="white-space:pre-wrap;line-height:1.8;font-family: system-ui, \\\"Noto Sans TC\\\", sans-serif;">'
+      + htmlInner + '</body></html>';
+    const blob = new Blob([html], { type: "application/msword;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+    a.remove(); URL.revokeObjectURL(url);
+  }
+  // 綁定兩個常見的下載按鈕（若存在就啟用）
+  const awardBtn = document.getElementById("download-word-form-btn");
+  if (awardBtn){
+    awardBtn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      const inner = [
+        "國立展賦大學 學務處訓育組",
+        "朝會頒獎登記表",
+        "",
+        "學生姓名：____________________",
+        "班　　級：____________________",
+        "獎項全名：________________________________________",
+        "頒獎單位：________________________________________",
+        "導師簽名：____________________",
+        "繳交日期：________ 年 ________ 月 ________ 日",
+        "",
+        "本人確認已將上述獎狀之正本繳交至訓育組，並申請於學生朝會公開頒獎表揚。"
+      ].join("\\n");
+      downloadWord("朝會頒獎登記表.doc", inner.replace(/\\n/g,"<br>"));
+    });
+  }
+  const clubBtn = document.getElementById("download-club-form-btn");
+  if (clubBtn){
+    clubBtn.addEventListener("click", (e)=>{
+      e.preventDefault();
+      const inner = [
+        "國立展賦大學 學務處體育組",
+        "運動社團報名表",
+        "",
+        "學生姓名　　　　　班級",
+        "學號　　　　　　　聯絡電話",
+        "",
+        "請勾選您想參加的社團（可複選）：",
+        "☐ 籃球社",
+        "☐ 羽球社",
+        "☐ 田徑社",
+        "☐ 游泳社",
+        "☐ 足球社",
+        "",
+        "家長/監護人簽名：____________________",
+        "學生簽名：____________________",
+        "報名日期：________ 年 ________ 月 ________ 日",
+        "",
+        "請將此報名表填妥後，繳交至學務處體育組。"
+      ].join("\\n");
+      downloadWord("運動社團報名表.doc", inner.replace(/\\n/g,"<br>"));
+    });
+  }
+
+  // 常見送出按鈕保險綁定（若你的頁面已綁定，不會抵觸；此處僅補強）
+  const safeBind = (id, buildPrompt, loaderSel, outSel) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.dataset.safeBound) return;
+    el.dataset.safeBound = "1";
+    el.addEventListener("click", async (e)=>{
+      e.preventDefault();
+      const prompt = buildPrompt();
+      if (!prompt) return;
+      const out = outSel ? document.querySelector(outSel) : null;
+      const loader = loaderSel ? document.querySelector(loaderSel) : null;
+      loader && loader.classList.remove("hidden");
+      out && out.classList.add("hidden");
+      try {
+        const text = await askAI(prompt);
+        if (out){ out.textContent = text; out.classList.remove("hidden"); }
+      } catch {
+        if (out){ out.textContent = "抱歉，目前無法連線到 AI 服務。"; out.classList.remove("hidden"); }
+      } finally {
+        loader && loader.classList.add("hidden");
+      }
+    });
+  };
+
+  // 依據你頁面常見的 ID，補綁幾個範例（若找不到元素就自動略過）
+  safeBind("submit-eco-question-btn", ()=>{
+    const q = document.getElementById("eco-question-input")?.value || "";
+    return "你是一位親切的環保小老師，請用繁體中文回答以下問題：\\n" + q;
+  }, "#eco-loader", "#eco-response");
+
+  safeBind("generate-challenge-btn", ()=>{
+    return "你是環保教育遊戲設計師，為台灣國小生出一題垃圾分類挑戰，格式：\\n1. 物品：\\n2. 問題：\\n3. 解答與說明：";
+  }, "#eco-loader", "#eco-response");
+
+  safeBind("generate-vision-challenge-btn", ()=>{
+    return "你是護眼小老師，為台灣國小生設計一題護眼挑戰：\\n1. 挑戰項目：\\n2. 問題：\\n3. 解答與說明：";
+  }, "#vision-loader", "#vision-response");
+
+  safeBind("submit-lunch-helper-question", ()=>{
+    const task = document.getElementById("lunch-helper-task")?.value || "menu";
+    if (task==="menu"){
+      const content = document.getElementById("lunch-menu-request")?.value || "";
+      return "請以台灣國小午餐規範設計一週菜單（主食/主菜/副菜/湯品與留樣注意）。需求：\\n" + content;
+    }else{
+      return "請產生『學校午餐驗收食品安全檢查清單』，條列要點並附說明。";
+    }
+  }, "#lunch-helper-loader", "#lunch-helper-text-content, #lunch-helper-response");
+
+  safeBind("submit-first-aid-question", ()=>{
+    const q = document.getElementById("first-aid-question")?.value || "";
+    return "以校護語氣提供初步建議（非醫療診斷），條列重點與注意事項：\\n" + q;
+  }, "#first-aid-loader", "#first-aid-response");
+
+  safeBind("submit-general-question", ()=>{
+    const q = document.getElementById("general-user-question")?.value || "";
+    return "判斷以下需求應由學務處/總務處/教務處/輔導室哪個單位處理，並提供建議步驟：\\n" + q;
+  }, "#general-loader", "#general-ai-response");
+
+  safeBind("submit-announcement", ()=>{
+    const subject  = document.getElementById("announcement-subject")?.value || "";
+    const audience = document.getElementById("announcement-audience")?.value || "";
+    const info     = document.getElementById("announcement-info")?.value || "";
+    const tone     = document.getElementById("announcement-tone")?.value || "正式";
+    return `請用「${tone}」語氣草擬一份學校公告：
+主題：${subject}
+對象：${audience}
+重點：
+${info}
+請包含標題、前言、條列重點與結語。`;
+  }, "#announcement-loader", "#announcement-text-content, #announcement-response");
+
+  safeBind("submit-press-release", ()=>{
+    const subject = document.getElementById("event-subject")?.value || "";
+    const media = document.getElementById("press-release-media")?.value || "";
+    const info = document.getElementById("press-release-info")?.value || "";
+    if (!subject || !info) return "請先填主題與重點內容再產生新聞稿。";
+    return `請以學校對外新聞稿格式撰寫，主題：${subject}，發布對象：${media}，重點如下：
+${info}
+請包含：標題、導言、重點條列、引述語、聯絡資訊。`;
+  }, "#press-release-loader", "#press-release-text-content, #press-release-response");
+
+});
+</script>
+<!-- ===== /單檔安全補丁結束 ===== -->
+</body>
+</html>
