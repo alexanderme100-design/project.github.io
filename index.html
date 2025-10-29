@@ -20,8 +20,7 @@
         .likert-table {
             width: 100%;
             border-collapse: collapse;
-            overflow-x: auto;
-            display: block;
+            /* 移除了 overflow-x 和 display，交由 wrapper div 控制 */
         }
         .likert-table th, .likert-table td {
             padding: 0.75rem;
@@ -38,7 +37,8 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <div class="container mx-auto max-w-3xl p-4 sm:p-8 bg-white shadow-lg rounded-lg my-10">
+    <!-- 將 max-w-3xl (768px) 調整為 max-w-5xl (1024px)，讓整體問卷更寬 -->
+    <div class="container mx-auto max-w-5xl p-4 sm:p-8 bg-white shadow-lg rounded-lg my-10">
 
         <header class="text-center mb-8">
             <h1 class="text-3xl font-bold text-blue-700">自行車安全前後測問卷</h1>
@@ -430,4 +430,5 @@
     </script>
 </body>
 </html>
+
 
