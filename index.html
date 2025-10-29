@@ -20,18 +20,30 @@
         .likert-table {
             width: 100%;
             border-collapse: collapse;
-            /* 移除了 overflow-x 和 display，交由 wrapper div 控制 */
+            /* overflow-x: auto and display: block were removed in a previous edit, which is correct */
         }
         .likert-table th, .likert-table td {
             padding: 0.75rem;
             text-align: center;
             border: 1px solid #e5e7eb;
-            white-space: nowrap;
+            /* [FIX 1] 允許所有儲存格內容預設換行 */
+            white-space: normal; 
         }
-        .likert-table td:first-child {
+        .likert-table th:not(:first-child) {
+            /* [FIX 2] 
+              為選項標頭設定最大寬度，以鼓勵它們換行
+              (如使用者所要求的 "變成兩行")
+            */
+            max-width: 120px; 
+        }
+        .likert-table td:first-child, .likert-table th:first-child {
+            /* [FIX 3] 
+              為題目欄（標頭和儲存格）增加最小寬度
+              (如使用者所要求的 "變成一行")
+            */
             text-align: left;
             white-space: normal;
-            min-width: 200px;
+            min-width: 300px; /* 增加題目的最小寬度 */
         }
     </style>
 </head>
@@ -430,5 +442,6 @@
     </script>
 </body>
 </html>
+
 
 
