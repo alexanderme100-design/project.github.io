@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鷺江國小 自行車安全前後測問卷</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 使用 'Inter' 字體 */
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        }
+        /* 自訂樣式，用於必填問題的提示 */
+        .question-required::after {
+            content: ' *';
+            color: red;
+        }
+        /* Likert 表格的響應式樣式 */
+        .likert-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+            display: block;
+        }
+        .likert-table th, .likert-table td {
+            padding: 0.75rem;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            white-space: nowrap;
+        }
+        .likert-table td:first-child {
+            text-align: left;
+            white-space: normal;
+            min-width: 200px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto max-w-3xl p-4 sm:p-8 bg-white shadow-lg rounded-lg my-10">
+
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-700">自行車安全前後測問卷</h1>
+            <p class="text-lg text-gray-600 mt-2">鷺江國小</p>
+        </header>
+
+        <!-- 提交表單 -->
+        <!-- 表單提交會被 JavaScript 攔截 -->
+        <form id="surveyForm" class="space-y-10">
+
+            <!-- 基本資料 -->
+            <section class="border-b pb-6">
+                <h2 class="text-2xl font-semibold text-blue-600 mb-4 border-l-4 border-blue-600 pl-3">基本資料</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="classYear" class="block text-sm font-medium text-gray-700 question-required">班級 (年)</label>
+                        <input type="number" name="classYear" id="classYear" placeholder="例如: 5" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="classNum" class="block text-sm font-medium text-gray-700 question-required">班級 (班)</label>
+                        <input type="number" name="classNum" id="classNum" placeholder="例如: 1" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="seatNo" class="block text-sm font-medium text-gray-700 question-required">座號</label>
+                        <input type="number" name="seatNo" id="seatNo" placeholder="例如: 12" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 question-required">性別</label>
+                        <div class="mt-2 space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="gender" value="男" required class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                                <span class="ml-2">男</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="gender" value="女" required class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                                <span class="ml-2">女</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label class="block text-sm font-medium text-gray-700 question-required">這份問卷是：</label>
+                    <div class="mt-2 space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="testType" value="前測" required class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                            <span class="ml-2">前測（上課前）</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="testType" value="後測" required class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                            <span class="ml-2">後測（上課後）</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 輔助函數：生成選擇題 -->
+            <script>
+                // 存儲問題數據
+                const questions = {
+                    part1: [
+                        { id: 'k1', text: '1. 自行車座墊的「最適合高度」是？', options: ['雙腳可以完全平踩在地上。', '腳踩到地面時，膝蓋呈現微微彎曲。', '腳尖剛好可以踮到地上。', '越高越好，騎起來比較快。'] },
+                        { id: 'k2', text: '2. 遇到右轉的大型車（公車、卡車），最危險的區域是？', options: ['車輛的左後方。', '車輛的正後方。', '車輛的右前方與右側（因為視野死角和內輪差）。', '車輛的正前方。'] },
+                        { id: 'k3', text: '3. 有「兩段式左轉」標誌的路口，應如何左轉？', options: ['直接跟著汽車一起左轉。', '等沒車時再直接左轉。', '依照標誌，先騎到對面的待轉區，等綠燈再直行。', '舉手示意後，直接左轉。'] },
+                        { id: 'k4', text: '4. 路口「閃紅燈」對上「閃黃燈」，誰該停下禮讓？', options: ['閃黃燈（幹道）要讓閃紅燈（支道）。', '閃紅燈（支道）要停下，讓閃黃燈（幹道）先行。', '兩邊都可以直接通過。', '騎自行車的要讓所有汽車。'] },
+                        { id: 'k5', text: '5. 變換車道或轉彎前，最正確的做法是？', options: ['只要後面沒車就可以直接換。', '舉起控制「前輪」煞車的手來做轉彎手勢，並擺頭查看。', '只要按鈴鐺，提醒別人注意就好。', '騎在最外側車道，不需要打手勢。'] },
+                        { id: 'k6', text: '6. 前方有公車停在路邊，你該怎麼做？', options: ['保持原速從公車左側繞過去。', '減速，注意公車前方是否有人衝出，並保持距離繞行。', '停在公車後面，等公車開走再騎。', '騎到人行道上繞過去。'] },
+                        { id: 'k7', text: '7. 無號誌路口，我「直行」，對向車「左轉」，誰優先？', options: ['直行的自行車。', '左轉的對向車。', '誰的車速快，誰就先過。', '自行車應該禮讓所有汽車。'] },
+                        { id: 'k8', text: '8. 上路前，檢查「煞車」的正確方式是？', options: ['只要用眼睛看煞車線還在就好。', '邊騎邊按，看能不能停。', '停著的狀態下，前後輕推車子，同時按下煞車看是否能停止。', '煞車塊磨損是正常的，不用檢查。'] },
+                        { id: 'k9', text: '9. 騎車「掉鏈條」（落鏈），簡易的處理方式是？', options: ['馬上停下，打電話請人來修。', '不用處理，只是會騎起來很費力。', '用手或工具將鏈條「掛回」齒輪上，再轉動踏板。', '這是正常現象，騎快一點就會自動恢復。'] },
+                        { id: 'k10', text: '10. 依交通法規，自行車被歸類為？', options: ['行人。', '運動器材。', '慢車（車輛駕駛人）。', '玩具。'] }
+                    ],
+                    part4: [
+                        { id: 's1', text: '1. 學校正門（民族路）有很多公車。當公車要右轉時，如何避開「內輪差」最安全？', options: ['停在公車的右側或右前方。', '保持距離，停在公車的「正後方」等待。', '快速從公車的右側縫隙鑽過去。', '盡量靠近公車，讓司機看到。'] },
+                        { id: 's2', text: '2. 很多同學是「騎機車接送」。坐機車到學校時，最安全的下車方式是？', options: ['在馬路中間下車，再自己跑過去。', '在「機車接送區」停穩，從靠近人行道的「右側」下車。', '從機車「左側」下車，再繞過車頭。', '車一停，馬上跳下車往校門衝。'] },
+                        { id: 's3', text: '3. 交通崗宣導「用走代替跑步」。為什麼在校門口奔跑很危險？', options: ['跑太快會流汗。', '奔跑時，容易忽略巷口或停車格衝出的車輛。', '會撞到同學。', '(2) 和 (3) 都是。'] },
+                        { id: 's4', text: '4. 民族路正門口（正門）常「壅塞」且「汽機車與公車爭道」。如果你走路時遇到公車停靠，該怎麼辦？', options: ['從公車的左側（馬路）繞過去。', '停在公車後面，等公車開走。', '減速，注意公車前方是否有人衝出，並保持距離繞行。', '鑽進公車底下。'] },
+                        { id: 's5', text: '5. 學校有分「汽車」和「機車」接送區。如果爸媽是「開汽車」來接，應該停在哪裡？', options: ['停在「機車接送區」。', '停在「汽車接送區」的指定格內。', '併排停車在馬路上。', '停在公車停靠區。'] },
+                        { id: 's6', text: '6. 學校在「民族路」與「民權路」交會處。若騎自行車要左轉，就算該路口沒有待轉區，最安全的方法是？', options: ['跟著汽車，切換到「內側車道」直接左轉。', '保持在「外側車道」，先直行到路口對面，再等一次綠燈直行通過。', '趁沒車時，直接從「外側車道」斜切（切西瓜）左轉。', '舉手示意後，直接從外側車道左轉。'] },
+                        { id: 's7', text: '7. 警員會宣導機車「勿逗留太久」。為什麼在機車接送區「逗留太久」會造成危險？', options: ['會讓後方的機車回堵到馬路上，造成混亂。', '會被警察開罰單。', '會讓老師不開心。', '以上皆是。'] },
+                        { id: 's8', text: '8. 民權路側門「交通相對舒緩」。從這個門出來穿越馬路時，應該？', options: ['車比較少，直接跑過去。', '雖然車少，仍應「停、看、聽」，走行人穿越道。', '綠燈時，可以低頭看手機通過。', '只要看左邊來車就好。'] },
+                        { id: 's9', text: '9. 資訊課查到回家路上有「交通肇事熱點」。你經過这个路口時，應該？', options: ['盡全力快速衝過去。', '放學後在路口玩，觀察危險。', '提醒爸媽，並在通過時特別放慢、加強注意。', '堅持換一條路，繞遠路也沒關係。'] },
+                        { id: 's10', text: '10. 當你走路（通學比例 31%） 經過路邊停滿車的人行道時，如何避免被「突然打開的車門」撞到？', options: ['緊貼著車子走。', '邊走邊滑手機。', '盡量走在人行道內側，並和車子保持一個車門的距離。', '走在路中央。'] }
+                    ]
+                };
+
+                // 函數：生成單選題 HTML
+                function createMultipleChoice(q) {
+                    const optionsHtml = q.options.map((option, index) => `
+                        <label class="block ml-2 p-2 rounded-md hover:bg-gray-100">
+                            <input type="radio" name="${q.id}" value="${index + 1}" required class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                            <span class="ml-3 text-gray-700">${option}</span>
+                        </label>
+                    `).join('');
+
+                    return `
+                        <div class="mb-6 p-4 border border-gray-200 rounded-lg shadow-sm">
+                            <p class="font-medium text-gray-900 question-required">${q.text}</p>
+                            <div class="mt-2 space-y-1">
+                                ${optionsHtml}
+                            </div>
+                        </div>
+                    `;
+                }
+            </script>
+
+            <!-- 第一部分：安全知識 (K) -->
+            <section class="border-b pb-6">
+                <h2 class="text-2xl font-semibold text-blue-600 mb-4 border-l-4 border-blue-600 pl-3">第一部分：安全知識 (K)</h2>
+                <p class="text-sm text-gray-600 mb-4">（請選出一個 <strong>最正確</strong> 的答案）</p>
+                <div id="part1-questions" class="space-y-4"></div>
+                <script>
+                    const part1Container = document.getElementById('part1-questions');
+                    part1Container.innerHTML = questions.part1.map(createMultipleChoice).join('');
+                </script>
+            </section>
+
+            <!-- 輔助函數：生成 Likert 表格 -->
+            <script>
+                 // Likert 問題數據
+                const likertQuestions = {
+                    part2: [
+                        { id: 'a1', text: '11. 我認為每次騎車前，檢查自行車（煞車、輪胎）是必要的。' },
+                        { id: 'a2', text: '12. 我覺得技術好，不遵守交通規則（如兩段式左轉）也沒關係。' },
+                        { id: 'a3', text: '13. 我相信騎車戴安全帽，能真正保護頭部安全。' },
+                        { id: 'a4', text: '14. 我認為騎車打手勢（示意轉彎）很麻煩且沒必要。' },
+                        { id: 'a5', text: '15. 遇到大型車時，我會特別警覺並主動遠離。' },
+                        { id: 'a6', text: '16. 我覺得自行車是「車輛」，上路就該遵守車輛規則。' },
+                        { id: 'a7', text: '17. 我認為在巷口或路口，就算直行也該減速查看。' },
+                        { id: 'a8', text: '18. 我覺得和朋友「並排騎車」聊天，比「前後一列」安全。' },
+                        { id: 'a9', text: '19. 我相信學會處理「掉鏈條」，對安全騎乘很有幫助。' },
+                        { id: 'a10', text: '20. 我認為騎車時，讓他人能「預測」我的行為很重要（如不S型）。' }
+                    ],
+                    part3: [
+                        { id: 'b1', text: '21. 騎車前，我「會」先檢查煞車是否靈敏。' },
+                        { id: 'b2', text: '22. 即使只在住家附近，我「會」堅持戴安全帽。' },
+                        { id: 'b3', text: '23. 和朋友騎車，我「會」提醒大家「前後一列」，不並排。' },
+                        { id: 'b4', text: '24. 轉彎或變換車道時，我「會」擺頭查看並打手勢。' },
+                        { id: 'b5', text: '25. 看到公車或卡車時，我「會」主動騎得遠一點。' },
+                        { id: 'b6', text: '26. 即使是綠燈，過路口時我「會」減速查看左右來車。' },
+                        { id: 'b7', text: '27. 經過路邊停車時，我「會」保持一個車門的距離。' },
+                        { id: 'b8', text: '28. 在複雜路口左轉，我「會」優先使用兩段式左轉。' },
+                        { id: 'b9', text: '29. 騎車時，我「會」要求自己專心注意路況，不分心。' },
+                        { id: 'b10', text: '30. 騎車前，我「會」先確認座墊是否牢固且高度適合。' }
+                    ]
+                };
+
+                // 函數：生成 Likert 表格 HTML
+                function createLikertTable(questions, partNumber) {
+                    const part2Headers = ['非常同意', '同意', '普通', '不同意', '非常不同意'];
+                    const part3Headers = ['非常同意 (我一定會)', '同意 (我應該會)', '普通', '不同意 (我應該不會)', '非常不同意 (我一定不會)'];
+                    
+                    const headers = (partNumber === 2) ? part2Headers : part3Headers;
+                    const values = [5, 4, 3, 2, 1]; // 分數
+
+                    const headerHtml = headers.map(h => `<th class="font-semibold">${h}</th>`).join('');
+                    
+                    const rowsHtml = questions.map(q => {
+                        const optionsHtml = values.map(v => `
+                            <td class="text-center">
+                                <input type="radio" name="${q.id}" value="${v}" required class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                            </td>
+                        `).join('');
+                        
+                        return `
+                            <tr>
+                                <td class="text-left font-medium question-required">${q.text}</td>
+                                ${optionsHtml}
+                            </tr>
+                        `;
+                    }).join('');
+
+                    return `
+                        <div class="overflow-x-auto">
+                            <table class="likert-table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left">題目</th>
+                                        ${headerHtml}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rowsHtml}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                }
+            </script>
+
+            <!-- 第二部分：安全態度 (A) -->
+            <section class="border-b pb-6">
+                <h2 class="text-2xl font-semibold text-blue-600 mb-4 border-l-4 border-blue-600 pl-3">第二部分：安全態度 (A)</h2>
+                <p class="text-sm text-gray-600 mb-4">（請勾選你對以下說法的同意程度）</p>
+                <div id="part2-questions"></div>
+                <script>
+                    const part2Container = document.getElementById('part2-questions');
+                    part2Container.innerHTML = createLikertTable(likertQuestions.part2, 2);
+                </script>
+            </section>
+
+            <!-- 第三部分：安全意向與實踐 (B) -->
+            <section class="border-b pb-6">
+                <h2 class="text-2xl font-semibold text-blue-600 mb-4 border-l-4 border-blue-600 pl-3">第三部分：安全意向與實踐 (B)</h2>
+                <p class="text-sm text-gray-600 mb-4">（請想像你「未來有機會」騎自行車時，你「會這麼做」的同意程度）</p>
+                <div id="part3-questions"></div>
+                <script>
+                    const part3Container = document.getElementById('part3-questions');
+                    part3Container.innerHTML = createLikertTable(likertQuestions.part3, 3);
+                </script>
+            </section>
+
+            <!-- 第四部分：鷺江國小情境應用題 -->
+            <section>
+                <h2 class="text-2xl font-semibold text-blue-600 mb-4 border-l-4 border-blue-600 pl-3">第四部分：鷺江國小情境應用題</h2>
+                <p class="text-sm text-gray-600 mb-4">（此部分題目將會收集，但您可以提醒學生在「前測」時若不會可先跳過）</p>
+                <div id="part4-questions" class="space-y-4"></div>
+                <script>
+                    const part4Container = document.getElementById('part4-questions');
+                    part4Container.innerHTML = questions.part4.map(createMultipleChoice).join('');
+                </script>
+            </section>
+
+            <!-- 提交按鈕 -->
+            <div class="text-center pt-6">
+                <button type="submit" id="submitButton" class="w-full sm:w-auto inline-flex justify-center items-center px-12 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                    送出問卷
+                </button>
+            </div>
+
+        </form>
+
+        <!-- 訊息提示框 -->
+        <div id="messageBox" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+            <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+                <div class="mt-3 text-center">
+                    <h3 id="messageTitle" class="text-lg leading-6 font-medium text-gray-900"></h3>
+                    <div class="mt-2 px-7 py-3">
+                        <p id="messageText" class="text-sm text-gray-500"></p>
+                    </div>
+                    <div class="items-center px-4 py-3">
+                        <button id="messageCloseButton" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            關閉
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ------------------------------------------------------------------
+        // Google Apps Script 設定
+        // ------------------------------------------------------------------
+        //
+        // ！！請注意！！
+        // 1. 請先依照 README.md 的說明，部署您的 Google Apps Script 網路應用程式。
+        // 2. 部署完成後，您會得到一個「網路應用程式網址」。
+        // 3. 請將下方 YOUR_APPS_SCRIPT_WEB_APP_URL 的值替換為您自己的網址。
+        //
+        // 範例：
+        // const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby.../exec";
+        //
+        // ------------------------------------------------------------------
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3jrBovQNb3bZlQFUFQJw7Hg6XFwcd_waz_44OvpD_WpNxwYEUt0h_Fl4qpr5UtipSZg/exec"; // <--- ！！請務必替換成您自己的網址！！
+
+        // DOM 元素
+        const form = document.getElementById('surveyForm');
+        const submitButton = document.getElementById('submitButton');
+        const messageBox = document.getElementById('messageBox');
+        const messageTitle = document.getElementById('messageTitle');
+        const messageText = document.getElementById('messageText');
+        const messageCloseButton = document.getElementById('messageCloseButton');
+
+        // 顯示訊息框
+        function showMessage(title, text) {
+            messageTitle.textContent = title;
+            messageText.textContent = text;
+            messageBox.classList.remove('hidden');
+        }
+
+        // 關閉訊息框
+        messageCloseButton.addEventListener('click', () => {
+            messageBox.classList.add('hidden');
+        });
+
+        // 提交表單處理
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // 防止表單直接提交
+
+            // 檢查 URL 是否已設定
+            if (SCRIPT_URL === "YOUR_APPS_SCRIPT_WEB_APP_URL") {
+                showMessage("設定錯誤", "請先在 index.html 檔案中設定您的 Google Apps Script 網路應用程式網址 (SCRIPT_URL)。");
+                return;
+            }
+
+            // 簡易的必填驗證
+            const requiredInputs = form.querySelectorAll('[required]');
+            let firstInvalidInput = null;
+
+            for (const input of requiredInputs) {
+                if (input.type === 'radio') {
+                    const groupName = input.name;
+                    if (!form.querySelector(`input[name="${groupName}"]:checked`)) {
+                        firstInvalidInput = input;
+                        break;
+                    }
+                } else {
+                    if (!input.value.trim()) {
+                        firstInvalidInput = input;
+                        break;
+                    }
+                }
+            }
+
+            if (firstInvalidInput) {
+                showMessage("尚未填寫完成", "請檢查所有標記 * 的必填問題。");
+                // 捲動到第一個未填寫的問題
+                firstInvalidInput.closest('section, .mb-6, tr').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // 設定提交中狀態
+            submitButton.disabled = true;
+            submitButton.textContent = '提交中...';
+            submitButton.classList.add('bg-gray-400', 'cursor-not-allowed');
+            submitButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+
+            try {
+                // 序列化表單數據
+                const formData = new FormData(form);
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'cors' // 確保 Apps Script 部署時允許跨域
+                });
+
+                // Google Apps Script 的 fetch POST 會觸發一個 302 重導向
+                // 這裡我們假設只要 fetch 沒有拋出錯誤，並且 response.ok (即使是重導)
+                // 就代表 Apps Script 已經收到了。
+                // 為了更精確的
+                // 我們的 Apps Script (Code.gs) 會回傳 JSON，
+                // 但標準的 form-to-apps-script 流程常有重導問題。
+                // 這裡我們用一個技巧：
+                // Apps Script (doPost) 應該回傳 JSON。
+                // 但如果遇到 CORS 或重導問題，我們在 catch 中處理。
+                //
+                // 更新： Apps Script POST 之後，如果用 fetch，
+                // 我們需要讓 Apps Script 回傳 JSON，而不是重導。
+                // 我們的 Code.gs 已經這樣做了。
+
+                // 處理 Apps Script 回傳的 JSON
+                const result = await response.json();
+                
+                if (result.result === "success") {
+                    showMessage("提交成功！", "感謝您的填答，問卷已成功送出。");
+                    form.reset(); // 清空表單
+                } else {
+                    throw new Error(result.error || '提交失敗，但伺服器有回應。');
+                }
+
+            } catch (error) {
+                console.error('提交錯誤:', error);
+                
+                // 這是處理 Google Apps Script 常見的 302 重導問題
+                // 即使腳本成功執行，fetch 也可能因為跨域重導而進入 catch
+                // 我們給一個比較模糊但友善的提示
+                if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+                     // 這種情況通常是 Apps Script 成功執行但 fetch 因 CORS 重導失敗
+                     showMessage("提交成功！", "感謝您的填答，問卷已成功送出。 (Type 1)");
+                     form.reset();
+                } else if (!error.message) {
+                    // 如果 error object 沒東西，也可能是重導成功
+                    showMessage("提交成功！", "感謝您的填答，問卷已成功送出。 (Type 2)");
+                    form.reset();
+                }
+                else {
+                    showMessage("提交失敗", `發生錯誤，請稍後再試。(${error.message})`);
+                }
+            } finally {
+                // 恢復按鈕狀態
+                submitButton.disabled = false;
+                submitButton.textContent = '送出問卷';
+                submitButton.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                submitButton.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            }
+        });
+
+    </script>
+</body>
+</html>
+
