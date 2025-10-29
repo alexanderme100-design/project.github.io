@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自行車安全前後測問卷</title>
+    <!-- 載入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .table-radio {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin: 0 auto;
+        }
+        /* 讓提交按鈕在讀取時有動畫 */
+        .button-loading {
+            position: relative;
+            cursor: not-allowed;
+            opacity: 0.75;
+        }
+        .button-loading::after {
+            content: '';
+            position: absolute;
+            width: 1.5rem;
+            height: 1.5rem;
+            top: 50%;
+            left: 50%;
+            margin-top: -0.75rem;
+            margin-left: -0.75rem;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800 p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-xl">
+
+        <header class="border-b border-gray-200 pb-4 mb-8">
+            <h1 class="text-3xl font-bold text-center text-blue-700">自行車安全前後測問卷</h1>
+            <p class="text-center text-gray-600 mt-2">請依據您的真實情況與知識來填寫這份問卷。</p>
+        </header>
+
+        <!-- 表單開始 -->
+        <form id="surveyForm">
+
+            <!-- 【基本資料】 -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-bold mb-5 text-blue-600 border-l-4 border-blue-600 pl-3">基本資料</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="class-year" class="block text-sm font-medium text-gray-700 mb-1">班級（年）</label>
+                        <input type="number" id="class-year" name="class_year" placeholder="年" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="class-num" class="block text-sm font-medium text-gray-700 mb-1">班級（班）</label>
+                        <input type="number" id="class-num" name="class_num" placeholder="班" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="seat-num" class="block text-sm font-medium text-gray-700 mb-1">座號</label>
+                        <input type="number" id="seat-num" name="seat_num" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">性別</label>
+                        <select id="gender" name="gender" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white">
+                            <option value="">請選擇...</option>
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="test-type" class="block text-sm font-medium text-gray-700 mb-1">這份問卷是：</label>
+                        <select id="test-type" name="test_type" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white" required>
+                            <option value="">請選擇...</option>
+                            <option value="pre-test">□ 前測（上課前）</option>
+                            <option value="post-test">□ 後測（上課後）</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 第一部分：安全知識 (K) -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-bold mb-5 text-blue-600 border-l-4 border-blue-600 pl-3">第一部分：安全知識 (K)</h2>
+                <p class="text-sm text-gray-600 mb-6">（請選出一個 **最正確** 的答案）</p>
+                <div class="space-y-6">
+
+                    <!-- Q1 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">1. 自行車座墊的「最適合高度」是？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k1" value="1" class="form-radio text-blue-600"> (1) 雙腳可以完全平踩在地上。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k1" value="2" class="form-radio text-blue-600"> (2) 腳踩到地面時，膝蓋呈現微微彎曲。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k1" value="3" class="form-radio text-blue-600"> (3) 腳尖剛好可以踮到地上。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k1" value="4" class="form-radio text-blue-600"> (4) 越高越好，騎起來比較快。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Q2 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">2. 遇到右轉的大型車（公車、卡車），最危險的區域是？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k2" value="1" class="form-radio text-blue-600"> (1) 車輛的左後方。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k2" value="2" class="form-radio text-blue-600"> (2) 車輛的正後方。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k2" value="3" class="form-radio text-blue-600"> (3) 車輛的右前方與右側（因為視野死角和內輪差）。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k2" value="4" class="form-radio text-blue-600"> (4) 車輛的正前方。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Q3 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">3. 有「兩段式左轉」標誌的路口，應如何左轉？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k3" value="1" class="form-radio text-blue-600"> (1) 直接跟著汽車一起左轉。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k3" value="2" class="form-radio text-blue-600"> (2) 等沒車時再直接左轉。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k3" value="3" class="form-radio text-blue-600"> (3) 依照標誌，先騎到對面的待轉區，等綠燈再直行。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k3" value="4" class="form-radio text-blue-600"> (4) 舉手示意後，直接左轉。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Q4 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">4. 路口「閃紅燈」對上「閃黃燈」，誰該停下禮讓？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k4" value="1" class="form-radio text-blue-600"> (1) 閃黃燈（幹道）要讓閃紅燈（支道）。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k4" value="2" class="form-radio text-blue-600"> (2) 閃紅燈（支道）要停下，讓閃黃燈（幹道）先行。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k4" value="3" class="form-radio text-blue-600"> (3) 兩邊都可以直接通過。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k4" value="4" class="form-radio text-blue-600"> (4) 騎自行車的要讓所有汽車。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Q5 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">5. 變換車道或轉彎前，最正確的做法是？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k5" value="1" class="form-radio text-blue-600"> (1) 只要後面沒車就可以直接換。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k5" value="2" class="form-radio text-blue-600"> (2) 舉起控制「前輪」煞車的手來做轉彎手勢，並擺頭查看。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k5" value="3" class="form-radio text-blue-600"> (3) 只要按鈴鐺，提醒別人注意就好。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k5" value="4" class="form-radio text-blue-600"> (4) 騎在最外側車道，不需要打手勢。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Q6 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">6. 前方有公車停在路邊，你該怎麼做？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k6" value="1" class="form-radio text-blue-600"> (1) 保持原速從公車左側繞過去。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k6" value="2" class="form-radio text-blue-600"> (2) 減速，注意公車前方是否有人衝出，並保持距離繞行。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k6" value="3" class="form-radio text-blue-600"> (3) 停在公車後面，等公車開走再騎。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k6" value="4" class="form-radio text-blue-600"> (4) 騎到人行道上繞過去。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Q7 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">7. 無號誌路口，我「直行」，對向車「左轉」，誰優先？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k7" value="1" class="form-radio text-blue-600"> (1) 直行的自行車。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k7" value="2" class="form-radio text-blue-600"> (2) 左轉的對向車。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k7" value="3" class="form-radio text-blue-600"> (3) 誰的車速快，誰就先過。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k7" value="4" class="form-radio text-blue-600"> (4) 自行車應該禮讓所有汽車。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Q8 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">8. 上路前，檢查「煞車」的正確方式是？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k8" value="1" class="form-radio text-blue-600"> (1) 只要用眼睛看煞車線還在就好。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k8" value="2" class="form-radio text-blue-600"> (2) 邊騎邊按，看能不能停。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k8" value="3" class="form-radio text-blue-600"> (3) 停著的狀態下，前後輕推車子，同時按下煞車看是否能停止。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k8" value="4" class="form-radio text-blue-600"> (4) 煞車塊磨損是正常的，不用檢查。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Q9 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">9. 騎車「掉鏈條」（落鏈），簡易的處理方式是？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k9" value="1" class="form-radio text-blue-600"> (1) 馬上停下，打電話請人來修。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k9" value="2" class="form-radio text-blue-600"> (2) 不用處理，只是會騎起來很費力。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k9" value="3" class="form-radio text-blue-600"> (3) 用手或工具將鏈條「掛回」齒輪上，再轉動踏板。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k9" value="4" class="form-radio text-blue-600"> (4) 這是正常現象，騎快一點就會自動恢復。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Q10 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">10. 依交通法規，自行車被歸類為？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="k10" value="1" class="form-radio text-blue-600"> (1) 行人。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k10" value="2" class="form-radio text-blue-600"> (2) 運動器材。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k10" value="3" class="form-radio text-blue-600"> (3) 慢車（車輛駕駛人）。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="k10" value="4" class="form-radio text-blue-600"> (4) 玩具。</label></div>
+                        </div>
+                    </fieldset>
+
+                </div>
+            </section>
+
+            <!-- 第二部分：安全態度 (A) -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-bold mb-5 text-blue-600 border-l-4 border-blue-600 pl-3">第二部分：安全態度 (A)</h2>
+                <p class="text-sm text-gray-600 mb-6">（請勾選你對以下說法的同意程度）</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300 text-sm md:text-base">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="border border-gray-300 p-2 font-semibold">題目</th>
+                                <th class="border border-gray-300 p-2 font-semibold">非常同意</th>
+                                <th class="border border-gray-300 p-2 font-semibold">同意</th>
+                                <th class="border border-gray-300 p-2 font-semibold">普通</th>
+                                <th class="border border-gray-300 p-2 font-semibold">不同意</th>
+                                <th class="border border-gray-300 p-2 font-semibold">非常不同意</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Repeat for A11 to A20 -->
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">11. 我認為每次騎車前，檢查自行車（煞車、輪胎）是必要的。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a11" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a11" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a11" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a11" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a11" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                           <tr>
+                                <td class="border border-gray-300 p-2 text-left">12. 我覺得技術好，不遵守交通規則（如兩段式左轉）也沒關係。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a12" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a12" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a12" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a12" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a12" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">13. 我相信騎車戴安全帽，能真正保護頭部安全。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a13" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a13" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a13" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a13" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a13" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">14. 我認為騎車打手勢（示意轉彎）很麻煩且沒必要。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a14" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a14" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a14" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a14" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a14" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">15. 遇到大型車時，我會特別警覺並主動遠離。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a15" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a15" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a15" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a15" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a15" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">16. 我覺得自行車是「車輛」，上路就該遵守車輛規則。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a16" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a16" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a16" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a16" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a16" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">17. 我認為在巷口或路口，就算直行也該減速查看。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a17" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a17" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a17" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a17" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a17" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">18. 我覺得和朋友「並排騎車」聊天，比「前後一列」安全。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a18" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a18" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a18" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a18" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a18" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">19. 我相信學會處理「掉鏈條」，對安全騎乘很有幫助。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a19" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a19" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a19" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a19" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a19" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">20. 我認為騎車時，讓他人能「預測」我的行為很重要（如不S型）。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a20" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a20" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a20" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a20" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="a20" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 第三部分：安全意向與實踐 (B) -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-bold mb-5 text-blue-600 border-l-4 border-blue-600 pl-3">第三部分：安全意向與實踐 (B)</h2>
+                <p class="text-sm text-gray-600 mb-6">（請想像你「未來有機會」騎自行車時，你「會這麼做」的同意程度）</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300 text-sm md:text-base">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="border border-gray-300 p-2 font-semibold">題目</th>
+                                <th class="border border-gray-300 p-2 font-semibold">非常同意<br>(我一定會)</th>
+                                <th class="border border-gray-300 p-2 font-semibold">同意<br>(我應該會)</th>
+                                <th class="border border-gray-300 p-2 font-semibold">普通</th>
+                                <th class="border border-gray-300 p-2 font-semibold">不同意<br>(我應該不會)</th>
+                                <th class="border border-gray-300 p-2 font-semibold">非常不同意<br>(我一定不會)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Repeat for B21 to B30 -->
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">21. 騎車前，我「會」先檢查煞車是否靈敏。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b21" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b21" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b21" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b21" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b21" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                           <tr>
+                                <td class="border border-gray-300 p-2 text-left">22. 即使只在住家附近，我「會」堅持戴安全帽。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b22" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b22" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b22" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b22" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b22" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">23. 和朋友騎車，我「會」提醒大家「前後一列」，不並排。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b23" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b23" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b23" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b23" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b23" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">24. 轉彎或變換車道時，我「會」擺頭查看並打手勢。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b24" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b24" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b24" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b24" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b24" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">25. 看到公車或卡車時，我「會」主動騎得遠一點。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b25" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b25" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b25" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b25" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b25" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">26. 即使是綠燈，過路口時我「會」減速查看左右來車。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b26" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b26" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b26" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b26" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b26" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">27. 經過路邊停車時，我「會」保持一個車門的距離。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b27" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b27" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b27" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b27" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b27" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">28. 在複雜路口左轉，我「會」優先使用兩段式左轉。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b28" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b28" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b28" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b28" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b28" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">29. 騎車時，我「會」要求自己專心注意路況，不分心。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b29" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b29" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b29" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b29" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b29" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 p-2 text-left">30. 騎車前，我「會」先確認座墊是否牢固且高度適合。</td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b30" value="5" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b30" value="4" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b30" value="3" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b30" value="2" class="table-radio text-blue-600"></td>
+                                <td class="border border-gray-300 p-2 text-center"><input type="radio" name="b30" value="1" class="table-radio text-blue-600"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 第四部分：鷺江國小情境應用題 -->
+            <section id="scenario-section" class="mb-10" style="display: none;"> <!-- 預設隱藏 -->
+                <h2 class="text-2xl font-bold mb-5 text-green-700 border-l-4 border-green-700 pl-3">第四部分：鷺江國小情境應用題</h2>
+                <p class="text-sm text-gray-600 mb-6">（此部分僅於「後測」時顯示與填寫）</p>
+                <div class="space-y-6">
+
+                    <!-- S1 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">1. 學校正門（民族路）有很多公車。當公車要右轉時，如何避開「內輪差」最安全？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s1" value="1" class="form-radio text-green-600"> (1) 停在公車的右側或右前方。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s1" value="2" class="form-radio text-green-600"> (2) 保持距離，停在公車的「正後方」等待。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s1" value="3" class="form-radio text-green-600"> (3) 快速從公車的右側縫隙鑽過去。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s1" value="4" class="form-radio text-green-600"> (4) 盡量靠近公車，讓司機看到。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- S2 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">2. 很多同學是「騎機車接送」。坐機車到學校時，最安全的下車方式是？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s2" value="1" class="form-radio text-green-600"> (1) 在馬路中間下車，再自己跑過去。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s2" value="2" class="form-radio text-green-600"> (2) 在「機車接送區」停穩，從靠近人行道的「右側」下車。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s2" value="3" class="form-radio text-green-600"> (3) 從機車「左側」下車，再繞過車頭。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s2" value="4" class="form-radio text-green-600"> (4) 車一停，馬上跳下車往校門衝。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- S3 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">3. 交通崗宣導「用走代替跑步」。為什麼在校門口奔跑很危險？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s3" value="1" class="form-radio text-green-600"> (1) 跑太快會流汗。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s3" value="2" class="form-radio text-green-600"> (2) 奔跑時，容易忽略巷口或停車格衝出的車輛。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s3" value="3" class="form-radio text-green-600"> (3) 會撞到同學。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s3" value="4" class="form-radio text-green-600"> (4) (2) 和 (3) 都是。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- S4 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">4. 民族路正門口（正門）常「壅塞」且「汽機車與公車爭道」。如果你走路時遇到公車停靠，該怎麼辦？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s4" value="1" class="form-radio text-green-600"> (1) 從公車的左側（馬路）繞過去。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s4" value="2" class="form-radio text-green-600"> (2) 停在公車後面，等公車開走。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s4" value="3" class="form-radio text-green-600"> (3) 減速，注意公車前方是否有人衝出，並保持距離繞行。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s4" value="4" class="form-radio text-green-600"> (4) 鑽進公車底下。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- S5 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">5. 學校有分「汽車」和「機車」接送區。如果爸媽是「開汽車」來接，應該停在哪裡？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s5" value="1" class="form-radio text-green-600"> (1) 停在「機車接送區」。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s5" value="2" class="form-radio text-green-600"> (2) 停在「汽車接送區」的指定格內。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s5" value="3" class="form-radio text-green-600"> (3) 併排停車在馬路上。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s5" value="4" class="form-radio text-green-600"> (4) 停在公車停靠區。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- S6 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">6. 學校在「民族路」與「民權路」交會處。若騎自行車要左轉，就算該路口沒有待轉區，最安全的方法是？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s6" value="1" class="form-radio text-green-600"> (1) 跟著汽車，切換到「內側車道」直接左轉。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s6" value="2" class="form-radio text-green-600"> (2) 保持在「外側車道」，先直行到路口對面，再等一次綠燈直行通過。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s6" value="3" class="form-radio text-green-600"> (3) 趁沒車時，直接從「外側車道」斜切（切西瓜）左轉。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s6" value="4" class="form-radio text-green-600"> (4) 舉手示意後，直接從外側車道左轉。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- S7 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">7. 警員會宣導機車「勿逗留太久」。為什麼在機車接送區「逗留太久」會造成危險？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s7" value="1" class="form-radio text-green-600"> (1) 會讓後方的機車回堵到馬路上，造成混亂。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s7" value="2" class="form-radio text-green-600"> (2) 會被警察開罰單。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s7" value="3" class="form-radio text-green-600"> (3) 會讓老師不開心。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s7" value="4" class="form-radio text-green-600"> (4) 以上皆是。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- S8 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">8. 民權路側門「交通相對舒緩」。從這個門出來穿越馬路時，應該？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s8" value="1" class="form-radio text-green-600"> (1) 車比較少，直接跑過去。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s8" value="2" class="form-radio text-green-600"> (2) 雖然車少，仍應「停、看、聽」，走行人穿越道。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s8" value="3" class="form-radio text-green-600"> (3) 綠燈時，可以低頭看手機通過。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s8" value="4" class="form-radio text-green-600"> (4) 只要看左邊來車就好。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- S9 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">9. 資訊課查到回家路上有「交通肇S熱點」。你經過这个路口時，應該？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s9" value="1" class="form-radio text-green-600"> (1) 盡全力快速衝過去。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s9" value="2" class="form-radio text-green-600"> (2) 放學後在路口玩，觀察危險。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s9" value="3" class="form-radio text-green-600"> (3) 提醒爸媽，並在通過時特別放慢、加強注意。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s9" value="4" class="form-radio text-green-600"> (4) 堅持換一條路，繞遠路也沒關係。</label></div>
+                        </div>
+                    </fieldset>
+
+                    <!-- S10 -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold text-gray-800 mb-2">10. 當你走路（通學比例 31%） 經過路邊停滿車的人行道時，如何避免被「突然打開的車門」撞到？</legend>
+                        <div class="space-y-2 pl-2">
+                            <div><label class="inline-flex items-center"><input type="radio" name="s10" value="1" class="form-radio text-green-600"> (1) 緊貼著車子走。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s10" value="2" class="form-radio text-green-600"> (2) 邊走邊滑手機。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s10" value="3" class="form-radio text-green-600"> (3) 盡量走在人行道內側，並和車子保持一個車門的距離。</label></div>
+                            <div><label class="inline-flex items-center"><input type="radio" name="s10" value="4" class="form-radio text-green-600"> (4) 走在路中央。</label></div>
+                        </div>
+                    </fieldset>
+
+                </div>
+            </section>
+
+            <!-- 提交按鈕 -->
+            <div class="mt-12 border-t border-gray-200 pt-8">
+                <!-- 提交訊息提示 -->
+                <p id="form-message" class="text-center mb-4 font-semibold" style="display: none;"></p>
+
+                <button type="submit" id="submit-button" class="w-full bg-blue-600 text-white p-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <span id="button-text">送出問卷</span>
+                </button>
+            </div>
+
+        </form>
+        <!-- 表單結束 -->
+
+    </div>
+
+    <!-- ########## JavaScript 修改部分 ########## -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const testTypeSelect = document.getElementById('test-type');
+            const scenarioSection = document.getElementById('scenario-section');
+
+            // 監聽下拉式選單的變化 (顯示/隱藏第四部分)
+            testTypeSelect.addEventListener('change', function() {
+                if (this.value === 'post-test') {
+                    scenarioSection.style.display = 'block';
+                } else {
+                    scenarioSection.style.display = 'none';
+                }
+            });
+
+            // 處理表單提交
+            const form = document.getElementById('surveyForm');
+            const message = document.getElementById('form-message');
+            const submitButton = document.getElementById('submit-button');
+            const buttonText = document.getElementById('button-text');
+
+            // ---------------------------------------------------
+            // 【關鍵】請將您在 setup_guide.md 步驟三
+            //         複製的「網路應用程式網址」貼在下方
+            // ---------------------------------------------------
+            const WEB_APP_URL = "https://script.google.com/a/macros/lcps.ntpc.edu.tw/s/AKfycbynysyEkx_y_QcNCbdTHuJADGMp5JYDYm_KcDkpkAGg1DIWph-12p8EZwdq-p9XEGelOw/exec";
+
+
+            form.addEventListener('submit', function(event) {
+                // 阻止表單的預設提交行為
+                event.preventDefault();
+
+                // 檢查是否已填寫 GAS 網址 (簡易檢查)
+                if (!WEB_APP_URL || WEB_APP_URL.includes("請貼上")) {
+                    message.textContent = "提交失敗：HTML 檔案尚未設定 Google Apps Script 網址。";
+                    message.className = "text-center text-red-600 mb-4 font-semibold";
+                    message.style.display = 'block';
+                    return;
+                }
+
+                // 1. 顯示讀取中狀態
+                submitButton.disabled = true;
+                buttonText.textContent = "傳送中...";
+                submitButton.classList.add('button-loading');
+                message.style.display = 'none';
+
+                // 2. 收集所有表單資料
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                // 3. 將資料傳送到 Google Apps Script
+                fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    // 我們手動將資料轉為字串，GAS 會用 e.postData.contents 接收
+                    body: JSON.stringify(data),
+                    // 必須設定 Content-Type 為 text/plain，GAS 才能正確解析
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                    },
+                    // 重要：添加 mode: 'no-cors'，因為 Apps Script 的 doPost 重定向問題
+                    // 這會導致我們無法直接讀取 response，但資料仍會送達
+                    mode: 'no-cors'
+                })
+                .then(() => {
+                    // 4a. 提交成功 (因為 mode: 'no-cors'，我們假設成功)
+                    message.textContent = "表單提交成功！謝謝您的填答。";
+                    message.className = "text-center text-green-600 mb-4 font-semibold";
+                    message.style.display = 'block';
+                    form.reset(); // 清空表單
+                    scenarioSection.style.display = 'none'; // 隱藏第四部分
+                    window.scrollTo(0, 0); // 捲動到頁面頂端
+                })
+                .catch(error => {
+                    // 4c. 提交失敗 (網路錯誤或 GAS 部署錯誤)
+                    // 注意：由於 'no-cors'，這裡的錯誤通常只會是網路層級的
+                    console.error('Fetch Error:', error);
+                    message.textContent = `提交失敗：發生網路錯誤，請稍後再試。(${error.message})`;
+                    message.className = "text-center text-red-600 mb-4 font-semibold";
+                    message.style.display = 'block';
+                })
+                .finally(() => {
+                    // 5. 無論成功或失敗，都恢復按鈕
+                    submitButton.disabled = false;
+                    buttonText.textContent = "送出問卷";
+                    submitButton.classList.remove('button-loading');
+                });
+            });
+        });
+    </script>
+    <!-- ########## JavaScript 結束 ########## -->
+
+</body>
+</html>
+
+我已經更新好程式，但是資料卻無法到試算表
+
